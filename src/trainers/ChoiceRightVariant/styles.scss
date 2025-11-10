@@ -1,0 +1,22 @@
+.ChoiceRightVariant {
+    width: 500px;
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    &__variants {
+        max-width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+} 
+.correct {
+    border: 2px solid green;
+}
+.notCorrect {
+    border: 2px solid red;
+}

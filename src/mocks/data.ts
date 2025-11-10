@@ -1,0 +1,69 @@
+import type { ITask } from "../App";
+
+export const VariantTasks: ITask[] = [
+    {
+        id: 1,
+        questionTitle: "Что делают люди с помощью речи ?2",
+        variants: [
+            { id: 1,title: "рассказывают" },
+            { id: 2, title: "дерутся" },
+            { id: 3, title: "молчат" },
+            { id: 4, title: "спят" }],
+            correctVariantId:1
+    },
+    {
+        id: 2,
+        questionTitle: "Что необходимо растению для роста?",
+        variants: [
+            { id: 1,title: "солнечный свет" },
+            { id: 2, title: "шоколад" },
+            { id: 3, title: "компьютер" },
+            { id: 4, title: "футбольный мяч" }
+        ],
+          correctVariantId:1
+    },
+    {
+        id: 3,
+        questionTitle: "Какой предмет помогает читать карту?",
+        variants: [
+            { id: 1, title: "ложка" },
+            { id: 2,title: "компас" },
+            { id: 3, title: "расческа" },
+            { id: 4, title: "наушники" }
+        ],
+          correctVariantId:2
+    },
+    {
+        id: 4,
+        questionTitle: "Что помогает врачу слушать сердце и легкие?",
+        variants: [
+            { id: 1, title: "термометр" },
+            { id: 2, title: "весы" },
+            { id: 3,title: "стетоскоп" },
+            { id: 4, title: "часы" }
+        ],
+          correctVariantId:3
+    },
+    {
+        id: 5,
+        questionTitle: "Кто является автором «Евгения Онегина»?",
+        variants: [
+            { id: 1,title: "Александр Пушкин" },
+            { id: 2, title: "Лев Толстой" },
+            { id: 3, title: "Федор Достоевский" },
+            { id: 4, title: "Антон Чехов" }
+        ],
+          correctVariantId:1
+    },
+    {
+        id: 6,
+        questionTitle: "Как называется наука о живой природе?",
+        variants: [
+            { id: 1, title: "математика" },
+            { id: 2, title: "химия" },
+            { id: 3,title: "биология" },
+            { id: 4, title: "астрономия" }
+        ],
+          correctVariantId:3
+    }
+]
