@@ -109,3 +109,18 @@ a {
 	}
 	background-image: url("./assets/1.png");
 }
+.correct-variant {
+	background-color: #1baa7d !important;
+	color:#fff !important;
+}
+.incorrect-variant {
+	background-color: #e52914 !important;
+	color:#fff !important;
+}
+.other-variants {
+	background-color: #7d7979 !important;
+}
+.selected-var {
+	background-color: #e52914 !important;
+	color:#fff !important;
+}

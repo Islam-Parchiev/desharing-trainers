@@ -1,4 +1,5 @@
 import type { ITask } from "../App";
+import type { ChoiceRightVariant } from "../trainers/ChoiceMultipleVariants";
 
 export const VariantTasks: ITask[] = [
     {
@@ -65,5 +66,19 @@ export const VariantTasks: ITask[] = [
             { id: 4, title: "астрономия" }
         ],
           correctVariantId:3
+    }
+]
+export const MultipleVariantsTasks:ChoiceRightVariant[]=[
+    {
+        id:1,
+        correctVariants:[2,4,5],
+        questionTitle:"Что делают люди с помощью речи ? Выбери 3 ответа",
+        variants:[
+            {id:1,title:"рычат"},
+            {id:2,title:"спрашивают"},
+            {id:3,title:"молчат"},
+            {id:4,title:"просят"},
+            {id:5,title:"рассказывают"}
+        ]
     }
 ]

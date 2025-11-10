@@ -1,104 +1,58 @@
-
+import { useState } from "react";
+import type { ITask, Variant } from "../../App";
 import { VariantItem } from "../../components/VariantItem";
-import './styles.scss';
-import { Button } from "../../shared/ui/Button";
-import type { ITask } from "../../App";
+import cn from 'classnames'
+import type { Id } from "../../types/types";
+interface IChoiceRightVariant extends ITask {
+    handleNextTask: () => void;
+}
+export const ChoiceRightVariant = ({ questionTitle, variants, correctVariantId, handleNextTask }: IChoiceRightVariant) => {
+    const [selectedVariantId, setSelectedVariantId] = useState<Id | null>(null)
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
+    const handleVariantClick = (item: Variant) => {
+        if (!isSubmitted) {
 
-type VariantStatus = "default" | "correct" | "incorrect" | "disabled";
+            setSelectedVariantId(item.id);
+            if (item.id === correctVariantId) {
+                setSuccess(true);
+            } else {
+                setError(true);
+            }
+        }
+        setIsSubmitted(true);
+    }
+    const addClasses = (item: Variant) => {
+        if (isSubmitted) {
+            if (item.id === correctVariantId) {
+                return "correct-variant"
+            }
+            if (item.id === selectedVariantId) {
 
-export const ChoiceRightVariant = ({
-    task
-}: { task: ITask }) => {
-
-
-    return (
-        <div className="ChoiceRightVariant">
-            <div className="ChoiceRightVariant__inner">
-                <h6 className="ChoiceRightVariant__title">{task.questionTitle}</h6>
-
-
-
-                {/* Variants List */}
-                <div className="ChoiceRightVariant__variants">
-                    {task.variants.length > 0 ? (
-                        task.variants.map((variant) => (
-                            <VariantItem
-                                className={getVariantStatus(variant)}
-                                handleItemClick={() => handleVariantClick(variant)}
-                                title={variant.title}
-                                key={"variant-key-" + variant.id}
-                                id={variant.id}
-                            />
-                        ))
-                    ) : (
-                        <div className="ChoiceRightVariant__empty">No variants available</div>
-                    )}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="ChoiceRightVariant__actions">
-                    {!isSubmitted ? (
-                        <Button
-                            onClick={handleSubmit}
-                            disabled={selectedItemId === null}
-                        >
-                            Проверить
-                        </Button>
-                    ) : (
-                        <Button onClick={handleReset}>
-                            Попробовать снова
-                        </Button>
-                    )}
-                </div>
+                return "incorrect-variant"
+            }
+            return "other-variants"
+        }
+        return ""
+    }
+    const nextTask = () => {
+        setError(false);
+        setSuccess(false)
+        setSelectedVariantId(null);
+        setIsSubmitted(false);
+        handleNextTask()
+    }
+    return <div className="ChoiceRightVariant">
+        <div className="ChoiceRightVariant__inner">
+            <h5 className="ChoiceRightVariant__title">{questionTitle}</h5>
+            {error && "error"}
+            {success && "success"}
+            <div className="variants">
+                {variants.map((item) => <VariantItem className={addClasses(item)} handleItemClick={() => handleVariantClick(item)} id={item.id} title={item.title} key={"variant-" + item.id} />)}
             </div>
+
+            {success && <button onClick={nextTask}>next</button>}
         </div>
-    );
-};
-// import { useState } from "react";
-// import { VariantItem } from "../../components/VariantItem";
-// import type { Id } from "../../types/types";
-// import './styles.scss';
-// import { Button } from "../../shared/ui/Button";
-// export interface Variant {
-//     id: Id;
-//     title: string;
-//     correct: boolean;
-// }
-// export const ChoiceTrainer = ({ title, variants }: { title: string; variants: Variant[]; }) => {
-//     // const selectedVariants: Variant[] = [];
-//     const [selectedVariants, setSelectedVariants] = useState<Variant[]>([]);
-//     const [error, setError] = useState(false);
-//     const [success, setSuccess] = useState(false);
-//     const handleSelectVariant = (variant: Variant) => {
-//         const itemVar = selectedVariants.find((item => item.id === variant.id));
-//         if (itemVar) {
-//             setSelectedVariants(prev => prev.filter((item) => item.id !== itemVar.id));
-//         } else {
-//             setSelectedVariants(prev => [...prev, variant])
-//         }
-//     }
-//     const handleCheck = () => {
-//         if (selectedVariants.length > 0 && selectedVariants.find(item => item.correct === false)) {
-//             setError(true);
-//             setSuccess(false);
-//         } else {
-//             setError(false);
-//             setSuccess(true);
-//         }
-//     }
-//     return (
-//         <div className="ChoiceTrainer">
-//             <div className="ChoiceTrainer__inner">
-//                 <h6 className="ChoiceTrainer__title">{title}</h6>
-//                 {error && "ОШИБКА"}
-//                 {success && "УСПЕХ"}
-//                 <div className="ChoiceTrainer__variants">
-//                     {
-//                         variants.length > 0 ? variants.map((variant) => <VariantItem selected={selectedVariants.includes(variant)} handleItemClick={() => handleSelectVariant(variant)} title={variant.title} correct={variant.correct} key={"variant-key-" + variant.id} id={variant.id} />) : "error"
-//                     }
-//                 </div>
-//                 <Button onClick={handleCheck}>check</Button>
-//             </div>
-//         </div>
-//     )
-// }
+    </div>
+}
