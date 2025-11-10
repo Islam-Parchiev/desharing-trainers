@@ -28,7 +28,7 @@ export const ChoiceRightVariant = ({ questionTitle, variants, correctVariantId, 
             if (item.id === correctVariantId) {
                 return "correct-variant"
             }
-            if (item.id === selectedVariantId) {
+            if (item.id === selectedVariantId && item.id !== correctVariantId) {
 
                 return "incorrect-variant"
             }

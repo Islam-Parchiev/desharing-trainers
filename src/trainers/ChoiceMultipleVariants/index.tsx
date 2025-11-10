@@ -63,9 +63,12 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
         // Show correct/incorrect styling after submission
         if (isSubmitted) {
             if (correctVariants.includes(item.id)) {
-                className += "correct-var ";
+                className += "correct-variant ";
             } else if (selectedVariantIds.includes(item.id) && !correctVariants.includes(item.id)) {
-                className += "incorrect-var ";
+                className += "incorrect-variant ";
+            }
+            if(!selectedVariantIds.includes(item.id)&& !correctVariants.includes(item.id)) {
+                className+="other-variants "
             }
         }
 
