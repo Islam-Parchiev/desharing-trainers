@@ -1,0 +1,20 @@
+.Card {
+    border-radius: 32px;
+padding: 40px;
+width: 1088px;
+height: 820px;
+background-color: #fff;
+&__inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+&__header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+&__footer {
+    margin-top: auto;
+}
+}

@@ -82,3 +82,30 @@ export const MultipleVariantsTasks:ChoiceRightVariant[]=[
         ]
     }
 ]
+
+export const DNDTasks = [
+    {
+        id:1,
+        words:[{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }],
+        slots:[
+        {
+            id: 1,
+            current: null,
+            imageUrl: "dog.png",
+            correctValue: "Лай"
+        },
+        {
+            id: 2,
+            current: null,
+            imageUrl: "cat.png",
+            correctValue: "Мяуканье"
+        },
+        {
+            id: 3,
+            current: null,
+            imageUrl: "v8.png",
+            correctValue: "V8"
+        }
+    ]
+    }
+]

@@ -9,6 +9,8 @@ import type { Id } from './types/types'
 import { VariantTasks, MultipleVariantsTasks } from './mocks/data'
 import { ChoiceRightVariant } from './trainers/ChoiceRightVariant'
 import { ChoiceMultipleVariants } from './trainers/ChoiceMultipleVariants'
+import { DragAndDropImage } from './trainers/DragAndDropToImage'
+import { Card } from './components/Card'
 
 export interface Variant {
   id: Id;
@@ -28,19 +30,21 @@ function App() {
     setCurrentTaskNumber(prev => prev + 1);
   }
   return (
-    <>
-      <Header />
-      <section className='test'>
-        <ChoiceRightVariant handleNextTask={nextTask} correctVariantId={currentTask.correctVariantId} id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
+    <main className='Main'>
+      <section className='MainSection'>
+        {/* {currentTaskNumber === VariantTasks.length - 1 ? <>Fiinish</> :
+          <ChoiceRightVariant handleNextTask={nextTask} correctVariantId={currentTask.correctVariantId} id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
+        }
         <ChoiceMultipleVariants
           correctVariants={multipleCurrentTask.correctVariants}
           id={multipleCurrentTask.id}
           questionTitle={multipleCurrentTask.questionTitle}
           variants={multipleCurrentTask.variants}
           key={multipleCurrentTask.id + 'testtt'} />
+        <DragAndDropImage /> */}
+        <Card />
       </section>
-      <Footer />
-    </>
+    </main>
   )
 }
 
