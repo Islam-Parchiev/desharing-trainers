@@ -35,7 +35,6 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
     };
 
     const handleVariantClick = (item: Variant) => {
-        // Reset submission status when user changes selection
         if (isSubmitted) {
             setIsSubmitted(false);
             setSuccess(false);
@@ -43,10 +42,8 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
         }
 
         if (selectedVariantIds.find(id => id === item.id)) {
-            // Remove item if it exists
             setSelectedVariantIds(prev => prev.filter(id => id !== item.id));
         } else {
-            // Add item if it doesn't exist and we haven't reached the limit
             if (selectedVariantIds.length < correctVariants.length) {
                 setSelectedVariantIds(prev => [...prev, item.id]);
             }
@@ -60,7 +57,6 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
             className += "selected-var ";
         }
 
-        // Show correct/incorrect styling after submission
         if (isSubmitted) {
             if (correctVariants.includes(item.id)) {
                 className += "correct-variant ";

@@ -38,7 +38,6 @@ export const DragAndDropImage = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const mouseSensor = useSensor(MouseSensor, {
-        // Require the mouse to move by 10 pixels before activating
         activationConstraint: {
             distance: 5,
         },
@@ -95,9 +94,6 @@ export const DragAndDropImage = () => {
                         {/* <MoveBox title="Лай" /> */}
                     </ul>
                     <div className="DropBoxes">
-                        {/* <DropBox imageUrl="dog.png" />
-                        <DropBox imageUrl="cat.png" />
-                        <DropBox imageUrl="v8.png" /> */}
                         {slots.map(slot => <DropBox
                             imageUrl={slot.imageUrl}
                             id={slot.id}

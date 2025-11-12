@@ -40,9 +40,9 @@ function App() {
           id={multipleCurrentTask.id}
           questionTitle={multipleCurrentTask.questionTitle}
           variants={multipleCurrentTask.variants}
-          key={multipleCurrentTask.id + 'testtt'} />
-        <DragAndDropImage /> */}
-        <Card />
+          key={multipleCurrentTask.id + 'testtt'} />*/}
+        <DragAndDropImage />
+        {/* <Card /> */}
       </section>
     </main>
   )

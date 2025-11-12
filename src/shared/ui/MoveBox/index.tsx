@@ -2,6 +2,7 @@ import { useDraggable } from '@dnd-kit/core'
 import type { Id } from '../../../types/types';
 import cn from "classnames";
 import { useRef, type MouseEventHandler } from 'react';
+import './styles.scss';
 const Icon = () => (
     <svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M33.9666 17.3516V18.582C33.9666 19.0507 33.7601 19.5194 33.3467 19.8876C28.5564 24.1564 23.7644 28.4234 18.9745 32.6922C18.5707 33.0521 18.0922 33.2372 17.5234 33.2372V32.0067C18.0923 32.0067 18.5707 31.8216 18.9745 31.4617C23.7645 27.1929 28.5563 22.9257 33.3467 18.6572C33.7601 18.289 33.9666 17.8204 33.9666 17.3516Z" fill="#198261" />
@@ -53,8 +54,8 @@ export const MoveBox = ({ title, id, isDisabled }: { title: string; isDisabled: 
         id,
         data: { title },
         disabled: isDisabled,
-        
-        
+
+
     })
     const style = transform
         ? {
