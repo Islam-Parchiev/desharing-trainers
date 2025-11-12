@@ -1,2 +1,2 @@
 export type Id = string | number;
-export type Status = "success" | "error" | "idle";
+export type Status = "success" | "error" | "idle"|"finish";

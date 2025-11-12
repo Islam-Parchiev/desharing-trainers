@@ -1,0 +1,32 @@
+.AccentLetter {
+    width: 60px;
+    height: 90px;
+    background-color: var(--primary-medium);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    &__content {
+        position: relative;
+        font-size: 34px;
+        font-weight: 700;
+        color:#fff;
+        line-height: 150%;
+    }
+    &__mark {
+        display: none;
+        position: absolute;
+        top: -12px;
+        transform: rotate(15deg);
+        right: 0;
+        font-size: 27px;
+        font-weight: 700;
+        color:#fff;
+        line-height: 150%;
+    }
+    &.checked .AccentLetter__mark {
+        display: block;
+    }
+}

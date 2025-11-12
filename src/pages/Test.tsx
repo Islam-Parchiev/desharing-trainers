@@ -4,7 +4,8 @@ import type { IWord, ISlot } from "../trainers/DragAndDrop";
 import { VariantTasks, MultipleVariantsTasks } from "../mocks/data";
 import type { Id, Status } from "../types/types";
 import { ChoiceRightVariant } from "../trainers/ChoiceRightVariant";
-import { WordByImage } from "../components/WordByImage";
+import { WordByImage } from "../trainers/WordByImage";
+import { AccentTrainer } from "../trainers/AccentTrainer";
 export interface Variant {
     id: Id;
     title: string;
@@ -92,6 +93,7 @@ export const Test = () => {
                 {/* dndend */}
                 {/* <Card /> */}
                 {/* <WordByImage /> */}
+                <AccentTrainer />
             </section>
         </main>
     )

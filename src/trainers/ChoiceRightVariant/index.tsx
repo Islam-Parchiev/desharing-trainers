@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { ITask, Variant } from "../../App";
 import { VariantItem } from "../../components/VariantItem";
 // import cn from 'classnames'
-import type { Id } from "../../types/types";
-import type { TrainerStatus } from "../../pages/Test";
+import type { Id, Status } from "../../types/types";
 interface IChoiceRightVariant extends ITask {
     handleNextTask?: () => void;
     handleSuccess: () => void;
-    status: TrainerStatus;
+    status: Status;
     handleError: () => void;
     currentTaskNumber: number;
+    isSubmitted: boolean;
+    setSelectedVariantId: (value: Id | null) => void;
+    setIsSubmitted: (value: boolean) => void;
+    selectedVariantId: Id | null;
 }
-export const ChoiceRightVariant = ({ currentTaskNumber, handleNextTask, questionTitle, variants, correctVariantId, status, handleError, handleSuccess }: IChoiceRightVariant) => {
-    const [selectedVariantId, setSelectedVariantId] = useState<Id | null>(null)
-    const [isSubmitted, setIsSubmitted] = useState(false);
+export const ChoiceRightVariant = ({ isSubmitted, selectedVariantId, setIsSubmitted, setSelectedVariantId, currentTaskNumber, questionTitle, variants, correctVariantId, status, handleError, handleSuccess }: IChoiceRightVariant) => {
     const handleVariantClick = (item: Variant) => {
         if (!isSubmitted) {
 
