@@ -1,0 +1,30 @@
+.DropInput {
+	width: 45px;
+	height: 45px;
+	border-radius: 12px;
+	background-color: var(--neutral-light);
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 175%;
+	color: var(--neutral-darkest);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	&__error {
+		border: 2px solid red;
+	}
+	&__wrapper {
+		display: inline-flex;
+	}
+	&--filled {
+		background: var(--primary-medium);
+		color: var(--neutral-white);
+	}
+}
+.DropInput__wrapper.error .DropInput{ 
+	&--filled {
+		background:red;
+	}
+}

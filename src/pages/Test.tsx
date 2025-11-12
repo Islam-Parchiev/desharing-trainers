@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Card } from "../components/Card";
 import type { IWord, ISlot } from "../trainers/DragAndDrop";
 import { VariantTasks, MultipleVariantsTasks } from "../mocks/data";
-import type { Id } from "../types/types";
+import type { Id, Status } from "../types/types";
 import { ChoiceRightVariant } from "../trainers/ChoiceRightVariant";
 import { WordByImage } from "../components/WordByImage";
 export interface Variant {
@@ -16,13 +16,12 @@ export interface ITask {
     correctVariantId: number;
 }
 export type TrainerTypes = "variant-task" | "mult-variants" | "dnd-words"
-export type TrainerStatus = "success" | "error" | "idle";
 export const Test = () => {
     const [currentTaskNumber, setCurrentTaskNumber] = useState(0);
     const currentTask = VariantTasks[currentTaskNumber];
     const multipleCurrentTask = MultipleVariantsTasks[0];
     const [words] = useState<IWord[]>([{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }])
-    const [status, setStatus] = useState<TrainerStatus>("idle")
+    const [status, setStatus] = useState<Status>("idle")
     const nextTask = () => {
         setStatus("idle");
         setCurrentTaskNumber(prev => prev + 1);
@@ -92,7 +91,7 @@ export const Test = () => {
                 {/* {status === "idle" ? <Button variant="primary" size="medium" onClick={handleCheck}>check</Button> : null} */}
                 {/* dndend */}
                 {/* <Card /> */}
-                <WordByImage />
+                {/* <WordByImage /> */}
             </section>
         </main>
     )

@@ -1,0 +1,36 @@
+.WordByImage {
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    &__image {
+        width: 700px;
+        border-radius: 12px;
+        height: 300px;
+        overflow: hidden;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__slots {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    &__moveItems {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+    }
+}
