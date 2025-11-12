@@ -24,7 +24,6 @@ export interface ITask {
   variants: Variant[];
   correctVariantId: number;
 }
-type TrainerStatus = "success" | "error" | "idle";
 function App() {
   const [currentTaskNumber, setCurrentTaskNumber] = useState(0);
   const currentTask = VariantTasks[currentTaskNumber];
