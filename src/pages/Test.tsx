@@ -4,6 +4,7 @@ import type { IWord, ISlot } from "../trainers/DragAndDrop";
 import { VariantTasks, MultipleVariantsTasks } from "../mocks/data";
 import type { Id } from "../types/types";
 import { ChoiceRightVariant } from "../trainers/ChoiceRightVariant";
+import { WordByImage } from "../components/WordByImage";
 export interface Variant {
     id: Id;
     title: string;
@@ -14,16 +15,18 @@ export interface ITask {
     variants: Variant[];
     correctVariantId: number;
 }
+export type TrainerTypes = "variant-task" | "mult-variants" | "dnd-words"
 export type TrainerStatus = "success" | "error" | "idle";
 export const Test = () => {
     const [currentTaskNumber, setCurrentTaskNumber] = useState(0);
     const currentTask = VariantTasks[currentTaskNumber];
     const multipleCurrentTask = MultipleVariantsTasks[0];
-    const nextTask = () => {
-        setCurrentTaskNumber(prev => prev + 1);
-    }
     const [words] = useState<IWord[]>([{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }])
     const [status, setStatus] = useState<TrainerStatus>("idle")
+    const nextTask = () => {
+        setStatus("idle");
+        setCurrentTaskNumber(prev => prev + 1);
+    }
     const [slots, setSlots] = useState<ISlot[]>([
         {
             id: 1,
@@ -66,9 +69,11 @@ export const Test = () => {
     return (
         <main className='Test'>
             <section className='MainSection'>
-                {currentTaskNumber === VariantTasks.length - 1 ? <>Fiinish</> :
-                    <ChoiceRightVariant status={status} handleError={onErrorDnd} handleSuccess={onSuccessDnd} handleNextTask={nextTask} correctVariantId={currentTask.correctVariantId} id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
+                {/* {currentTaskNumber === VariantTasks.length - 1 ? <>Fiinish</> :
+                    <ChoiceRightVariant currentTaskNumber={currentTaskNumber} status={status} handleError={onErrorDnd} handleSuccess={onSuccessDnd} handleNextTask={nextTask} correctVariantId={currentTask.correctVariantId} id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
                 }
+                {status === "success" && <button onClick={nextTask}>next</button>}
+                {status === "error" && <button onClick={nextTask}>next</button>} */}
                 {/*
         <ChoiceMultipleVariants
           correctVariants={multipleCurrentTask.correctVariants}
@@ -87,6 +92,7 @@ export const Test = () => {
                 {/* {status === "idle" ? <Button variant="primary" size="medium" onClick={handleCheck}>check</Button> : null} */}
                 {/* dndend */}
                 {/* <Card /> */}
+                <WordByImage />
             </section>
         </main>
     )
