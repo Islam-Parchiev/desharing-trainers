@@ -109,3 +109,66 @@ export const DNDTasks = [
     ]
     }
 ]
+
+
+export const trainersMocks = [
+    {
+        id:1,
+        type:"variant-task",
+        data: {
+            id: 1,
+            questionTitle: "Что делают люди с помощью речи ?2",
+            variants: [
+                { id: 1,title: "рассказывают" },
+                { id: 2, title: "дерутся" },
+                { id: 3, title: "молчат" },
+                { id: 4, title: "спят" }],
+                correctVariantId:1
+        },
+    },
+    {
+        id:2,
+        type:"mult-variants",
+        data: {
+                id:1,
+                correctVariants:[2,4,5],
+                questionTitle:"Что делают люди с помощью речи ? Выбери 3 ответа",
+                variants:[
+                    {id:1,title:"рычат"},
+                    {id:2,title:"спрашивают"},
+                    {id:3,title:"молчат"},
+                    {id:4,title:"просят"},
+                    {id:5,title:"рассказывают"}
+                ]
+            }
+        
+    },
+    {
+        id:3,
+        type:"dnd-words",
+        data: {
+            id:1,
+            words:[{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }],
+            slots:[
+            {
+                id: 1,
+                current: null,
+                imageUrl: "dog.png",
+                correctValue: "Лай"
+            },
+            {
+                id: 2,
+                current: null,
+                imageUrl: "cat.png",
+                correctValue: "Мяуканье"
+            },
+            {
+                id: 3,
+                current: null,
+                imageUrl: "v8.png",
+                correctValue: "V8"
+            }
+        ]
+        }
+    }
+]

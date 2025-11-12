@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, type ReactNode } from 'react';
 import { VariantTasks } from '../../mocks/data';
 import { ChoiceRightVariant } from '../../trainers/ChoiceRightVariant';
 import { AttestationItem } from '../AttestationItem';

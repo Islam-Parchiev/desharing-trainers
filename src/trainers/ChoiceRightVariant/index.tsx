@@ -3,15 +3,15 @@ import type { ITask, Variant } from "../../App";
 import { VariantItem } from "../../components/VariantItem";
 // import cn from 'classnames'
 import type { Id } from "../../types/types";
+import type { TrainerStatus } from "../../pages/Test";
 interface IChoiceRightVariant extends ITask {
     handleNextTask?: () => void;
-    success: boolean;
     handleSuccess: () => void;
-    error: boolean;
+    status: TrainerStatus;
     handleError: () => void;
     currentTaskNumber: number;
 }
-export const ChoiceRightVariant = ({ currentTaskNumber, handleNextTask, questionTitle, variants, correctVariantId, error, success, handleError, handleSuccess }: IChoiceRightVariant) => {
+export const ChoiceRightVariant = ({ currentTaskNumber, handleNextTask, questionTitle, variants, correctVariantId, status, handleError, handleSuccess }: IChoiceRightVariant) => {
     const [selectedVariantId, setSelectedVariantId] = useState<Id | null>(null)
     const [isSubmitted, setIsSubmitted] = useState(false);
     const handleVariantClick = (item: Variant) => {
@@ -40,16 +40,14 @@ export const ChoiceRightVariant = ({ currentTaskNumber, handleNextTask, question
         return ""
     }
     useEffect(() => {
-        // setError(false);
-        // setSuccess(false)
         setSelectedVariantId(null);
         setIsSubmitted(false);
     }, [currentTaskNumber])
     return <div className="ChoiceRightVariant">
         <div className="ChoiceRightVariant__inner">
             <h5 className="ChoiceRightVariant__title">{questionTitle}</h5>
-            {error && "error"}
-            {success && "success"}
+            {status === "error" && "error"}
+            {status === "success" && "success"}
             <div className="ChoiceRightVariant__variants">
                 {variants.map((item) => <VariantItem className={addClasses(item)} handleItemClick={() => handleVariantClick(item)} id={item.id} title={item.title} key={"variant-" + item.id} />)}
             </div>
