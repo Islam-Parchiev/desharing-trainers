@@ -1,42 +1,33 @@
-import { useEffect, useState } from "react"
+import { useEffect, type Dispatch, type SetStateAction } from "react"
 import { DropBox } from "../../shared/ui/DropBox"
 import { MoveBox } from "../../shared/ui/MoveBox"
 import { type DragEndEvent, DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
 import type { Id } from "../../types/types"
-export interface ISlot {
-    id: string | number
-    correct: string
-    current: null | string
+export interface IWord {
+    id: Id;
+    title: string;
 }
-export const DragAndDropImage = () => {
-    const [words] = useState([{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }])
-    const [slots, setSlots] = useState<{
-        id: Id;
-        current: string | null;
-        imageUrl: string;
-        correctValue: string;
-    }[]>([
-        {
-            id: 1,
-            current: null,
-            imageUrl: "dog.png",
-            correctValue: "Лай"
-        },
-        {
-            id: 2,
-            current: null,
-            imageUrl: "cat.png",
-            correctValue: "Мяуканье"
-        },
-        {
-            id: 3,
-            current: null,
-            imageUrl: "v8.png",
-            correctValue: "V8"
-        }
-    ])
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
+export interface ISlot {
+
+    id: Id;
+    current: string | null;
+    imageUrl: string;
+    correctValue: string;
+
+}
+interface IProps {
+    words: IWord[];
+    slots: ISlot[];
+    setSlots: Dispatch<SetStateAction<ISlot[]>>;
+    handleSuccess?: () => void;
+    handleError?: () => void;
+    type: "primary" | "secondary";
+}
+export const DragAndDrop = ({
+    setSlots,
+    slots,
+    words,
+}: IProps) => {
     const mouseSensor = useSensor(MouseSensor, {
         activationConstraint: {
             distance: 5,
@@ -63,21 +54,8 @@ export const DragAndDropImage = () => {
         }
         return false
     }
-    const handleCheck = () => {
-        if (slots.every(slot => slot.current === slot.correctValue)) {
-            setSuccess(true);
-        } else {
-            setError(true);
-        }
-    }
     return (
         <div className="DragAndDropImage">
-            {success && <div>
-                success
-            </div>}
-            {error && <div>
-                error
-            </div>}
             <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
 
                 <div className="DragAndDropImage__inner">
@@ -101,7 +79,6 @@ export const DragAndDropImage = () => {
                     </div>
                 </div>
             </DndContext>
-            <button onClick={handleCheck}>check</button>
         </div>
     )
 }

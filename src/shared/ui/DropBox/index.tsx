@@ -6,9 +6,8 @@ export const DropBox = ({ id, imageUrl, title }: { id: Id; imageUrl: string; tit
     return (
         <div className="DropBox">
             <div ref={setNodeRef} className="DropBox__box">
-                {title ? <div className='DropBox__card'>
-                    {title}
-                </div> : ""}
+                {/* {title || ''} */}
+                {title ? <div className='DropBox__card'>{title}</div> : ''}
             </div>
             <div className="DropBox__bottom">
 
