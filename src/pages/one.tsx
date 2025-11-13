@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { ChoiceMultipleVariants } from "../trainers/ChoiceMultipleVariants"
-import { VariantTasks, MultipleVariantsTasks } from "../mocks/data";
+import { MultipleVariantsTasks } from "../mocks/data";
 
 export const One = () => {
     const multipleCurrentTask = MultipleVariantsTasks[0];
-  
+
     return <main>
         <ChoiceMultipleVariants
             correctVariants={multipleCurrentTask.correctVariants}

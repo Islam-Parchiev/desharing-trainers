@@ -43,6 +43,7 @@ export const ChoiceRightVariant = ({ isSubmitted, selectedVariantId, setIsSubmit
     useEffect(() => {
         setSelectedVariantId(null);
         setIsSubmitted(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentTaskNumber])
     return <div className="ChoiceRightVariant">
         <div className="ChoiceRightVariant__inner">

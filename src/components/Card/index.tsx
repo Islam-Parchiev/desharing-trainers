@@ -1,4 +1,4 @@
-import { useState, useCallback, type ReactNode } from 'react';
+import { useState, useCallback } from 'react';
 import { VariantTasks } from '../../mocks/data';
 import { ChoiceRightVariant } from '../../trainers/ChoiceRightVariant';
 import { AttestationItem } from '../AttestationItem';
@@ -99,14 +99,18 @@ export const Card = ({ onBack, onFinish, className }: CardProps) => {
                             <ChoiceRightVariant
                                 key={currentTask.id}
                                 currentTaskNumber={quizState.currentTaskNumber}
-                                error={quizState.currentStatus === 'error'}
-                                success={quizState.currentStatus === 'success'}
                                 handleSuccess={() => handleAnswer(true)}
                                 handleError={() => handleAnswer(false)}
                                 correctVariantId={currentTask.correctVariantId}
                                 id={currentTask.id}
+                                status={quizState.currentStatus}
                                 questionTitle={currentTask.questionTitle}
                                 variants={currentTask.variants}
+                                isSubmitted={false}
+                                selectedVariantId={1}
+                                setIsSubmitted={() => console.log('test')}
+                                setSelectedVariantId={() => console.log('test')}
+                                handleNextTask={() => console.log('next')}
                             />
                         </div>
 

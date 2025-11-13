@@ -9,7 +9,7 @@ interface IVariant { id: Id; variant: string; correct: boolean; }
 export const FillInTrainer = () => {
     const [slot, setSlot] = useState<IVariant | null>(null);
     const [status, setStatus] = useState<Status>("idle");
-    const [variants, setVariants] = useState<IVariant[]>([
+    const [variants] = useState<IVariant[]>([
         {
             id: 1,
             variant: "башкирский",

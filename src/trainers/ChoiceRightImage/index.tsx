@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { TrainerTitle } from "../../components/TrainerTitle"
 import { Icon } from "../../shared/ui/MoveBox"
 import type { Id, Status } from "../../types/types";

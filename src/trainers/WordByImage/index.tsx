@@ -1,6 +1,6 @@
 import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { useState, useEffect } from 'react';
-import { Icon } from '../../shared/ui/MoveBox';
+// import { Icon } from '../../shared/ui/MoveBox';
 import type { Id, Status } from '../../types/types';
 import { DropInput } from './DropInput';
 import { MoveBox } from './MoveBox';

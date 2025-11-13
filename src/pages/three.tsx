@@ -2,7 +2,7 @@ import { useState } from "react";
 import { WordByImage, type ILetter } from "../trainers/WordByImage"
 
 export const Three = () => {
-    const [letters, setLetters] = useState<ILetter[]>([
+    const [letters] = useState<ILetter[]>([
         { id: 1, letter: "г" },
         { id: 2, letter: "а" },
         { id: 3, letter: "о" },
