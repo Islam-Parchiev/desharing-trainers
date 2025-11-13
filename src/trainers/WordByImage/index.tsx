@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 // import { Icon } from '../../shared/ui/MoveBox';
 import type { Id, Status } from '../../types/types';
 import { DropInput } from './DropInput';
-import { MoveBox } from './MoveBox';
+import { MoveBoxImage } from './MoveBox';
 import './styles.scss';
 import { TrainerTitle } from '../../components/TrainerTitle';
 interface WordTask {
@@ -115,7 +115,7 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
 
                     <ul className="list-reset WordByImage__moveItems">
                         {letters.map(letter =>
-                            <MoveBox
+                            <MoveBoxImage
                                 key={letter.id}
                                 char={letter.letter}
                                 id={letter.id}
