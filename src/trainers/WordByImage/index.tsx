@@ -1,46 +1,55 @@
-import './styles.scss';
-import { Icon } from "../../shared/ui/MoveBox"
+import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
+import { useState, useEffect } from 'react';
+import { Icon } from '../../shared/ui/MoveBox';
+import type { Id, Status } from '../../types/types';
 import { DropInput } from './DropInput';
 import { MoveBox } from './MoveBox';
-import { useSensor, DndContext, MouseSensor, TouchSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
-import { useEffect, useState } from 'react';
-import type { Id, Status } from '../../types/types';
+import './styles.scss';
+import { TrainerTitle } from '../../components/TrainerTitle';
+interface WordTask {
+    id: string;
+    correctAnswer: string;
+    imageUrl: string;
+    availableLetters: ILetter[];
+    slotsCount: number;
+    isLoading: boolean;
+}
 
 interface IWordSlot {
     id: Id;
     current: string | null;
 }
 
-interface ILetter {
+export interface ILetter {
     id: Id;
     letter: string;
 }
-
-export const WordByImage = () => {
-    const tR = "город";
+export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slotsCount, isLoading = false }: WordTask) => {
+    const [slots, setSlots] = useState<IWordSlot[]>([]);
+    const [letters, setLetters] = useState<ILetter[]>([]);
+    const [status, setStatus] = useState<Status>('idle');
     const touchSensor = useSensor(TouchSensor)
     const mouseSensor = useSensor(MouseSensor)
     const sensors = useSensors(touchSensor, mouseSensor);
-    const [status, setStatus] = useState<Status>("idle")
-    const [end, setEnd] = useState(false);
-    const [slots, setSlots] = useState<IWordSlot[]>([
-        { id: 1, current: null },
-        { id: 2, current: null },
-        { id: 3, current: null },
-        { id: 4, current: null },
-        { id: 5, current: null }
-    ]);
 
-    const [letters, setLetters] = useState<ILetter[]>([
-        { id: 1, letter: "г" },
-        { id: 2, letter: "а" },
-        { id: 3, letter: "о" },
-        { id: 4, letter: "р" },
-        { id: 5, letter: "т" },
-        { id: 6, letter: "д" },
-        { id: 7, letter: "о" }
-    ]);
+    // Инициализация данных при загрузке задания
+    useEffect(() => {
+        if (id) {
+            setSlots(
+                Array.from({ length: slotsCount }, (_, i) => ({
+                    id: i + 1,
+                    current: null
+                }))
+            );
 
+            setLetters(
+                availableLetters.map((letter, i) => ({
+                    id: i + 1,
+                    letter: letter.letter
+                }))
+            );
+        }
+    }, [id, slotsCount, availableLetters]);
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
         console.log(over);
@@ -53,32 +62,21 @@ export const WordByImage = () => {
             )
         }
     }
-
     const handleCheck = () => {
-        const slotWord = slots.reduce((word, slot) => word + slot.current, "");
-
-        console.log("Constructed word:", slotWord);
-
-        if (tR.toLowerCase() === slotWord.toLowerCase()) {
-            setStatus("success");
-        } else {
-            setStatus("error");
+        const userAnswer = slots.map(slot => slot.current).join('');
+        // checkMutation.mutate(userAnswer);
+        if (userAnswer === correctAnswer) {
+            setStatus('success');
+            return
         }
-    }
+        setStatus('error');
+        return
+    };
 
     const handleReset = () => {
-        setEnd(false);
-        setStatus("idle");
-        const sl = slots.map(item => {
-            return {
-                ...item,
-                current: null
-            }
-        })
-        setSlots(sl);
-    }
-
-    // Исправленная функция disableMoveBox
+        setStatus('idle');
+        setSlots(prev => prev.map(slot => ({ ...slot, current: null })));
+    };
     const disableMoveBox = (letter: ILetter) => {
         // Считаем сколько раз эта буква уже используется в слотах
         const usedCount = slots.filter(slot => slot.current === letter.letter).length;
@@ -90,48 +88,52 @@ export const WordByImage = () => {
         return usedCount >= availableCount;
     }
 
-    useEffect(() => {
-        if (slots.every(slot => slot.current !== null)) {
-            setEnd(true);
-        }
-    }, [slots])
+    if (isLoading) return <div>Загрузка...</div>;
+    if (!id) return <div>Ошибка загрузки</div>;
 
     return (
         <div className="WordByImage">
-            {status === "success" && <div>Успех</div>}
-            {status === "error" && <div>Ошибка</div>}
-            <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+            {status === 'success' && <div>Успех</div>}
+            {status === 'error' && <div>Ошибка</div>}
 
+            <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
                 <div className="WordByImage__inner">
                     <div className="WordByImage__header">
-                        <button className="btn-reset">
-                            <Icon />
-                        </button>
-                        <h3 className="WordByImage__title">
-                            Что нарисовано на картинке ? Собери слово из букв
-                        </h3>
+                        <TrainerTitle>Что нарисовано на картинке? Собери слово из букв</TrainerTitle>
                     </div>
+
                     <div className="WordByImage__image">
-                        <img src="/citt.jpg" alt="" />
+                        <img src={imageUrl} alt="Задание" />
                     </div>
+
+                    {/* Остальная разметка без изменений */}
                     <div className="WordByImage__slots">
-                        {slots.map(slot => <DropInput key={slot.id} id={slot.id} current={slot.current} />)}
+                        {slots.map(slot =>
+                            <DropInput key={slot.id} {...slot} />
+                        )}
                     </div>
+
                     <ul className="list-reset WordByImage__moveItems">
                         {letters.map(letter =>
                             <MoveBox
                                 key={letter.id}
-                                id={letter.id}
                                 char={letter.letter}
+                                id={letter.id}
                                 isDisabled={disableMoveBox(letter)}
                             />
                         )}
                     </ul>
                 </div>
             </DndContext>
-            {end && <button onClick={handleCheck}>check</button>}
-            {status === "error" && <button onClick={handleReset}>reset</button>}
+
+
+            <button
+                onClick={handleCheck}
+            >
+                Проверить
+            </button>
+
+            {status === 'error' && <button onClick={handleReset}>Сбросить</button>}
         </div>
-    )
-}
-// Сделать тренажер Перемести правилные ответы в таблицу, нажми на букву чтобы поставить ударение,Что нарисовано на картинке(in progress)
+    );
+};

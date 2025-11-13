@@ -6,6 +6,9 @@ import { One } from "../pages/one";
 import { Two } from "../pages/two";
 import { Three } from "../pages/three";
 import { Four } from "../pages/four";
+import { Five } from "../pages/five";
+import { Six } from "../pages/six";
+import { Seven } from "../pages/seven";
 
 export const router = createBrowserRouter([
     {
@@ -35,5 +38,17 @@ export const router = createBrowserRouter([
     {
         path: '/four',
         element: <Four />
-    }
+    },
+    {
+        path: '/five',
+        element: <Five />
+    },
+    {
+        path: '/six',
+        element: <Six />
+    },
+    {
+        path: '/seven',
+        element: <Seven />
+    },
 ])

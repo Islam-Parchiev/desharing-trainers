@@ -1,0 +1,17 @@
+.FillInInput {
+    display: inline-block;
+    height: 30px;
+    min-width: 100px;
+    background-color: #8a8888;
+    border-radius: 12px;
+    padding: 5px 10px;
+    text-align: center;
+    span {
+        color:#fff;
+        font-size: 21px;
+        // line-height: 100%;
+    }
+    &.filled {
+        background-color: var(--primary-medium);
+    }
+}
