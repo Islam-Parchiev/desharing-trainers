@@ -31,7 +31,7 @@ export const DnDColumns = () => {
 
         }
     ])
-    const [variants, setVariants] = useState<IVariant[]>([
+    const [variants] = useState<IVariant[]>([
         {
             id: 1,
             value: "энциклопедия"
