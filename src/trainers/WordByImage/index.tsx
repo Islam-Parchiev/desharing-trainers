@@ -32,7 +32,6 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
     const mouseSensor = useSensor(MouseSensor)
     const sensors = useSensors(touchSensor, mouseSensor);
 
-    // Инициализация данных при загрузке задания
     useEffect(() => {
         if (id) {
             setSlots(
@@ -78,13 +77,8 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
         setSlots(prev => prev.map(slot => ({ ...slot, current: null })));
     };
     const disableMoveBox = (letter: ILetter) => {
-        // Считаем сколько раз эта буква уже используется в слотах
         const usedCount = slots.filter(slot => slot.current === letter.letter).length;
-
-        // Считаем сколько раз эта буква доступна в letters
         const availableCount = letters.filter(l => l.letter === letter.letter).length;
-
-        // Если буква уже использована столько раз, сколько доступно - блокируем
         return usedCount >= availableCount;
     }
 
@@ -105,8 +99,6 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
                     <div className="WordByImage__image">
                         <img src={imageUrl} alt="Задание" />
                     </div>
-
-                    {/* Остальная разметка без изменений */}
                     <div className="WordByImage__slots">
                         {slots.map(slot =>
                             <DropInput key={slot.id} {...slot} />
