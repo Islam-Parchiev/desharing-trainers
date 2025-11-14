@@ -1,0 +1,12 @@
+.Variant {
+    min-width: 50px;
+    padding: 5px;
+    height: 30px;
+    background-color: var(--primary-light);
+    border-radius: 12px;
+    color:#fff;
+    &.disabled {
+        opacity: 0.5;
+        background-color: #a58a8a;
+    }
+}

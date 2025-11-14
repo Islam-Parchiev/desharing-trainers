@@ -1,0 +1,32 @@
+.Column {
+    width: 150px;
+    min-height: 300px;
+    &__text {
+        font-size: 21px; 
+        color:#fff;
+    }
+    &__card {
+        background-color: var(--primary-light);
+        padding: 10px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        min-height: 250px;
+    }
+    &__slot {
+        width: 100%;
+        height: 30px;
+        border-radius: 20px;
+        padding: 5px;
+        text-align: center;
+        border: 1px solid #000;
+        color:#000;
+        &.filled {
+            background-color: var(--primary-medium);
+            color:#fff;
+        }
+    }
+}

@@ -27,6 +27,9 @@ export const NativeLanguage = () => {
                     <li className="lis-item">
                         <Link to="/seven">7</Link>
                     </li>
+                    <li className="lis-item">
+                        <Link to="/eight">8</Link>
+                    </li>
                 </ul>
             </div>
         </main>

@@ -9,6 +9,7 @@ import { Four } from "../pages/four";
 import { Five } from "../pages/five";
 import { Six } from "../pages/six";
 import { Seven } from "../pages/seven";
+import { Eight } from "../pages/eight";
 
 export const router = createBrowserRouter([
     {
@@ -51,4 +52,8 @@ export const router = createBrowserRouter([
         path: '/seven',
         element: <Seven />
     },
+    {
+        path: '/eight',
+        element: <Eight />
+    }
 ])
