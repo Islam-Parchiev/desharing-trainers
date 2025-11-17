@@ -9,6 +9,7 @@ export const Seven = () => {
                 <Card onBack={() => console.log('back')} status="idle">
 
                     <DnDColumns />
+                    
                 </Card>
             </section>
         </main>

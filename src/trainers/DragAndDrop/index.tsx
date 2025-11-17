@@ -68,8 +68,6 @@ export const DragAndDrop = ({
                                 id={word.id}
                                 isDisabled={disableMoveBox(word.title)} />
                         ))}
-                        {/* <MoveBox title="V8" /> */}
-                        {/* <MoveBox title="Лай" /> */}
                     </ul>
                     <div className="DropBoxes">
                         {slots.map(slot => <DropBox

@@ -1,4 +1,5 @@
 import { Card } from "../components/Card"
+import { AccentLetterMocks } from "../mocks/data"
 import { AccentTrainer } from "../trainers/AccentTrainer"
 
 export const Four = () => {
@@ -8,7 +9,7 @@ export const Four = () => {
 
                 <Card onBack={() => console.log('back')} status="idle">
 
-                    <AccentTrainer />
+                    <AccentTrainer data={AccentLetterMocks} title="Нажми на букву, чтобы поставить ударение" />
                 </Card>
             </section>
         </main>

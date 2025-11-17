@@ -45,7 +45,10 @@ export const Two = () => {
                         status={status}
                         handleNextTask={nextTask}
                         correctVariantId={currentTask.correctVariantId}
-                        id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
+                        id={currentTask.id} 
+                        questionTitle={currentTask.questionTitle} 
+                        variants={currentTask.variants} 
+                        key="test-key1231231" />
                     {status === "error" || status === "success" ? <Button variant="primary" onClick={nextTask}>next</Button> : null}
                 </> : <div>finish</div>}
             </Card>

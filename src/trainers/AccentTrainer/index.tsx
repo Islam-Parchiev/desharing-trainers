@@ -2,18 +2,21 @@ import { useState } from 'react';
 import { AccentLetter } from './AccentLetter';
 import './styles.scss';
 import type { Id, Status } from '../../types/types';
-
-export const AccentTrainer = () => {
-    const [letters, setLetters] = useState<{ id: Id; letter: string; checked: boolean; correct: boolean }[]>([
-        { id: 1, letter: "Г", checked: false, correct: false },
-        { id: 2, letter: "О", checked: false, correct: true },
-        { id: 3, letter: "Р", checked: false, correct: false },
-        { id: 4, letter: "О", checked: false, correct: false },
-        { id: 5, letter: "Д", checked: false, correct: false },
-    ]);
+interface IAccentTrainerLetter {
+    id: Id;
+    letter: string;
+    checked: boolean;
+    correct: boolean;
+}
+interface AccentLetterProps {
+    title: string;
+    data: IAccentTrainerLetter[]
+}
+export const AccentTrainer = ({ data, title }: AccentLetterProps) => {
+    const [letters, setLetters] = useState<IAccentTrainerLetter[]>(data);
     const [status, setStatus] = useState<Status>("idle");
     const [checkedLetterId, setCheckedLetterId] = useState<null | Id>(null);
-    // Функция для обработки нажатия на букву
+
     const handleLetterClick = (clickedId: Id) => {
         setCheckedLetterId(clickedId);
         setLetters(prevLetters =>
@@ -36,7 +39,7 @@ export const AccentTrainer = () => {
     return (
         <div className='AccentTrainer'>
             <div className="AccentTrainer__inner">
-                <h3 className="AccentTrainer__title">Нажми на букву, чтобы поставить ударение</h3>
+                <h3 className="AccentTrainer__title">{title}</h3>
                 {status === "error" && <div>error</div>}
                 {status === "success" && <div>success</div>}
                 <div className="AccentTrainer__letters">

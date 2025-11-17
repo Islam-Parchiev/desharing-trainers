@@ -7,7 +7,8 @@ import { Variant } from './Variant';
 import { type DragEndEvent, DndContext } from '@dnd-kit/core';
 import { Button } from '../../shared/ui/Button';
 interface IVariant {
-    id: Id; value: string;
+    id: Id;
+    value: string;
 }
 export const DnDColumns = () => {
     const [slots, setSlots] = useState<{ id: Id; currentValue: string | null; correctValue: string; content: string; }[]>([

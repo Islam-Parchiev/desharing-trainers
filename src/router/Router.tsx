@@ -60,16 +60,16 @@ export const router = createBrowserRouter([
         path: '/eight',
         element: <Eight />
     },
-     {
+    {
         path: '/nine',
         element: <Nine />
+    },
+    {
+        path: '/ten',
+        element: <Dialog />
     },
     {
         path: '/theoryChild',
         element: <TheoryChildPage />
     },
-    {
-        path: '/dialog',
-        element: <Dialog />
-    }
 ])

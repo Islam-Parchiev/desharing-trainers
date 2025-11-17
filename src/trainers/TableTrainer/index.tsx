@@ -23,20 +23,20 @@ export const TableTrainer = () => {
             completed: false,
             slots: [{
                 id: 1,
-                correctValue: "1",
+                correctValue: "да",
                 currentValue: null
             },
             {
                 id: 2,
-                correctValue: "2",
+                correctValue: "нет",
                 currentValue: null
             }]
         }
     ]);
 
-    const [tableHeaders] = useState<{ title: string }[]>([
-        { title: "Книжная речь" },
-        { title: "Разговорная речь" }
+    const [tableColumns] = useState<{ colHeader: string }[]>([
+        { colHeader: "Книжная речь" },
+        { colHeader: "Разговорная речь" }
     ]);
 
     const [tableVariants, setTableVariants] = useState<{
@@ -45,11 +45,11 @@ export const TableTrainer = () => {
     }[]>([
         {
             id: 1,
-            value: "1"
+            value: "да"
         },
         {
             id: 2,
-            value: "2"
+            value: "нет"
         }
     ]);
 
@@ -57,8 +57,6 @@ export const TableTrainer = () => {
         const { active, over } = event;
 
         console.log('Drag ended:', { active: active.id, over: over?.id });
-
-        // If not dropped over a valid target, do nothing
         if (!over) {
             return;
         }
@@ -66,13 +64,12 @@ export const TableTrainer = () => {
         const dragItemId = active.id as Id;
         const slotId = over.id as Id;
 
-        // Find the drag item that was dragged
+
         const draggedItem = tableVariants.find(item => item.id === dragItemId);
+
         if (!draggedItem) {
             return;
         }
-
-        // Update table questions with the new value in the target slot
         const updatedTableQuestions = tableQuestions.map(question => {
             const updatedSlots = question.slots.map(slot => {
                 if (slot.id === slotId) {
@@ -84,7 +81,7 @@ export const TableTrainer = () => {
                 return slot;
             });
 
-            // Check if all slots are filled to mark as completed
+
             const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
             const allCorrect = updatedSlots.every(slot =>
                 slot.currentValue === slot.correctValue
@@ -97,14 +94,12 @@ export const TableTrainer = () => {
             };
         });
 
-        // Remove the used drag item from available variants
         const updatedVariants = tableVariants.filter(item => item.id !== dragItemId);
 
         setTableQuestions(updatedTableQuestions);
         setTableVariants(updatedVariants);
     };
 
-    // Function to reset a specific slot
     const resetSlot = (slotId: Id) => {
         const updatedTableQuestions = tableQuestions.map(question => {
             const updatedSlots = question.slots.map(slot => {
@@ -113,7 +108,7 @@ export const TableTrainer = () => {
                     const returnedValue = slot.currentValue;
                     setTableVariants(prev => [
                         ...prev,
-                        { id: Date.now(), value: returnedValue } // Simple ID generation
+                        { id: Date.now(), value: returnedValue }
                     ]);
 
                     return {
@@ -124,7 +119,7 @@ export const TableTrainer = () => {
                 return slot;
             });
 
-            // Update completion status
+
             const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
             const allCorrect = updatedSlots.every(slot =>
                 slot.currentValue === slot.correctValue
@@ -147,8 +142,8 @@ export const TableTrainer = () => {
                     <thead className='TableTrainer__table-head'>
                         <tr>
                             <th className='TableTrainer__table--questionCol'></th>
-                            {tableHeaders.map((h, index) => (
-                                <th key={`${h.title}-${index}`}>{h.title}</th>
+                            {tableColumns.map((h, index) => (
+                                <th key={`${h.colHeader}-${index}`}>{h.colHeader}</th>
                             ))}
                         </tr>
                     </thead>

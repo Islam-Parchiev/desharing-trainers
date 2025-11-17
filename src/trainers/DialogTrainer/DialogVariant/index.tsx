@@ -3,7 +3,7 @@ import './styles.scss';
 import type { Id } from '../../../types/types';
 
 export const DialogVariant = ({ value, id, isDisabled }: { value: string; id: Id; isDisabled: boolean; }) => {
-    const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({
         id,
         data: { value },
         disabled: isDisabled,

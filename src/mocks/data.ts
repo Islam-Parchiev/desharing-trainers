@@ -240,3 +240,12 @@ export const mockTheoryData: TheoryDataItem[] = [
     ]
   }
 ];
+
+
+export const AccentLetterMocks =[
+  { id: 1, letter: "Г", checked: false, correct: false },
+  { id: 2, letter: "О", checked: false, correct: true },
+  { id: 3, letter: "Р", checked: false, correct: false },
+  { id: 4, letter: "О", checked: false, correct: false },
+  { id: 5, letter: "Д", checked: false, correct: false },
+]

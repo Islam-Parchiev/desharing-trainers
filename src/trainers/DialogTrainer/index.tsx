@@ -112,3 +112,22 @@ export const DialogTrainer = () => {
         </div>
     )
 }
+
+// .card.player-1 .ajax-loader.dino-apple
+// Specificity: (0,4,0)
+//  {
+//     position: absolute;
+//     top: 180px;
+//     left: 50%;
+//     margin-left: -85px;
+//     width: 170px;
+//     height: 120px;
+//     background-image: url(/fp/109/fat_player/players/player-1/src/loader/img/loader-dino-apple-39118b1….png);
+//     -webkit-background-size: 1360px 480px;
+//     background-size: 1360px 480px;
+//     background-repeat: no-repeat;
+//     -ms-animation: "_card_player-1_dino_apple" 1.5s steps(1) infinite;
+//     -moz-animation: "_card_player-1_dino_apple" 1.5s steps(1) infinite;
+//     -webkit-animation: "_card_player-1_dino_apple" 1.5s steps(1) infinite;
+//     animation: "_card_player-1_dino_apple" 1.5s steps(1) infinite;
+// }
