@@ -10,6 +10,7 @@ import { Five } from "../pages/five";
 import { Six } from "../pages/six";
 import { Seven } from "../pages/seven";
 import { Eight } from "../pages/eight";
+import { Dialog } from "../pages/dialog";
 
 export const router = createBrowserRouter([
     {
@@ -55,5 +56,9 @@ export const router = createBrowserRouter([
     {
         path: '/eight',
         element: <Eight />
+    },
+    {
+        path: '/dialog',
+        element: <Dialog />
     }
 ])

@@ -176,6 +176,17 @@ color: var(--neutral-darkest);
 		text-align: center;
 	}
 }
+.Dialog {
+	background-color: #f3f3ff;
+	min-height: 100vh;
+}
+.DialogCard {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .Page {
 	display: flex;
 	align-items: center;

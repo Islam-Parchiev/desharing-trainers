@@ -1,0 +1,22 @@
+.DialogSentence {
+        width: 100%;
+        height: 50px;
+        border-bottom: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 15px;
+        span {
+            color:#fff;
+            font-size: 21px;
+            font-weight: 700;
+            font-family: sans-serif;
+        }
+        &_sound {
+            background-color: #fff;
+            padding: 2px;
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+        }
+}
