@@ -3,6 +3,7 @@ import { ChoiceRightVariant } from "../trainers/ChoiceRightVariant"
 import { VariantTasks } from "../mocks/data";
 import { type Id, type Status } from "../types/types";
 import { Button } from "../shared/ui/Button";
+import { Card } from "../components/Card";
 
 export const Two = () => {
     const [currentTaskNumber, setCurrentTaskNumber] = useState(0);
@@ -27,21 +28,27 @@ export const Two = () => {
     const handleSuccess = () => {
         setStatus("success");
     }
-    return <main>
-        {status !== "finish" ? <>
-            <ChoiceRightVariant
-                selectedVariantId={selectedVariantId}
-                setIsSubmitted={setIsSubmitted}
-                setSelectedVariantId={setSelectedVariantId}
-                currentTaskNumber={currentTaskNumber}
-                isSubmitted={isSubmitted}
-                handleSuccess={handleSuccess}
-                handleError={handleError}
-                status={status}
-                handleNextTask={nextTask}
-                correctVariantId={currentTask.correctVariantId}
-                id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
-            {status === "error" || status === "success" ? <Button variant="primary" onClick={nextTask}>next</Button> : null}
-        </> : <div>finish</div>}
+    return <main className="Page Main">
+        <section className="MainSection">
+
+            <Card onBack={() => console.log('back')} status="idle">
+
+                {status !== "finish" ? <>
+                    <ChoiceRightVariant
+                        selectedVariantId={selectedVariantId}
+                        setIsSubmitted={setIsSubmitted}
+                        setSelectedVariantId={setSelectedVariantId}
+                        currentTaskNumber={currentTaskNumber}
+                        isSubmitted={isSubmitted}
+                        handleSuccess={handleSuccess}
+                        handleError={handleError}
+                        status={status}
+                        handleNextTask={nextTask}
+                        correctVariantId={currentTask.correctVariantId}
+                        id={currentTask.id} questionTitle={currentTask.questionTitle} variants={currentTask.variants} key="test-key1231231" />
+                    {status === "error" || status === "success" ? <Button variant="primary" onClick={nextTask}>next</Button> : null}
+                </> : <div>finish</div>}
+            </Card>
+        </section>
     </main>
 }

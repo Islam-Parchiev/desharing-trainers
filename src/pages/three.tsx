@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WordByImage, type ILetter } from "../trainers/WordByImage"
+import { Card } from "../components/Card";
 
 export const Three = () => {
     const [letters] = useState<ILetter[]>([
@@ -12,8 +13,14 @@ export const Three = () => {
         { id: 7, letter: "о" }
     ]);
     return (
-        <main className="Page">
-            <WordByImage availableLetters={letters} correctAnswer="город" id="1" imageUrl="/citt.jpg" isLoading={false} slotsCount={5} key={"test-1"} />
+        <main className="Page Main">
+            <section className="MainSection">
+
+                <Card onBack={() => console.log('back')} status="idle">
+
+                    <WordByImage availableLetters={letters} correctAnswer="город" id="1" imageUrl="/citt.jpg" isLoading={false} slotsCount={5} key={"test-1"} />
+                </Card>
+            </section>
         </main>
     )
 }

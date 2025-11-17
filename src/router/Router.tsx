@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { NativeLanguage } from "../pages/NativeLanguage";
+// import { NativeLanguage } from "../pages/NativeLanguage";
 import { Language } from "../pages/Language";
 import { Test } from "../pages/Test";
 import { One } from "../pages/one";
@@ -10,12 +10,15 @@ import { Five } from "../pages/five";
 import { Six } from "../pages/six";
 import { Seven } from "../pages/seven";
 import { Eight } from "../pages/eight";
+import { Main } from "../pages/Main";
+import { TheoryChildPage } from "../pages/theoryChild";
+import { Nine } from "../pages/nine";
 import { Dialog } from "../pages/dialog";
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <NativeLanguage />
+        element: <Main />
     },
     {
         path: '/:id',
@@ -56,6 +59,14 @@ export const router = createBrowserRouter([
     {
         path: '/eight',
         element: <Eight />
+    },
+     {
+        path: '/nine',
+        element: <Nine />
+    },
+    {
+        path: '/theoryChild',
+        element: <TheoryChildPage />
     },
     {
         path: '/dialog',

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ChoiceRightImage, type ImageVariant } from "../trainers/ChoiceRightImage"
 import type { Status } from "../types/types"
 import { Button } from "../shared/ui/Button"
+import { Card } from "../components/Card"
 
 export const Five = () => {
     const [imageVariants] = useState<ImageVariant[]>([
@@ -30,21 +31,27 @@ export const Five = () => {
         console.log('next');
     }
     const [status, setStatus] = useState<Status>("idle")
-    return <main>
-        <div className="ChoiceRightImage__wrapper">
+    return <main className="Page Main">
+        <section className="MainSection">
 
-            <ChoiceRightImage isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} setStatus={setStatus} title="Нажмите на Б" variants={imageVariants} key={`ChoiceRightImage-trainer`} />
-            {status === "error" && (<>
+            <Card onBack={() => console.log('back')} status="idle">
 
-                <div>Error</div>
-                <Button onClick={handleRetry}>Retry</Button>
-            </>
-            )}
-            {status === "success" && <>
+                <div className="ChoiceRightImage__wrapper">
 
-                <div>success</div>
-                <Button onClick={handleNext} >Next</Button>
-            </>}
-        </div>
+                    <ChoiceRightImage isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} setStatus={setStatus} title="Нажмите на Б" variants={imageVariants} key={`ChoiceRightImage-trainer`} />
+                    {status === "error" && (<>
+
+                        <div>Error</div>
+                        <Button onClick={handleRetry}>Retry</Button>
+                    </>
+                    )}
+                    {status === "success" && <>
+
+                        <div>success</div>
+                        <Button onClick={handleNext} >Next</Button>
+                    </>}
+                </div>
+            </Card>
+        </section>
     </main>
 }

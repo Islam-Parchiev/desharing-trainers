@@ -2,6 +2,7 @@ import { useState } from "react"
 import { DragAndDrop, type ISlot, type IWord } from "../trainers/DragAndDrop"
 import type { Status } from "../types/types"
 import { Button } from "../shared/ui/Button"
+import { Card } from "../components/Card"
 
 export const Eight = () => {
     const [slots, setSlots] = useState<ISlot[]>([
@@ -46,12 +47,18 @@ export const Eight = () => {
         setSlots(prev => prev.map(s => ({ ...s, current: null })));
     };
     return (
-        <main>
-            {status === "error" && "Error"}
-            {status === "success" && "Success"}
-            <DragAndDrop type="primary" setSlots={setSlots} slots={slots} words={words} handleError={onErrorDnd} handleSuccess={onSuccessDnd} />
-            <Button variant="primary" onClick={handleCheck}>check</Button>
-            {status === "error" && <Button variant="primary" onClick={handleRetry}>retry</Button>}
+        <main className="Page Main">
+            <section className="MainSection">
+
+                <Card onBack={() => console.log('back')} status="idle">
+
+                    {status === "error" && "Error"}
+                    {status === "success" && "Success"}
+                    <DragAndDrop type="primary" setSlots={setSlots} slots={slots} words={words} handleError={onErrorDnd} handleSuccess={onSuccessDnd} />
+                    <Button variant="primary" onClick={handleCheck}>check</Button>
+                    {status === "error" && <Button variant="primary" onClick={handleRetry}>retry</Button>}
+                </Card>
+            </section>
         </main>
     )
 }

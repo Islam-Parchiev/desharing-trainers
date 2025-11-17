@@ -1,77 +1,17 @@
-import { useState, useCallback } from 'react';
-import { VariantTasks } from '../../mocks/data';
-import { ChoiceRightVariant } from '../../trainers/ChoiceRightVariant';
 import { AttestationItem } from '../AttestationItem';
-import { Button } from '../../shared/ui/Button';
 import cn from 'classnames';
 import './styles.scss';
+import type { ReactNode } from 'react';
+import type { Status } from '../../types/types';
 
 interface CardProps {
-    onBack?: () => void;
-    onFinish?: (results: { correct: number; errors: number; total: number }) => void;
     className?: string;
+    children: ReactNode;
+    onBack: () => void;
+    status: Status;
 }
 
-interface QuizState {
-    currentTaskNumber: number;
-    errorsCount: number;
-    correctCount: number;
-    currentStatus: 'idle' | 'success' | 'error' | 'finished';
-}
-
-export const Card = ({ onBack, onFinish, className }: CardProps) => {
-    const [quizState, setQuizState] = useState<QuizState>({
-        currentTaskNumber: 0,
-        errorsCount: 0,
-        correctCount: 0,
-        currentStatus: 'idle',
-    });
-    const [resolvedTaskCount, setResolvedTaskCount] = useState(0);
-    const isLastTask = quizState.currentTaskNumber === VariantTasks.length - 1;
-    const currentTask = VariantTasks[quizState.currentTaskNumber];
-
-    const handleAnswer = useCallback((isCorrect: boolean) => {
-        setQuizState(prev => ({
-            ...prev,
-            errorsCount: isCorrect ? prev.errorsCount : prev.errorsCount + 1,
-            correctCount: isCorrect ? prev.correctCount + 1 : prev.correctCount,
-            currentStatus: isCorrect ? 'success' : 'error',
-        }));
-    }, []);
-
-    const nextTask = useCallback(() => {
-        if (isLastTask) {
-            setQuizState(prev => ({ ...prev, currentStatus: 'finished' }));
-        } else {
-            setQuizState(prev => ({
-                ...prev,
-                currentTaskNumber: prev.currentTaskNumber + 1,
-                currentStatus: 'idle',
-            }));
-        }
-        setResolvedTaskCount(prev => prev + 1);
-    }, [isLastTask]);
-
-    const handleFinalFinish = useCallback(() => {
-        onFinish?.({
-            correct: quizState.correctCount,
-            errors: quizState.errorsCount,
-            total: VariantTasks.length,
-        });
-        setQuizState(prev => ({
-            ...prev,
-            // currentTaskNumber: prev.currentTaskNumber + 1,
-            currentStatus: 'finished',
-        }));
-        setResolvedTaskCount(prev => prev + 1);
-    }, [quizState.correctCount, quizState.errorsCount, onFinish]);
-
-    const showNextButton = ['success', 'error'].includes(quizState.currentStatus) && !isLastTask;
-    const showFinishButton = ['success', 'error'].includes(quizState.currentStatus) && isLastTask;
-
-    if (!currentTask) {
-        return <div>No tasks available</div>;
-    }
+export const Card = ({ className, children, onBack, status }: CardProps) => {
 
     return (
         <div className={cn('Card', className)}>
@@ -87,56 +27,16 @@ export const Card = ({ onBack, onFinish, className }: CardProps) => {
                         </svg>
                     </button>
                     <AttestationItem
-                        active={quizState.currentStatus === 'idle'}
-                        current={resolvedTaskCount}
-                        max={VariantTasks.length}
+                        active={status === 'idle'}
+                        current={5}
+                        max={10}
                     />
                 </div>
 
-                {quizState.currentStatus !== 'finished' ? (
-                    <>
-                        <div className="Card__body">
-                            <ChoiceRightVariant
-                                key={currentTask.id}
-                                currentTaskNumber={quizState.currentTaskNumber}
-                                handleSuccess={() => handleAnswer(true)}
-                                handleError={() => handleAnswer(false)}
-                                correctVariantId={currentTask.correctVariantId}
-                                id={currentTask.id}
-                                status={quizState.currentStatus}
-                                questionTitle={currentTask.questionTitle}
-                                variants={currentTask.variants}
-                                isSubmitted={false}
-                                selectedVariantId={1}
-                                setIsSubmitted={() => console.log('test')}
-                                setSelectedVariantId={() => console.log('test')}
-                                handleNextTask={() => console.log('next')}
-                            />
-                        </div>
+                <div className="Card__body">
+                    {children}
+                </div>
 
-                        <div className="Card__footer">
-                            {showNextButton && (
-                                <Button variant="primary" size="medium" onClick={nextTask}>
-                                    Далее
-                                </Button>
-                            )}
-                            {showFinishButton && (
-                                <Button variant="primary" size="medium" onClick={handleFinalFinish}>
-                                    Финиш
-                                </Button>
-                            )}
-                        </div>
-                    </>
-                ) : (
-                    <div className="Card__results">
-                        <h3>Quiz Completed!</h3>
-                        <p>Correct answers: {quizState.correctCount}/{VariantTasks.length}</p>
-                        <p>Errors: {quizState.errorsCount}</p>
-                        <Button variant="primary" onClick={() => window.location.reload()}>
-                            Try Again
-                        </Button>
-                    </div>
-                )}
             </div>
         </div>
     );
