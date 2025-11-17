@@ -1,0 +1,13 @@
+.TableDragItem {
+    	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	width: 150px;
+	height: 40px;
+	text-align: center;
+    z-index: 999;
+	background-color: var(--primary-medium);
+    border-radius:20px;
+    color:#fff;
+}

@@ -1,0 +1,27 @@
+.TheoryChild {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 12px;
+    }
+    &__body {
+        padding-top: 20px;
+    }
+    &__paragraphs {
+        padding-top: 25px;
+    }
+    &__paragraph {
+        &_btn {
+            padding: 0;
+            border: none;
+          
+  float: left;
+  margin-right: 10px;
+        }
+        p {
+            font-weight: 400;
+            font-size: 21px;
+        }
+    }
+}

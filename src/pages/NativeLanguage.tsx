@@ -4,33 +4,7 @@ export const NativeLanguage = () => {
     return (
         <main className="NativeLanguage">
             <div className="NativeLanguage__inner">
-                <ul className="list">
-                    <li className="lis-item">
-                        <Link to="/one">1</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/two">2</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/three">3</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/four">4</Link>
-                    </li>
-
-                    <li className="lis-item">
-                        <Link to="/five">5</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/six">6</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/seven">7</Link>
-                    </li>
-                    <li className="lis-item">
-                        <Link to="/eight">8</Link>
-                    </li>
-                </ul>
+                test
             </div>
         </main>
     )

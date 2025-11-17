@@ -1,0 +1,41 @@
+.TableTrainer {
+    width: 100%;
+    overflow: hidden;
+    min-height: 260px;
+    &__table {
+        background-color: var(--neutral-lightest);
+        width: 100%;
+        height: auto;
+        // min-height: 240px;
+        border-collapse: collapse;
+        border-radius: 12px;
+        &-head {
+            height: 50px;
+            th {
+                text-align: left;
+                &:nth-child(2n) {
+                    border-right: 1px solid #dad8d8;
+                }
+            }
+        }
+    }
+    &__dragItems {
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+.TableTrainerItem {
+    height: 80px;
+    td {
+
+        border: 1px solid #dad8d8;
+        height: 100%;
+    }
+}
+.TableTrainer__table--questionCol {
+    min-width: 25%;
+    background-color: var(--primary-medium);
+}
+
