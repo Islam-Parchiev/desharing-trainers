@@ -99,41 +99,41 @@ export const TableTrainer = () => {
         setTableQuestions(updatedTableQuestions);
         setTableVariants(updatedVariants);
     };
+    
+    // const resetSlot = (slotId: Id) => {
+    //     const updatedTableQuestions = tableQuestions.map(question => {
+    //         const updatedSlots = question.slots.map(slot => {
+    //             if (slot.id === slotId && slot.currentValue) {
+    //                 // Return the drag item to available variants
+    //                 const returnedValue = slot.currentValue;
+    //                 setTableVariants(prev => [
+    //                     ...prev,
+    //                     { id: Date.now(), value: returnedValue }
+    //                 ]);
 
-    const resetSlot = (slotId: Id) => {
-        const updatedTableQuestions = tableQuestions.map(question => {
-            const updatedSlots = question.slots.map(slot => {
-                if (slot.id === slotId && slot.currentValue) {
-                    // Return the drag item to available variants
-                    const returnedValue = slot.currentValue;
-                    setTableVariants(prev => [
-                        ...prev,
-                        { id: Date.now(), value: returnedValue }
-                    ]);
-
-                    return {
-                        ...slot,
-                        currentValue: null
-                    };
-                }
-                return slot;
-            });
+    //                 return {
+    //                     ...slot,
+    //                     currentValue: null
+    //                 };
+    //             }
+    //             return slot;
+    //         });
 
 
-            const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
-            const allCorrect = updatedSlots.every(slot =>
-                slot.currentValue === slot.correctValue
-            );
+    //         const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
+    //         const allCorrect = updatedSlots.every(slot =>
+    //             slot.currentValue === slot.correctValue
+    //         );
 
-            return {
-                ...question,
-                slots: updatedSlots,
-                completed: allFilled && allCorrect
-            };
-        });
+    //         return {
+    //             ...question,
+    //             slots: updatedSlots,
+    //             completed: allFilled && allCorrect
+    //         };
+    //     });
 
-        setTableQuestions(updatedTableQuestions);
-    };
+    //     setTableQuestions(updatedTableQuestions);
+    // };
 
     return (
         <div className="TableTrainer">
