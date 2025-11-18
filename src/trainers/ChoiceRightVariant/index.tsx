@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import type { ITask, Variant } from "../../App";
+import type { Variant } from "../../App";
 import { VariantItem } from "../../components/VariantItem";
 // import cn from 'classnames'
 import type { Id, Status } from "../../types/types";
-interface IChoiceRightVariant extends ITask {
+interface IChoiceRightVariant{
+    id: Id;
+    questionTitle: string;
+    variants: Variant[];
+    correctVariantId: number;
     handleNextTask?: () => void;
     handleSuccess: () => void;
     status: Status;
@@ -43,7 +47,7 @@ export const ChoiceRightVariant = ({ isSubmitted, selectedVariantId, setIsSubmit
     useEffect(() => {
         setSelectedVariantId(null);
         setIsSubmitted(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentTaskNumber])
     return <div className="ChoiceRightVariant">
         <div className="ChoiceRightVariant__inner">

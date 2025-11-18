@@ -99,7 +99,7 @@ export const TableTrainer = () => {
         setTableQuestions(updatedTableQuestions);
         setTableVariants(updatedVariants);
     };
-    
+
     // const resetSlot = (slotId: Id) => {
     //     const updatedTableQuestions = tableQuestions.map(question => {
     //         const updatedSlots = question.slots.map(slot => {

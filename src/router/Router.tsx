@@ -14,6 +14,7 @@ import { Main } from "../pages/Main";
 import { TheoryChildPage } from "../pages/theoryChild";
 import { Nine } from "../pages/nine";
 import { Dialog } from "../pages/dialog";
+import { Example } from "../pages/Example";
 
 export const router = createBrowserRouter([
     {
@@ -72,4 +73,8 @@ export const router = createBrowserRouter([
         path: '/theoryChild',
         element: <TheoryChildPage />
     },
+    {
+        path:'/example',
+        element:<Example/>
+    }
 ])
