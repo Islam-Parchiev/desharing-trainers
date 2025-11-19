@@ -8,11 +8,10 @@ interface IChoiceRightVariant{
     questionTitle: string;
     variants: Variant[];
     correctVariantId: number;
-    handleNextTask?: () => void;
     handleSuccess: () => void;
     status: Status;
     handleError: () => void;
-    currentTaskNumber: number;
+    currentTaskNumber?: number;
     isSubmitted: boolean;
     setSelectedVariantId: (value: Id | null) => void;
     setIsSubmitted: (value: boolean) => void;

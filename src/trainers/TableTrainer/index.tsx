@@ -1,57 +1,17 @@
-import { useState } from 'react';
 import { DragItem } from './DragItem';
 import './styles.scss';
 import { TableSlot } from './TableSlot';
 import type { Id } from '../../types/types';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
+import { moveVariantToSlot } from './tableTrainer.slice';
+import { useAppDispatch, useAppSelector } from '../../redux';
+
 
 export const TableTrainer = () => {
+    const dispatch = useAppDispatch();
+    const { tableQuestions, tableColumns, tableVariants } = useAppSelector((state) => state.tableTrainerReducer);
+
     const calcTableHeight = (80 * 1) + 50;
-    const [tableQuestions, setTableQuestions] = useState<{
-        id: Id;
-        question: string;
-        slots: {
-            id: Id;
-            correctValue: string;
-            currentValue: string | null
-        }[];
-        completed: boolean;
-    }[]>([
-        {
-            id: 1,
-            question: 'Есть строгие правила ?',
-            completed: false,
-            slots: [{
-                id: 1,
-                correctValue: "да",
-                currentValue: null
-            },
-            {
-                id: 2,
-                correctValue: "нет",
-                currentValue: null
-            }]
-        }
-    ]);
-
-    const [tableColumns] = useState<{ colHeader: string }[]>([
-        { colHeader: "Книжная речь" },
-        { colHeader: "Разговорная речь" }
-    ]);
-
-    const [tableVariants, setTableVariants] = useState<{
-        id: Id;
-        value: string;
-    }[]>([
-        {
-            id: 1,
-            value: "да"
-        },
-        {
-            id: 2,
-            value: "нет"
-        }
-    ]);
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
@@ -64,76 +24,8 @@ export const TableTrainer = () => {
         const dragItemId = active.id as Id;
         const slotId = over.id as Id;
 
-
-        const draggedItem = tableVariants.find(item => item.id === dragItemId);
-
-        if (!draggedItem) {
-            return;
-        }
-        const updatedTableQuestions = tableQuestions.map(question => {
-            const updatedSlots = question.slots.map(slot => {
-                if (slot.id === slotId) {
-                    return {
-                        ...slot,
-                        currentValue: draggedItem.value
-                    };
-                }
-                return slot;
-            });
-
-
-            const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
-            const allCorrect = updatedSlots.every(slot =>
-                slot.currentValue === slot.correctValue
-            );
-
-            return {
-                ...question,
-                slots: updatedSlots,
-                completed: allFilled && allCorrect
-            };
-        });
-
-        const updatedVariants = tableVariants.filter(item => item.id !== dragItemId);
-
-        setTableQuestions(updatedTableQuestions);
-        setTableVariants(updatedVariants);
+        dispatch(moveVariantToSlot({ dragItemId, slotId }));
     };
-
-    // const resetSlot = (slotId: Id) => {
-    //     const updatedTableQuestions = tableQuestions.map(question => {
-    //         const updatedSlots = question.slots.map(slot => {
-    //             if (slot.id === slotId && slot.currentValue) {
-    //                 // Return the drag item to available variants
-    //                 const returnedValue = slot.currentValue;
-    //                 setTableVariants(prev => [
-    //                     ...prev,
-    //                     { id: Date.now(), value: returnedValue }
-    //                 ]);
-
-    //                 return {
-    //                     ...slot,
-    //                     currentValue: null
-    //                 };
-    //             }
-    //             return slot;
-    //         });
-
-
-    //         const allFilled = updatedSlots.every(slot => slot.currentValue !== null);
-    //         const allCorrect = updatedSlots.every(slot =>
-    //             slot.currentValue === slot.correctValue
-    //         );
-
-    //         return {
-    //             ...question,
-    //             slots: updatedSlots,
-    //             completed: allFilled && allCorrect
-    //         };
-    //     });
-
-    //     setTableQuestions(updatedTableQuestions);
-    // };
 
     return (
         <div className="TableTrainer">
@@ -175,7 +67,6 @@ export const TableTrainer = () => {
                     ))}
                 </div>
 
-                {/* Completion status */}
                 {tableQuestions.some(q => q.completed) && (
                     <div className="TableTrainer__completion-message">
                         Задание завершено!
