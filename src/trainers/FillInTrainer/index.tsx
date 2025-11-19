@@ -41,7 +41,7 @@ export const FillInTrainer = () => {
         setSlot(variant);
     }
     const handleCheck = () => {
-        if (slot?.correct === false) {
+        if (!slot || slot && slot.correct === false) {
             setStatus("error");
         } else {
             setStatus("success");

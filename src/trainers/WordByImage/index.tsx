@@ -24,7 +24,7 @@ export interface ILetter {
     id: Id;
     letter: string;
 }
-export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slotsCount, isLoading = false }: WordTask) => {
+export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, isLoading = false }: WordTask) => {
     const [slots, setSlots] = useState<IWordSlot[]>([]);
     const [letters, setLetters] = useState<ILetter[]>([]);
     const [status, setStatus] = useState<Status>('idle');
@@ -35,7 +35,7 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
     useEffect(() => {
         if (id) {
             setSlots(
-                Array.from({ length: slotsCount }, (_, i) => ({
+                Array.from({ length: correctAnswer.length }, (_, i) => ({
                     id: i + 1,
                     current: null
                 }))
@@ -48,7 +48,7 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, slo
                 }))
             );
         }
-    }, [id, slotsCount, availableLetters]);
+    }, [id, correctAnswer, availableLetters]);
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
         console.log(over);
