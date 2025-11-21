@@ -103,7 +103,9 @@
 			border: 1px solid var(--neutral-darkest);
 		}
 	}
-
+	&__disabled {
+		opacity: 0.5;
+	}
 	&__iconSecondary {
 		background: var(--neutral-lightest);
 		svg {
