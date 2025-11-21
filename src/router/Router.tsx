@@ -21,6 +21,7 @@ import { Therteen } from "../pages/therteen";
 import { Page } from "../pages/page";
 import { IsCorrect } from "../trainers/moduleTwo/IsCorrect";
 import { WhatIs } from "../trainers/moduleTwo/WhatIs";
+import { Conclusion } from "../trainers/moduleTwo/Сonclusion";
 
 export const router = createBrowserRouter([
     {
@@ -107,4 +108,10 @@ export const router = createBrowserRouter([
             <WhatIs />
         </Page>
     },
+    {
+        path: '/conclusion',
+        element: <Page>
+            <Conclusion />
+        </Page>
+    }
 ])
