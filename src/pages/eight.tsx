@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { DragAndDrop, type ISlot, type IWord } from "../trainers/DragAndDrop"
 import type { Status } from "../types/types"
 import { Button } from "../shared/ui/Button"
 import { Card } from "../components/Card"
+import { type ISlot, type IWord, DragAndDrop } from "../trainers/moduleOne/DragAndDrop"
 
 export const Eight = () => {
     const [slots, setSlots] = useState<ISlot[]>([

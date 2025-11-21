@@ -1,8 +1,8 @@
-import { TrainerTitle } from "../../components/TrainerTitle"
-import { Icon } from "../../shared/ui/MoveBox"
-import type { Id, Status } from "../../types/types";
 import cn from 'classnames'
 import './styles.scss';
+import type { TrainerTitle } from '../../../components/TrainerTitle';
+import { Icon } from '../../../shared/ui/MoveBox';
+import type { Id, Status } from '../../../types/types';
 export interface ImageVariant {
     id: Id;
     imageUrl: string;

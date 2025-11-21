@@ -1,10 +1,11 @@
 import { DragItem } from './DragItem';
 import './styles.scss';
 import { TableSlot } from './TableSlot';
-import type { Id } from '../../types/types';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { moveVariantToSlot } from './tableTrainer.slice';
-import { useAppDispatch, useAppSelector } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../../redux';
+import type { Id } from '../../../types/types';
+
 
 
 export const TableTrainer = () => {

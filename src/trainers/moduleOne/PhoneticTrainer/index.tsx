@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { TrainerTitle } from "../../components/TrainerTitle"
+
 import './styles.scss';
-import type { Status } from "../../types/types";
+import { TrainerTitle } from "../../../components/TrainerTitle";
+import type { Status } from "../../../types/types";
+
 interface Variant {
     content: string;
     imageUrl: string;

@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { TrainerTitle } from '../../components/TrainerTitle';
+
 import './styles.scss';
-import { Button } from '../../shared/ui/Button';
-import type { Status } from '../../types/types';
+import type { Status } from '../../../types/types';
+import { TrainerTitle } from '../../../components/TrainerTitle';
+import { Button } from '../../../shared/ui/Button';
+
 export const ConversationFinder = () => {
     const [data, setData] = useState([
         {

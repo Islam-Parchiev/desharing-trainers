@@ -1,5 +1,5 @@
 import { Card } from "../components/Card"
-import { DnDColumns } from "../trainers/DnDColumns"
+import { DnDColumns } from "../trainers/moduleOne/DnDColumns"
 
 export const Seven = () => {
     return (

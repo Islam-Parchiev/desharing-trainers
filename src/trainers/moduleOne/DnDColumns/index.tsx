@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { TrainerTitle } from '../../components/TrainerTitle';
+
 import { Column } from './Column';
 import './styles.scss';
-import type { Id, Status } from '../../types/types';
+
 import { Variant } from './Variant';
 import { type DragEndEvent, DndContext } from '@dnd-kit/core';
-import { Button } from '../../shared/ui/Button';
+import type { TrainerTitle } from '../../../components/TrainerTitle';
+import type { Button } from '../../../shared/ui/Button';
+import type { Id, Status } from '../../../types/types';
+
 interface IVariant {
     id: Id;
     value: string;

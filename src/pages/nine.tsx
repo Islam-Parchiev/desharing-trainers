@@ -1,4 +1,4 @@
-import { TableTrainer } from "../trainers/TableTrainer"
+import { TableTrainer } from "../trainers/moduleOne/TableTrainer"
 
 export const Nine = () => {
     return <main className="Page Main">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AccentLetter } from './AccentLetter';
 import './styles.scss';
-import type { Id, Status } from '../../types/types';
+import type { Id, Status } from '../../../types/types';
 interface IAccentTrainerLetter {
     id: Id;
     letter: string;

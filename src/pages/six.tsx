@@ -1,5 +1,5 @@
 import { Card } from "../components/Card"
-import { FillInTrainer } from "../trainers/FillInTrainer"
+import { FillInTrainer } from "../trainers/moduleOne/FillInTrainer"
 
 export const Six = () => {
     return (

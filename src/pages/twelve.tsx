@@ -1,5 +1,5 @@
 import { Card } from "../components/Card"
-import { PhoneticDndTrainer } from "../trainers/PhoneticDndTrainer"
+import { PhoneticDndTrainer } from "../trainers/moduleOne/PhoneticDndTrainer"
 
 export const Twelve = () => {
     return (

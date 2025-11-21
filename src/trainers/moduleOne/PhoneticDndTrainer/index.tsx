@@ -1,10 +1,11 @@
 import './styles.scss';
-import { TrainerTitle } from "../../components/TrainerTitle"
+
 import { DragItem } from './DragItem';
 import { DropVariant } from './DropVariant';
 import { useState } from 'react';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import type { Id, Status } from '../../types/types';
+import { TrainerTitle } from '../../../components/TrainerTitle';
+import type { Id, Status } from '../../../types/types';
 const mockData = {
     title: "Передай яблоко тому, кто просит вежливо",
     variants: [

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ChoiceRightVariant } from "../trainers/ChoiceRightVariant"
 import { VariantTasks } from "../mocks/data";
 import { type Id, type Status } from "../types/types";
 import { Button } from "../shared/ui/Button";
 import { Card } from "../components/Card";
+import { ChoiceRightVariant } from "../trainers/moduleOne/ChoiceRightVariant";
 
 export const Two = () => {
     const [currentTaskNumber, setCurrentTaskNumber] = useState(0);

@@ -3,7 +3,7 @@ import { useDispatch, type TypedUseSelectorHook, useSelector } from "react-redux
 import learningReducer from "../widgets/Example/learningStatus.slice";
 import theoryReducer from "../widgets/Example/Theory/theory.slice";
 import practiceReducer from "../widgets/Example/Practice/practice.slice";
-import tableTrainerReducer from "../trainers/TableTrainer/tableTrainer.slice";
+import tableTrainerReducer from "../trainers/moduleOne/TableTrainer/tableTrainer.slice";
 export const store = configureStore({
     reducer: {
         learningReducer,

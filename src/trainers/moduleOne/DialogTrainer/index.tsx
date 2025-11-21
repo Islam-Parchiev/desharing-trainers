@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { DialogSentence } from './DialogSentence';
 import { DialogVariant } from './DialogVariant';
 import './styles.scss';
-import type { Id, Status } from '../../types/types';
+
 import { DialogSlot } from './DialogSlot';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import { Button } from '../../shared/ui/Button';
+import type { Button } from '../../../shared/ui/Button';
+import type { Id, Status } from '../../../types/types';
+
 interface DialogSentence {
     id: Id;
     type: "sentence";

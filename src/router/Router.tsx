@@ -18,6 +18,8 @@ import { Example } from "../pages/Example";
 import { Eleven } from "../pages/eleven";
 import { Twelve } from "../pages/twelve";
 import { Therteen } from "../pages/therteen";
+import { Page } from "../pages/page";
+import { IsCorrect } from "../trainers/moduleTwo/IsCorrect";
 
 export const router = createBrowserRouter([
     {
@@ -88,8 +90,14 @@ export const router = createBrowserRouter([
         path: '/twelve',
         element: <Twelve />
     },
-       {
+    {
         path: '/therteen',
         element: <Therteen />
+    },
+    {
+        path: '/isCorrect',
+        element: <Page>
+            <IsCorrect />
+        </Page>
     }
 ])

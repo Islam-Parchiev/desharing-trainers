@@ -1,6 +1,6 @@
 import { Card } from "../components/Card"
 import { AccentLetterMocks } from "../mocks/data"
-import { AccentTrainer } from "../trainers/AccentTrainer"
+import { AccentTrainer } from "../trainers/moduleOne/AccentTrainer"
 
 export const Four = () => {
     return (

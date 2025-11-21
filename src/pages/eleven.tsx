@@ -1,6 +1,5 @@
 import { Card } from "../components/Card"
-import { PhoneticTrainer } from "../trainers/PhoneticTrainer"
-
+import { PhoneticTrainer } from "../trainers/moduleOne/PhoneticTrainer"
 export const Eleven = () => {
     return (
         <main className="Page Main">

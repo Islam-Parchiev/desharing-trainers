@@ -1,4 +1,4 @@
-import { ConversationFinder } from "../trainers/ConversationFinder"
+import { ConversationFinder } from "../trainers/moduleOne/ConversationFinder"
 
 export const Therteen = () => {
     return (

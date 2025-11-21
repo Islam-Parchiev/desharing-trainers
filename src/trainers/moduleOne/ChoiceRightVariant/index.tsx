@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import type { Variant } from "../../App";
-import { VariantItem } from "../../components/VariantItem";
-// import cn from 'classnames'
-import type { Id, Status } from "../../types/types";
+import type { Variant } from "../../../App";
+import { VariantItem } from "../../../components/VariantItem";
+import type { Id, Status } from "../../../types/types";
 interface IChoiceRightVariant{
     id: Id;
     questionTitle: string;

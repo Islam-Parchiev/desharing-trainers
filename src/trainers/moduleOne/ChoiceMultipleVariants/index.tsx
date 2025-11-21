@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { Variant } from "../../App";
-import { VariantItem } from "../../components/VariantItem";
-import type { Id } from "../../types/types";
+import type { Variant } from "../../../App";
+import { VariantItem } from "../../../components/VariantItem";
+import type { Id } from "../../../types/types";
 
 export interface ChoiceRightVariant {
     id: Id;

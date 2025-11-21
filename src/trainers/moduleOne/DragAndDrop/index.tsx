@@ -1,8 +1,10 @@
 import { useEffect, type Dispatch, type SetStateAction } from "react"
-import { DropBox } from "../../shared/ui/DropBox"
-import { MoveBox } from "../../shared/ui/MoveBox"
+
 import { type DragEndEvent, DndContext, MouseSensor, useSensor, useSensors } from '@dnd-kit/core'
-import type { Id } from "../../types/types"
+import { DropBox } from "../../../shared/ui/DropBox";
+import { MoveBox } from "../../../shared/ui/MoveBox";
+import type { Id } from "../../../types/types";
+
 export interface IWord {
     id: Id;
     title: string;

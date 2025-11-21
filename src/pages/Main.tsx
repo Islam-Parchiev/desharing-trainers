@@ -50,6 +50,9 @@ export const Main = () => {
                             <Link to="/therteen">Тренажер 13</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/isCorrect">IsCorrect</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

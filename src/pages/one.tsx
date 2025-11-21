@@ -1,6 +1,6 @@
-import { ChoiceMultipleVariants } from "../trainers/ChoiceMultipleVariants"
 import { MultipleVariantsTasks } from "../mocks/data";
 import { Card } from "../components/Card";
+import { ChoiceMultipleVariants } from "../trainers/moduleOne/ChoiceMultipleVariants";
 
 export const One = () => {
     const multipleCurrentTask = MultipleVariantsTasks[0];

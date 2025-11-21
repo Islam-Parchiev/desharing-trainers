@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { WordByImage, type ILetter } from "../trainers/WordByImage"
 import { Card } from "../components/Card";
+import { WordByImage, type ILetter } from "../trainers/moduleOne/WordByImage";
 
 export const Three = () => {
     const [letters] = useState<ILetter[]>([

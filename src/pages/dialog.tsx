@@ -1,4 +1,4 @@
-import { DialogTrainer } from "../trainers/DialogTrainer"
+import { DialogTrainer } from "../trainers/moduleOne/DialogTrainer"
 
 export const Dialog = () => {
     return (

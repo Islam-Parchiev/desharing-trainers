@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { ChoiceRightImage, type ImageVariant } from "../trainers/ChoiceRightImage"
 import type { Status } from "../types/types"
 import { Button } from "../shared/ui/Button"
 import { Card } from "../components/Card"
+import { type ImageVariant, ChoiceRightImage } from "../trainers/moduleOne/ChoiceRightImage"
 
 export const Five = () => {
     const [imageVariants] = useState<ImageVariant[]>([

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { TrainerTitle } from '../../components/TrainerTitle';
+
 import { FillInInput } from './FillInInput';
 import { FillInVariant } from './FillInVariant';
 import './styles.scss';
-import type { Id, Status } from '../../types/types';
-import { Button } from '../../shared/ui/Button';
+import { TrainerTitle } from '../../../components/TrainerTitle';
+import { Button } from '../../../shared/ui/Button';
+import type { Id, Status } from '../../../types/types';
+
 interface IVariant { id: Id; variant: string; correct: boolean; }
 export const FillInTrainer = () => {
     const [slot, setSlot] = useState<IVariant | null>(null);
