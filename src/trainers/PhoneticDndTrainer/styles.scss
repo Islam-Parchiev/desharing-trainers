@@ -1,0 +1,24 @@
+.PhoneticDndTrainer {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+    &__variants {
+        display: flex;
+        align-items: center;
+        gap: 100px;
+    }
+    &__draggableItem {
+        width: 100px;
+        height: 100px;
+        cursor: move;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

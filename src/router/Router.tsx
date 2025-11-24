@@ -15,6 +15,9 @@ import { TheoryChildPage } from "../pages/theoryChild";
 import { Nine } from "../pages/nine";
 import { Dialog } from "../pages/dialog";
 import { Example } from "../pages/Example";
+import { Eleven } from "../pages/eleven";
+import { Twelve } from "../pages/twelve";
+import { Therteen } from "../pages/therteen";
 
 export const router = createBrowserRouter([
     {
@@ -74,7 +77,19 @@ export const router = createBrowserRouter([
         element: <TheoryChildPage />
     },
     {
-        path:'/example',
-        element:<Example/>
+        path: '/example',
+        element: <Example />
+    },
+    {
+        path: '/eleven',
+        element: <Eleven />
+    },
+    {
+        path: '/twelve',
+        element: <Twelve />
+    },
+       {
+        path: '/therteen',
+        element: <Therteen />
     }
 ])

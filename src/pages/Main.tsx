@@ -39,6 +39,16 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/ten">Тренажер 10</Link>
                         </div>
+
+                        <div className="ItemTrainerLink">
+                            <Link to="/eleven">Тренажер 11</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/twelve">Тренажер 12</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/therteen">Тренажер 13</Link>
+                        </div>
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
