@@ -43,7 +43,7 @@ export const Two = () => {
                         handleSuccess={handleSuccess}
                         handleError={handleError}
                         status={status}
-                        handleNextTask={nextTask}
+                        // handleNextTask={nextTask}
                         correctVariantId={currentTask.correctVariantId}
                         id={currentTask.id} 
                         questionTitle={currentTask.questionTitle} 
