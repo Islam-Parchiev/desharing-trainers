@@ -1,0 +1,16 @@
+.StoryPuzzleSolver {
+    width: 100%;
+    height: 100%;
+    &__inner {
+        height: 100%;
+    }
+    &__dropColumn {
+        width: 50%;
+        height: 100%;
+        border: 1px solid #000;
+    }
+}
+.StoryPuzzleSolver__dropInput {
+    width: 100%;
+    height: 50px;
+}

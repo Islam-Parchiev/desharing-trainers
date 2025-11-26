@@ -22,6 +22,7 @@ import { Page } from "../pages/page";
 import { IsCorrect } from "../trainers/moduleTwo/IsCorrect";
 import { WhatIs } from "../trainers/moduleTwo/WhatIs";
 import { Conclusion } from "../trainers/moduleTwo/Сonclusion";
+import { StoryPuzzleSolver } from "../trainers/moduleTwo/StoryPuzzleSolver";
 
 export const router = createBrowserRouter([
     {
@@ -112,6 +113,12 @@ export const router = createBrowserRouter([
         path: '/conclusion',
         element: <Page>
             <Conclusion />
+        </Page>
+    },
+    {
+        path: "/storyPuzzle",
+        element: <Page>
+            <StoryPuzzleSolver />
         </Page>
     }
 ])
