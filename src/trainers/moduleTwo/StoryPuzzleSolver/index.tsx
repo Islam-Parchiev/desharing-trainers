@@ -6,6 +6,10 @@ import type { Id, Status } from "../../../types/types";
 import { DropSlot } from "./DropSlot";
 import { DragItem } from "./DragItem";
 import { Button } from "../../../shared/ui/Button";
+interface Variant {
+    id: Id;
+    content: string;
+}
 export const StoryPuzzleSolver = () => {
     const [slots, setSlots] = useState<{
         slotId: Id;
@@ -33,10 +37,7 @@ export const StoryPuzzleSolver = () => {
         }
     ]);
     const [status, setStatus] = useState<Status>("idle");
-    const [variants] = useState<{
-        id: Id;
-        content: string;
-    }[]>([
+    const [variants] = useState<Variant[]>([
         {
             id: 1,
             content: "Оказалось, это была тень кактуса. Какая досада!"
@@ -67,6 +68,13 @@ export const StoryPuzzleSolver = () => {
             return;
         }
     }
+    const isDisabled = (variant: Variant) => {
+        if (slots.find(slot => slot.currentValue === variant.content)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     return (
         <div className="StoryPuzzleSolver">
             <DndContext onDragEnd={handleDragEnd}>
@@ -88,7 +96,7 @@ export const StoryPuzzleSolver = () => {
                         <div className="StoryPuzzleSolver__dragColumn">
                             <div className="StoryPuzzleSolver__dragColumn_inner">
                                 {variants.map(variant => (
-                                    <DragItem id={variant.id} isDisabled={false} content={variant.content} key={"PuzzleVariant-" + variant.id} />
+                                    <DragItem id={variant.id} isDisabled={isDisabled(variant)} content={variant.content} key={"PuzzleVariant-" + variant.id} />
                                 ))}
                             </div>
                             <Button variant="primary" size="big" onClick={handleCheck}>check</Button>
