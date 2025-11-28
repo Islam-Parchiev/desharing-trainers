@@ -1,0 +1,19 @@
+.PuzzleDropSlot {
+    width: 100%;
+    height: 120px;
+    border-radius: 60px;
+    background-color: #fff9f9;
+    &_inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap: 20px;
+    }
+    &.filled {
+        background-color: #613737;
+        color:#fff;
+        font-size: 21px;
+        border: 1px solid #fff;
+    }
+}

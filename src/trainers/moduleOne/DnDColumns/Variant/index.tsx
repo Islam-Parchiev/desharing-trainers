@@ -1,7 +1,8 @@
 import cn from 'classnames';
 import './styles.scss';
 import { useDraggable } from '@dnd-kit/core';
-import type { Id } from '../../../types/types';
+import type { Id } from '../../../../types/types';
+
 export const Variant = ({ isDisabled, value, id }: { id: Id; value: string; isDisabled: boolean }) => {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({
         id,

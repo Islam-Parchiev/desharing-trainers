@@ -5,8 +5,8 @@ import './styles.scss';
 
 import { Variant } from './Variant';
 import { type DragEndEvent, DndContext } from '@dnd-kit/core';
-import type { TrainerTitle } from '../../../components/TrainerTitle';
-import type { Button } from '../../../shared/ui/Button';
+import { TrainerTitle } from '../../../components/TrainerTitle';
+import { Button } from '../../../shared/ui/Button';
 import type { Id, Status } from '../../../types/types';
 
 interface IVariant {
