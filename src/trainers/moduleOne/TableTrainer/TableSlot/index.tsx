@@ -1,8 +1,7 @@
 import cn from 'classnames';
 import './styles.scss';
 import { useDroppable } from '@dnd-kit/core';
-import type { Id } from '../../../types/types';
-
+import type { Id } from '../../../../types/types';
 export const TableSlot = ({ id, value }: { id: Id; value: string | null; }) => {
     const { isOver, setNodeRef } = useDroppable({
         id,

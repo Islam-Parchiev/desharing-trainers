@@ -1,6 +1,6 @@
 import type { ITask } from "../App";
 import type { TheoryDataItem } from "../theory/Child";
-import type { ChoiceRightVariant } from "../trainers/ChoiceMultipleVariants";
+import type { ChoiceRightVariant } from "../trainers/moduleOne/ChoiceMultipleVariants";
 import type { TrainerTypes } from "../types/types";
 
 export const VariantTasks: ITask[] = [

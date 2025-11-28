@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core"
-import type { Id } from "../../../types/types"
+import type { Id } from "../../../../types/types";
 
 export const DragItem = ({ id, imageUrl = "/apple.png", isDisabled }: { id: Id; isDisabled: boolean; imageUrl: string; }) => {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({

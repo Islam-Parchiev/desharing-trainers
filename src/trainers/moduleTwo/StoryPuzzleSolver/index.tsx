@@ -33,7 +33,7 @@ export const StoryPuzzleSolver = () => {
         }
     ]);
     const [status, setStatus] = useState<Status>("idle");
-    const [variants, setVariants] = useState<{
+    const [variants] = useState<{
         id: Id;
         content: string;
     }[]>([

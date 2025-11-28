@@ -62,7 +62,7 @@ export const WordByImage = ({ availableLetters, correctAnswer, id, imageUrl, isL
 
 
     useEffect(() => {
-        let timer: NodeJS.Timeout;
+        let timer: number | undefined;
 
         if (status !== 'success') {
             timer = setInterval(() => {

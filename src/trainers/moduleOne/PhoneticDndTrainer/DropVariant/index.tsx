@@ -1,5 +1,5 @@
 import { useDroppable } from "@dnd-kit/core";
-import type { Id } from "../../../types/types";
+import type { Id } from "../../../../types/types";
 export const DropVariant = ({
     id,
     content,

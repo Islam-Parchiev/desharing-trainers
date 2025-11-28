@@ -5,7 +5,7 @@ import './styles.scss';
 
 import { DialogSlot } from './DialogSlot';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import type { Button } from '../../../shared/ui/Button';
+import { Button } from '../../../shared/ui/Button';
 import type { Id, Status } from '../../../types/types';
 
 interface DialogSentence {

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Id } from '../../types/types';
+import type { Id } from '../../../types/types';
 
 interface TableSlot {
     id: Id;

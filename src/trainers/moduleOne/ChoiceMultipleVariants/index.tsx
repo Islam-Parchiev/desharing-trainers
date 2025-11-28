@@ -63,8 +63,8 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
             } else if (selectedVariantIds.includes(item.id) && !correctVariants.includes(item.id)) {
                 className += "incorrect-variant ";
             }
-            if(!selectedVariantIds.includes(item.id)&& !correctVariants.includes(item.id)) {
-                className+="other-variants "
+            if (!selectedVariantIds.includes(item.id) && !correctVariants.includes(item.id)) {
+                className += "other-variants "
             }
         }
 

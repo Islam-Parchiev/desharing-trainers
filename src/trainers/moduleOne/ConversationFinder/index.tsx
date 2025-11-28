@@ -6,7 +6,7 @@ import { TrainerTitle } from '../../../components/TrainerTitle';
 import { Button } from '../../../shared/ui/Button';
 
 export const ConversationFinder = () => {
-    const [data, setData] = useState([
+    const [data] = useState([
         {
             imageUrl: "gr2.png",
             title: "Привет",
