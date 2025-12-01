@@ -23,6 +23,7 @@ import { IsCorrect } from "../trainers/moduleTwo/IsCorrect";
 import { WhatIs } from "../trainers/moduleTwo/WhatIs";
 import { Conclusion } from "../trainers/moduleTwo/Сonclusion";
 import { StoryPuzzleSolver } from "../trainers/moduleTwo/StoryPuzzleSolver";
+import { DecryptMessage } from "../trainers/moduleTwo/DecryptMessage";
 
 export const router = createBrowserRouter([
     {
@@ -119,6 +120,12 @@ export const router = createBrowserRouter([
         path: "/storyPuzzle",
         element: <Page>
             <StoryPuzzleSolver />
+        </Page>
+    },
+    {
+        path: "/decryptMessage",
+        element: <Page>
+            <DecryptMessage />
         </Page>
     }
 ])

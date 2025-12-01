@@ -1,0 +1,31 @@
+.DecryptMessage {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap:10%;
+    }
+    &__crypt_items {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    &__cryptWindow {
+        background-color: #000;
+        border-radius: 12px;
+        height: 100px;
+        width: 500px;
+        &_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    }
+    &__variants {
+        display: flex;
+        gap: 20px;
+    }
+}
