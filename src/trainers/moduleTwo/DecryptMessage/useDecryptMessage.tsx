@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { CryptItemType } from "./CryptItem";
 import type { Status } from "../../../types/types";
 type CryptData = {
     id: number;
     value: CryptItemType;
     selected: boolean;
+    completed: boolean;
 };
 type Variant = {
     value: string;
@@ -18,6 +19,7 @@ export const useDecryptMessage = () => {
             id: index,
             value: item as CryptItemType,
             selected: false,
+            completed: false
         }))
     );
     const [variants, setVariants] = useState<{
@@ -44,18 +46,35 @@ export const useDecryptMessage = () => {
         console.log('Selected answer:', variant);
         if (variant.type === currentItem.value) {
             setStatus("idle");
-            if (data[currentItemIndex].id !== data[data.length - 1].id) {
+
+            // Обновляем массив данных правильно
+            setData(prevData =>
+                prevData.map(item =>
+                    item.id === currentItem.id
+                        ? { ...item, completed: true }
+                        : item
+                )
+            );
+
+            if (currentItemIndex < data.length - 1) {
                 setCurrentItemIndex(prev => prev + 1);
             } else {
                 setStatus("finish");
-
             }
-            return
         } else {
             setStatus("error");
-            return;
         }
     };
+    const checkAllCompleted = useCallback(() => {
+        if (data.every(item => item.completed === true)) {
+            setStatus("finish");
+            return;
+        }
+    }, [data])
+    useEffect(() => {
+        checkAllCompleted();
+        console.log(data);
+    }, [data, checkAllCompleted])
     return {
         data,
         variants,

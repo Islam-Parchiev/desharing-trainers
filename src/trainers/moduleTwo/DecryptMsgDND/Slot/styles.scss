@@ -1,0 +1,15 @@
+.Slot {
+    width: 350px;
+    height: 30px;
+    background-color: #fff;
+    color:#000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.SlotFilled {
+        color:#fff;
+        background-color: #635d5d;
+        text-align: center;
+    }
+}

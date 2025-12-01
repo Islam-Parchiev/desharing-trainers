@@ -3,7 +3,7 @@ export const decryptMessageMock = [
         type:"select-answer",
         data:[
             {
-                
+
                 questionTitle:"Догадайся, что означает данный элемент",
                 variants:[
                     {
