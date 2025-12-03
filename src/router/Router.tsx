@@ -26,6 +26,7 @@ import { StoryPuzzleSolver } from "../trainers/moduleTwo/StoryPuzzleSolver";
 import { DecryptMessage } from "../trainers/moduleTwo/DecryptMessage";
 import { DecryptMsgDND } from "../trainers/moduleTwo/DecryptMsgDND";
 import { CryptMessage } from "../trainers/moduleTwo/CryptMessage";
+import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
 
 export const router = createBrowserRouter([
     {
@@ -140,6 +141,12 @@ export const router = createBrowserRouter([
         path: "/cryptMsg",
         element: <Page>
             <CryptMessage />
+        </Page>
+    },
+    {
+        path: "/matchingGame",
+        element: <Page>
+            <MatchingGame />
         </Page>
     }
 ])
