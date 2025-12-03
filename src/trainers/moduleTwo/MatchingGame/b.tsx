@@ -3,10 +3,10 @@ import { useCallback } from 'react';
 
 export const ElementB = ({ id }: { id: string }) => {
   const { isOver, setNodeRef } = useDroppable({ id });
-  
+
   const ref = useCallback((node: HTMLElement | null) => {
     if (node) {
-      node.setAttribute('data-id', id);
+      node.setAttribute('data-id', String(id));
     }
     setNodeRef(node);
   }, [setNodeRef, id]);
@@ -16,8 +16,8 @@ export const ElementB = ({ id }: { id: string }) => {
   };
 
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       style={style}
       className="droppable-element"
     >

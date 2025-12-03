@@ -1,13 +1,14 @@
 import { useDraggable } from '@dnd-kit/core';
 import { useCallback } from 'react';
 
-export const ElementA = ({ id }: { id: string }) => {
+
+export const ElementA = ({ id }: { id: string; }) => {
   const { attributes, listeners, setNodeRef } = useDraggable({ id });
   
   // Устанавливаем data-id и ссылку для dnd-kit
   const ref = useCallback((node: HTMLElement | null) => {
     if (node) {
-      node.setAttribute('data-id', id);
+      node.setAttribute('data-id', String(id));
     }
     setNodeRef(node);
   }, [setNodeRef, id]);

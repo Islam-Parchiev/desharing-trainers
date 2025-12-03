@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import type { Connection } from '.';
 
 interface Line {
     x1: number;
@@ -7,11 +8,7 @@ interface Line {
     y2: number;
 }
 
-interface Connection {
-    fromId: string;
-    toId: string;
-    id: string;
-}
+
 
 interface SVGConnectorProps {
     connections: Connection[];

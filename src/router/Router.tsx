@@ -27,6 +27,8 @@ import { DecryptMessage } from "../trainers/moduleTwo/DecryptMessage";
 import { DecryptMsgDND } from "../trainers/moduleTwo/DecryptMsgDND";
 import { CryptMessage } from "../trainers/moduleTwo/CryptMessage";
 import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
+import { NewWords } from "../trainers/moduleTwo/NewWords";
+import TestDnd from "../components/testdnd";
 
 export const router = createBrowserRouter([
     {
@@ -147,6 +149,18 @@ export const router = createBrowserRouter([
         path: "/matchingGame",
         element: <Page>
             <MatchingGame />
+        </Page>
+    },
+    {
+        path: "/newWords",
+        element: <Page>
+            <NewWords />
+        </Page>
+    },
+    {
+        path: "/testDnd",
+        element: <Page>
+            <TestDnd />
         </Page>
     }
 ])

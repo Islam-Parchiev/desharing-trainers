@@ -1,0 +1,21 @@
+.NewWords {
+    width: 90%;
+    height: 350px;
+    background-color: var(--primary-medium);
+    border-radius: 12px;
+    &__inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__content {
+        p {
+            font-size: 21px;
+            color:#fff;
+            span {
+                color:blue;
+            }
+        }
+    }
+}

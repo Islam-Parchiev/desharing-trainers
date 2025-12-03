@@ -1,0 +1,30 @@
+.TestDnd {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .from, .to {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: gray;
+    cursor: pointer;
+  }
+  
+  .from {
+    left: 0;
+    top: 0;
+  }
+  
+  .to {
+    left: 200px;
+    top: 30px;
+  }
+  
+  .line-svg {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+  }
