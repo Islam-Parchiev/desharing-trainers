@@ -29,6 +29,7 @@ import { CryptMessage } from "../trainers/moduleTwo/CryptMessage";
 import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
 import { NewWords } from "../trainers/moduleTwo/NewWords";
 import TestDnd from "../components/testdnd";
+import LineDragApp from "../components/lacotest";
 
 export const router = createBrowserRouter([
     {
@@ -161,6 +162,12 @@ export const router = createBrowserRouter([
         path: "/testDnd",
         element: <Page>
             <TestDnd />
+        </Page>
+    },
+    {
+        path: "/laco",
+        element: <Page>
+            <LineDragApp />
         </Page>
     }
 ])
