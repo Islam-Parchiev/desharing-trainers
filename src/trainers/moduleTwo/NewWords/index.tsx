@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NewWordItem } from './newWordItem';
 import './styles.scss';
 import { NewWordsModal } from './modal';
+import { TrainerTitle } from '../../../components/TrainerTitle';
 export const NewWords = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const handleWordClick = () => {
@@ -9,6 +10,7 @@ export const NewWords = () => {
     }
     return (
         <div className="NewWords">
+            <TrainerTitle>Нажми на новое слово и узнай его значение</TrainerTitle>
             <div className="NewWords__inner">
                 <div className="NewWords__content">
                     <p>
