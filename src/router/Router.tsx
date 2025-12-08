@@ -30,6 +30,8 @@ import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
 import { NewWords } from "../trainers/moduleTwo/NewWords";
 import TestDnd from "../components/testdnd";
 import LineDragApp from "../components/lacotest";
+import { Reorder } from "../components/reorder";
+import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
 
 export const router = createBrowserRouter([
     {
@@ -168,6 +170,18 @@ export const router = createBrowserRouter([
         path: "/laco",
         element: <Page>
             <LineDragApp />
+        </Page>
+    },
+    {
+        path: "/reorder",
+        element: <Page>
+            <Reorder />
+        </Page>
+    },
+    {
+        path: "/storyReorder",
+        element: <Page>
+            <StoryReorder />
         </Page>
     }
 ])

@@ -58,8 +58,17 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/conclusion">Conclusion</Link>
                         </div>
-                       <div className="ItemTrainerLink">
+                        <div className="ItemTrainerLink">
                             <Link to="/storyPuzzle">StoryPuzzleSolver</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/storyReorder">storyReorder</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/cryptMsg">CryptMessage</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/decryptMsgDND">DecryptMessage</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
