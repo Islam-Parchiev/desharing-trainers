@@ -33,6 +33,7 @@ import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
 import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
 import { WrappedFlow } from "../components/fl";
+import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -189,6 +190,12 @@ export const router = createBrowserRouter([
         path: "/flowT",
         element: <Page>
             <WrappedFlow />
+        </Page>
+    },
+    {
+        path: "/vocabularyTrainer",
+        element: <Page>
+            <VocabularyTrainer />
         </Page>
     }
 ])

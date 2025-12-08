@@ -1,0 +1,21 @@
+.VocabularyTheory {
+    width: 100%;
+    height: 100%;
+    
+    &__inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__compare {
+        span {
+            font-size: 21px;
+            display: block;
+        }
+    }
+    &__text {
+        p {
+            font-size: 21px;
+        }
+    }
+}

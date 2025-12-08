@@ -4,12 +4,14 @@ import learningReducer from "../widgets/Example/learningStatus.slice";
 import theoryReducer from "../widgets/Example/Theory/theory.slice";
 import practiceReducer from "../widgets/Example/Practice/practice.slice";
 import tableTrainerReducer from "../trainers/moduleOne/TableTrainer/tableTrainer.slice";
+import vocabularyTrainerReducer from "../trainers/moduleTwo/VocabularyTrainer/model/vocabulary.slice";
 export const store = configureStore({
     reducer: {
         learningReducer,
         theoryReducer,
         practiceReducer,
         tableTrainerReducer,
+        vocabularyTrainerReducer
     }
 });
 export type RootState = ReturnType<typeof store.getState>

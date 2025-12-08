@@ -17,7 +17,7 @@ interface WordTask {
     isLoading: boolean;
 }
 
-interface IWordSlot {
+export interface IWordSlot {
     id: Id;
     current: string | null;
 }
