@@ -22,7 +22,7 @@ export const useDecryptMessage = () => {
             completed: false
         }))
     );
-    const [variants, setVariants] = useState<{
+    const [variants] = useState<{
         value: string;
         type: CryptItemType
     }[]>([

@@ -9,7 +9,7 @@ import { TrainerTitle } from '../../../components/TrainerTitle';
 export const DecryptMsgDND = () => {
     const [status, setStatus] = useState<Status>("idle");
 
-    const [data, setData] = useState<{
+    const [data] = useState<{
         title: string;
         correctAnswer: string;
         cryptedMsg: { id: Id; value: CryptItemType; }[];

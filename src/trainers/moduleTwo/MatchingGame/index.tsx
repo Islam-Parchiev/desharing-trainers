@@ -5,7 +5,6 @@ import { useState } from 'react';
 import SVGConnector from './connector';
 import { ElementA } from './a';
 import { ElementB } from './b';
-import type { Id } from '../../../types/types';
 export interface Connection {
     fromId: UniqueIdentifier;
     toId: UniqueIdentifier;

@@ -28,7 +28,7 @@ import { DecryptMsgDND } from "../trainers/moduleTwo/DecryptMsgDND";
 import { CryptMessage } from "../trainers/moduleTwo/CryptMessage";
 import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
 import { NewWords } from "../trainers/moduleTwo/NewWords";
-import TestDnd from "../components/testdnd";
+// import TestDnd from "../components/testdnd";
 import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
 import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
@@ -160,12 +160,12 @@ export const router = createBrowserRouter([
             <NewWords />
         </Page>
     },
-    {
-        path: "/testDnd",
-        element: <Page>
-            <TestDnd />
-        </Page>
-    },
+    // {
+    //     path: "/testDnd",
+    //     element: <Page>
+    //         <TestDnd />
+    //     </Page>
+    // },
     {
         path: "/laco",
         element: <Page>

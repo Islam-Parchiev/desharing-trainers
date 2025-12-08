@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Modal } from '../../../widgets/modal';
 import { NewWordItem } from './newWordItem';
 import './styles.scss';
 import { NewWordsModal } from './modal';

@@ -7,7 +7,7 @@ import type { Status } from "../../../types/types";
 export const CryptMessage = () => {
     const correctMessage = ["start", "word", "word", "word", "word", "end"];
     const [currentMsg, setCurrentMsg] = useState<CryptItemType[]>([])
-    const [variants, setVariants] = useState<{ type: CryptItemType; value: string; }[]>([{ type: "start", value: "|_" }, { type: "word", value: "_" }, { type: "end", value: "." }])
+    const [variants] = useState<{ type: CryptItemType; value: string; }[]>([{ type: "start", value: "|_" }, { type: "word", value: "_" }, { type: "end", value: "." }])
     const [status, setStatus] = useState<Status>("idle")
     const handleVariantClick = (variant: { type: CryptItemType; value: string; }) => {
         if (currentMsg.length !== correctMessage.length) {
