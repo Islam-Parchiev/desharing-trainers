@@ -204,5 +204,5 @@ export const router = createBrowserRouter([
         element: <Page>
             <FixTicket />
         </Page>
-    }
+    },
 ])
