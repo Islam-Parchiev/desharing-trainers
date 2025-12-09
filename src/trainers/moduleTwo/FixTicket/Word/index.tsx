@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo} from "react";
 import './styles.scss';
 
 interface TicketWordProps {
@@ -6,31 +6,32 @@ interface TicketWordProps {
     itemHeight?: number;
     selectedIndex: number;
     onSelect: (index: number) => void;
+    handleClickBlot?: () => void;
 }
 
 export const TicketWord = ({
     words,
     itemHeight = 25,
     selectedIndex,
-    onSelect
+    onSelect,
+    handleClickBlot
 }: TicketWordProps) => {
-    // Состояние для отслеживания, скрыт ли blot
     const [isBlotHidden, setIsBlotHidden] = useState(false);
 
     const onClickWord = () => {
-        // Если blot еще не скрыт, игнорируем клик
         if (!isBlotHidden) return;
 
         const nextIndex = selectedIndex >= words.length - 1 ? 0 : selectedIndex + 1;
         onSelect(nextIndex);
     };
 
-    // Обработчик клика по blot
     const handleBlotClick = (e: React.MouseEvent) => {
-        // Останавливаем всплытие, чтобы не сработал onClickWord
         e.stopPropagation();
-        // Скрываем blot
         setIsBlotHidden(true);
+        if (handleClickBlot) {
+            handleClickBlot();
+        }
+        return
     };
 
     const boxStyle = useMemo(() => ({
