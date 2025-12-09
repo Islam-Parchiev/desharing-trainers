@@ -34,6 +34,7 @@ import { Reorder } from "../components/reorder";
 import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
 import { WrappedFlow } from "../components/fl";
 import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
+import { FixTicket } from "../trainers/moduleTwo/FixTicket";
 
 export const router = createBrowserRouter([
     {
@@ -196,6 +197,12 @@ export const router = createBrowserRouter([
         path: "/vocabularyTrainer",
         element: <Page>
             <VocabularyTrainer />
+        </Page>
+    },
+    {
+        path: "/fixTicket",
+        element: <Page>
+            <FixTicket />
         </Page>
     }
 ])

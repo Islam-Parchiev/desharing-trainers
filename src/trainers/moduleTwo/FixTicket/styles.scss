@@ -1,0 +1,22 @@
+.FixTicket {
+    max-width: 600px;
+    height: 150px;
+    background-color: var(--primary-medium);
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__inner {
+        width: 80%;
+        height: 100%;
+        border-radius: 12px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__sentence {
+        font-size: 21px;
+    }
+}

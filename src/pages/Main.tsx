@@ -74,6 +74,9 @@ export const Main = () => {
                             <Link to="/decryptMsgDND">DecryptMessage</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/fixTicket">fixTicket</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

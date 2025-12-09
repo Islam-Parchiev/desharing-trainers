@@ -8,7 +8,7 @@ export interface ImageVariant {
     imageUrl: string;
     correct: boolean;
 }
-export const ChoiceRightImage = ({ title, variants, setStatus,isSubmitted,setIsSubmitted }: { isSubmitted: boolean; setIsSubmitted: (value:boolean) => void; title: string; variants: ImageVariant[]; status?: Status; setStatus: (value: Status) => void; }) => {
+export const ChoiceRightImage = ({ title, variants, setStatus, isSubmitted, setIsSubmitted }: { isSubmitted: boolean; setIsSubmitted: (value: boolean) => void; title: string; variants: ImageVariant[]; status?: Status; setStatus: (value: Status) => void; }) => {
     const handleCheck = (variant: ImageVariant) => {
         if (variant.correct === false) {
             setStatus("error");
