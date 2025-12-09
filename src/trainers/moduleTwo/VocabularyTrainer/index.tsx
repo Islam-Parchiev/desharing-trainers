@@ -23,13 +23,19 @@ export const VocabularyTrainer = () => {
                 return <VocabularyPractice
                     id={1}
                     handleStatus={setStatus}
-                    correctAnswer='город'
-                    availableLetters={[{ id: 1, letter: "г" }, { id: 2, letter: "ф" }, { id: 3, letter: "р" }, { id: 4, letter: "о" }, { id: 5, letter: "о" }, { id: 6, letter: "д" }, { id: 7, letter: "ж" }]} />
+                    correctAnswer='человек'
+                    availableLetters={[{ id: 1, letter: "г" }, { id: 2, letter: "ч" }, { id: 3, letter: "е" }, { id: 4, letter: "о" }, { id: 5, letter: "в" }, { id: 6, letter: "л" }, { id: 7, letter: "к" }]} />
             default:
                 return "error"
         }
 
     }
+   
+   
+   
+   
+   
+   
     const handleNextStep = () => {
         if (currentStep === "intro") {
 
