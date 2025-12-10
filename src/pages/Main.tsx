@@ -34,7 +34,7 @@ export const Main = () => {
                             <Link to="/eight">Тренажер 8</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/nine">Тренажер 9</Link>
+                            <Link to="/nine">TableTrainer(InProgress)</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/ten">Тренажер 10</Link>

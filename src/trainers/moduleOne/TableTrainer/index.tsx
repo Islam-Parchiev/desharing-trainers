@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DragItem } from './DragItem';
 import cn from 'classnames';
 import './styles.scss';
 import { TableSlot } from './TableSlot';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { Button } from '../../../shared/ui/Button';
-import type { Id } from '../../../types/types';
+import type { Id, Status } from '../../../types/types';
 const tableQuestions: { id: Id; question: string; variants: { id: Id; content: string }[]; slots: { id: Id; correctValue: string; currentValue: string | null; }[]; }[] = [
     {
         id: 1,
@@ -17,19 +17,19 @@ const tableQuestions: { id: Id; question: string; variants: { id: Id; content: s
         id: 2,
         question: "test2",
         variants: [{ id: 3, content: "3" }, { id: 4, content: "4" }],
-        slots: [{ id: 3, correctValue: "2", currentValue: null }, { id: 4, correctValue: "1", currentValue: null }]
+        slots: [{ id: 3, correctValue: "4", currentValue: null }, { id: 4, correctValue: "3", currentValue: null }]
     },
     {
         id: 3,
         question: "test3",
         variants: [{ id: 5, content: "5" }, { id: 6, content: "6" }],
-        slots: [{ id: 5, correctValue: "1", currentValue: null }, { id: 6, correctValue: "2", currentValue: null }]
+        slots: [{ id: 5, correctValue: "6", currentValue: null }, { id: 6, correctValue: "5", currentValue: null }]
     },
     {
         id: 4,
         question: "test4",
         variants: [{ id: 7, content: "7" }, { id: 8, content: "8" }],
-        slots: [{ id: 7, correctValue: "2", currentValue: null }, { id: 8, correctValue: "1", currentValue: null }]
+        slots: [{ id: 7, correctValue: "8", currentValue: null }, { id: 8, correctValue: "7", currentValue: null }]
     }
 ]
 const tableCols = [
@@ -51,7 +51,7 @@ export const TableTrainer = () => {
     })]);
     const [currentQuestionN, setCurrentQuestionN] = useState(0);
     const currentQuestion = data[currentQuestionN];
-
+    const [status, setStatus] = useState<Status>("idle");
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
 
@@ -76,9 +76,10 @@ export const TableTrainer = () => {
             if (questionIndex === -1) return prevData;
             const slotIndex = newData[questionIndex].slots.findIndex(s => s.id === targetSlotId);
             if (slotIndex !== -1) {
-                if (newData[questionIndex].slots[slotIndex].currentValue === null) {
-                    newData[questionIndex].slots[slotIndex].currentValue = draggedItem.content;
-                }
+                // test
+                // if (newData[questionIndex].slots[slotIndex].currentValue === null) {
+                newData[questionIndex].slots[slotIndex].currentValue = draggedItem.content;
+                // }
             }
 
             return newData;
@@ -91,10 +92,36 @@ export const TableTrainer = () => {
             return false
         }
     }
+    const checkQuestion = () => {
+        if (currentQuestion.slots.every(slot => slot.currentValue !== null)) {
+
+            if (currentQuestion.slots.every(slot => slot.correctValue === slot.currentValue)) {
+                setStatus("success");
+                handleNext();
+                return true;
+            } else {
+                setStatus("error");
+                return false
+            }
+        }
+    }
+    useEffect(() => {
+        checkQuestion();
+    }, [data])
+    const checkAllIsCorrect = () => {
+        if (data.every(item => item.slots.every(slot => slot.currentValue === slot.correctValue))) {
+            setStatus("finish");
+            return;
+        } else {
+            setStatus("error");
+            return;
+        }
+    }
     const handleNext = () => {
         if (currentQuestionN === data.length - 1) {
             return;
         }
+        setStatus("idle");
         const tmpData = data;
         currentQuestion.completed = true;
         const index = tmpData.findIndex(item => item.id === currentQuestion.id);
@@ -103,6 +130,9 @@ export const TableTrainer = () => {
     }
     return (
         <div className="TableTrainer">
+            {status === "finish" && "Finish"}
+            {status === "success" && "Success"}
+            {status === "error" && "Error"}
             <DndContext onDragEnd={handleDragEnd}>
                 <table className='TableTrainer__table'>
                     <thead className='TableTrainer__table-head'>
@@ -139,7 +169,7 @@ export const TableTrainer = () => {
                 </div>
 
             </DndContext>
-            <Button variant="primary" onClick={handleNext}>next</Button>
+            <Button variant="primary" onClick={checkAllIsCorrect}>Finish</Button>
         </div>
     );
 };
