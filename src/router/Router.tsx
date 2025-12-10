@@ -35,6 +35,7 @@ import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
 import { WrappedFlow } from "../components/fl";
 import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
 import { FixTicket } from "../trainers/moduleTwo/FixTicket";
+import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -205,4 +206,10 @@ export const router = createBrowserRouter([
             <FixTicket />
         </Page>
     },
+    {
+        path: "/paragraphIndentTrainer",
+        element: <Page>
+            <ParagraphIndentTrainer />
+        </Page>
+    }
 ])

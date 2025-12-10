@@ -80,6 +80,9 @@ export const Main = () => {
                             <Link to="/fixTicket">fixTicket</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/paragraphIndentTrainer">paragraphIndentTrainer</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

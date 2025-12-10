@@ -1,0 +1,36 @@
+.ParagraphIndentTrainer {
+    width: 800px;
+    height: 600px;
+    padding: 10px;
+    background-color: #ffed9db7;
+    border-radius: 12px;
+    &__inner {
+        width: 100%;
+        height: 100%;
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        height: 100%;
+    }
+    &__line {
+        cursor: pointer;
+        width: 100%;
+        border-top: 1px solid #000;
+        transition: all 0.3s ease-in-out;
+        user-select: none;
+        &:last-child {
+
+            border-bottom: 1px solid #000;
+        }
+        span {
+            font-size: 28px;
+            line-height: 180%;
+        }
+        &.active {
+            padding-left: 20px;
+        }
+    }
+}
