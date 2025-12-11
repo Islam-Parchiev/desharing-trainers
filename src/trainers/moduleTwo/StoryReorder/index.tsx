@@ -1,5 +1,8 @@
 import { useSensors, useSensor, PointerSensor, KeyboardSensor, closestCenter, DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates, arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import {
+    restrictToVerticalAxis,
+} from '@dnd-kit/modifiers';
 import { useState } from 'react';
 import { StoryReorderItem } from './Item';
 import './styles.scss';
@@ -26,10 +29,10 @@ export const StoryReorder = () => {
 
         if (allCorrect) {
             setStatus("success");
-            console.log("✅ Все элементы на правильных местах!");
+            console.log(" success");
         } else {
             setStatus("error");
-            console.log("❌ Есть ошибки в порядке элементов");
+            console.log("error");
         }
     };
 
@@ -43,7 +46,6 @@ export const StoryReorder = () => {
     function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
 
-        // Сбрасываем статус при любом изменении порядка
         if (status !== "idle") {
             setStatus("idle");
         }
@@ -66,6 +68,7 @@ export const StoryReorder = () => {
                     sensors={sensors}
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
+                    modifiers={[restrictToVerticalAxis]}
                 >
                     <SortableContext
                         items={storyItems}
