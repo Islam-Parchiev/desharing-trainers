@@ -83,6 +83,9 @@ export const Main = () => {
                             <Link to="/paragraphIndentTrainer">paragraphIndentTrainer</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/signToWordMatcher">SignToWordMatcher</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

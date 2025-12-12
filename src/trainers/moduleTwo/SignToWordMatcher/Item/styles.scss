@@ -1,0 +1,31 @@
+.SignToWordMatcherItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    &__image {
+        width: 200px;
+        height: 200px;
+         img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+    }
+    &__slot {
+        width: 200px;
+        height: 30px;
+        border-radius: 16px;
+        border: 1px solid #30b1fc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        &.filled {
+            background-color: #ffc582;
+            color:#000;
+            border:none;
+        }
+    }
+}

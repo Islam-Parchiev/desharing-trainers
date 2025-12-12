@@ -36,6 +36,7 @@ import { WrappedFlow } from "../components/fl";
 import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
 import { FixTicket } from "../trainers/moduleTwo/FixTicket";
 import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
+import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
 
 export const router = createBrowserRouter([
     {
@@ -210,6 +211,12 @@ export const router = createBrowserRouter([
         path: "/paragraphIndentTrainer",
         element: <Page>
             <ParagraphIndentTrainer />
+        </Page>
+    },
+    {
+        path: "/signToWordMatcher",
+        element: <Page>
+            <SignToWordMatcher />
         </Page>
     }
 ])
