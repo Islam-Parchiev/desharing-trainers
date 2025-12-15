@@ -4,20 +4,6 @@
         flex-direction: column;
         align-items: center;
     }
-    &__text {
-        &_sentence {
-            span {
-                font-size: 21px;
-                font-weight: 700;
-                line-height: 150%;
-                opacity: 0.2;
-                transition: opacity 0.5s ease-in-out;
-                &.active {
-                    opacity: 1;
-                }
-            }
-        }
-    }
 }
 .TextArchitectScheme {
     width: 100%;
@@ -60,13 +46,13 @@
     }
     &-question {
         background-image: url("./54.svg");
-        background-size: 20px;
+        background-size: 12px 12px;
         background-repeat: no-repeat;
         background-position: left bottom;
     }
     &-mark {
         background-image: url("./66.svg");
-        background-size: 12px;
+        background-size: 12px 12px;
         background-repeat: no-repeat;
         background-position: left bottom;
     }
