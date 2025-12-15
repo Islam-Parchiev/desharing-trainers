@@ -6,8 +6,8 @@ interface WordSwitcherProps {
     itemHeight?: number;
     selectedIndex: number;
     onSelect: (index: number) => void;
-    isCorrect:boolean|undefined;
-    isChecked:boolean;
+    isCorrect: boolean | undefined;
+    isChecked: boolean;
 }
 
 export const WordSwitcher = ({
@@ -19,7 +19,7 @@ export const WordSwitcher = ({
     isCorrect
 
 }: WordSwitcherProps) => {
-
+    console.log(isChecked, isCorrect);
     const onClickWord = () => {
 
         const nextIndex = selectedIndex >= variants.length - 1 ? 0 : selectedIndex + 1;
