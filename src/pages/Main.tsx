@@ -56,7 +56,7 @@ export const Main = () => {
                             <Link to="/whatIs">WhatIs</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/newWords">newWords(in-progress)</Link>
+                            <Link to="/newWords">newWords</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/conclusion">Conclusion</Link>
@@ -86,7 +86,10 @@ export const Main = () => {
                             <Link to="/signToWordMatcher">SignToWordMatcher</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/FixMistakesInText">FixMistakesInText(inprogress)</Link>
+                            <Link to="/FixMistakesInText">FixMistakesInText</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/textArchitect">textArchitect</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>

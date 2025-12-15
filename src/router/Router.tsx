@@ -38,6 +38,7 @@ import { FixTicket } from "../trainers/moduleTwo/FixTicket";
 import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
 import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
 import { FixMistakesInText } from "../trainers/moduleTwo/fixMistakesInText";
+import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
 
 export const router = createBrowserRouter([
     {
@@ -224,6 +225,12 @@ export const router = createBrowserRouter([
         path: "/FixMistakesInText",
         element: <Page>
             <FixMistakesInText />
+        </Page>
+    },
+    {
+        path: "/textArchitect",
+        element: <Page>
+            <TextArchitect />
         </Page>
     }
 ])
