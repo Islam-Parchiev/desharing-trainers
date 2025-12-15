@@ -86,6 +86,9 @@ export const Main = () => {
                             <Link to="/signToWordMatcher">SignToWordMatcher</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/FixMistakesInText">FixMistakesInText(inprogress)</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

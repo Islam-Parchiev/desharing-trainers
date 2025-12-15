@@ -37,6 +37,7 @@ import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
 import { FixTicket } from "../trainers/moduleTwo/FixTicket";
 import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
 import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
+import { FixMistakesInText } from "../trainers/moduleTwo/fixMistakesInText";
 
 export const router = createBrowserRouter([
     {
@@ -217,6 +218,12 @@ export const router = createBrowserRouter([
         path: "/signToWordMatcher",
         element: <Page>
             <SignToWordMatcher />
+        </Page>
+    },
+    {
+        path: "/FixMistakesInText",
+        element: <Page>
+            <FixMistakesInText />
         </Page>
     }
 ])
