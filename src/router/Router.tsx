@@ -41,6 +41,7 @@ import { FixMistakesInText } from "../trainers/moduleTwo/fixMistakesInText";
 import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
 import LaceApp from "../components/xarrows";
 import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
+import { PoliteWordsClicker } from "../trainers/moduleTwo/PoliteWordsClicker";
 
 export const router = createBrowserRouter([
     {
@@ -245,6 +246,12 @@ export const router = createBrowserRouter([
         path: "/choiceCorrectItems",
         element: <Page>
             <ChoiceCorrectItems />
+        </Page>
+    },
+    {
+        path: "/politeWordsClicker",
+        element: <Page>
+            <PoliteWordsClicker />
         </Page>
     }
 ])
