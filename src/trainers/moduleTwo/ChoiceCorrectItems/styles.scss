@@ -1,0 +1,49 @@
+.ChoiceCorrectItems {
+	width: 100%;
+	height: 100%;
+	&__content {
+		width: 100%;
+		height: 100%;
+	}
+	&__row {
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		gap: 5%;
+	}
+	&__slot {
+		width: 100px;
+		height: 150px;
+	}
+}
+.ChoiceCorrectItem {
+	width: 100%;
+	height: 100%;
+	background-image: url('/apple.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+	span {
+		font-size: 19px;
+		font-weight: 700;
+		font-family: sans-serif;
+	}
+	&:hover {
+		transform: scale(1.1);
+	}
+	&.hidden {
+		opacity: 0;
+		visibility: hidden;
+	}
+	&.error {
+		span {
+			color: red;
+		}
+	}
+}

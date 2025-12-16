@@ -39,6 +39,8 @@ import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTra
 import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
 import { FixMistakesInText } from "../trainers/moduleTwo/fixMistakesInText";
 import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
+import LaceApp from "../components/xarrows";
+import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
 
 export const router = createBrowserRouter([
     {
@@ -231,6 +233,18 @@ export const router = createBrowserRouter([
         path: "/textArchitect",
         element: <Page>
             <TextArchitect />
+        </Page>
+    },
+    {
+        path: "/xarrows",
+        element: <Page>
+            <LaceApp />
+        </Page>
+    },
+    {
+        path: "/choiceCorrectItems",
+        element: <Page>
+            <ChoiceCorrectItems />
         </Page>
     }
 ])
