@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from 'react';
 import Xarrow, { useXarrow, Xwrapper } from 'react-xarrows';
+import type { Id } from '../../types/types';
 
 // 1. Компонент Pin (Точка)
-const Pin = ({ id, x, y }) => {
+const Pin = ({ id, x, y }: any) => {
     const updateXarrow = useXarrow(); // Хук для обновления линий
     const [position, setPosition] = useState({ x, y });
 
-    const handleDrag = (e) => {
+    const handleDrag = (e: any) => {
         // Простая логика перетаскивания для примера
         if (e.buttons === 1) {
             setPosition({ x: e.clientX, y: e.clientY });
@@ -35,7 +37,7 @@ const Pin = ({ id, x, y }) => {
 };
 
 // 2. Компонент Lace (Линия) - это просто обертка вокруг Xarrow
-const Lace = ({ fromId, toId }) => {
+const Lace = ({ fromId, toId }: any) => {
     return (
         <Xarrow
             start={fromId} // ID начального Pin
@@ -50,26 +52,26 @@ const Lace = ({ fromId, toId }) => {
 
 // 3. Основной компонент приложения
 export default function LaceApp() {
-    const [connections, setConnections] = useState([]);
-    const startPinRef = useRef(null);
+    const [connections] = useState<{ id: Id; from: Id; to: Id; }[]>([]);
+    // const startPinRef = useRef(null);
 
     // Функция для начала создания связи
-    const handlePinMouseDown = (pinId) => {
-        startPinRef.current = pinId;
-    };
+    // const handlePinMouseDown = (pinId) => {
+    //     startPinRef.current = pinId;
+    // };
 
-    // Функция для завершения создания связи
-    const handlePinMouseUp = (endPinId) => {
-        if (startPinRef.current && startPinRef.current !== endPinId) {
-            // Добавляем новую связь в массив
-            setConnections([...connections, {
-                id: `conn_${connections.length}`,
-                from: startPinRef.current,
-                to: endPinId
-            }]);
-        }
-        startPinRef.current = null;
-    };
+    // // Функция для завершения создания связи
+    // const handlePinMouseUp = (endPinId) => {
+    //     if (startPinRef.current && startPinRef.current !== endPinId) {
+    //         // Добавляем новую связь в массив
+    //         setConnections([...connections, {
+    //             id: `conn_${connections.length}`,
+    //             from: startPinRef.current,
+    //             to: endPinId
+    //         }]);
+    //     }
+    //     startPinRef.current = null;
+    // };
 
     return (
         <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>

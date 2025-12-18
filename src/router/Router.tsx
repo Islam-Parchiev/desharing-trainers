@@ -42,6 +42,7 @@ import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
 import LaceApp from "../components/xarrows";
 import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
 import { PoliteWordsClicker } from "../trainers/moduleTwo/PoliteWordsClicker";
+import { WordCategorizer } from "../trainers/moduleThree/wordCategorizer";
 
 export const router = createBrowserRouter([
     {
@@ -252,6 +253,12 @@ export const router = createBrowserRouter([
         path: "/politeWordsClicker",
         element: <Page>
             <PoliteWordsClicker />
+        </Page>
+    },
+    {
+        path: "/wordCategorizer",
+        element: <Page>
+            <WordCategorizer />
         </Page>
     }
 ])

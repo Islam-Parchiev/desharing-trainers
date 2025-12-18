@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TrainerTitle } from '../../../components/TrainerTitle';
 import './styles.scss';
-import type { Status } from '../../../types/types';
+// import type { Status } from '../../../types/types';
 
 const mockData = {
     text: "Муха | Жу, | хоть | не | хотела, | В | скорый | поезд | залетела.| Ей | букашки | Фло | и | Фти | Скажут: | 'Доброго пути!' | Здравствуйте ",
@@ -15,8 +15,8 @@ type WordState = {
 }
 
 export const PoliteWordsClicker = () => {
-    const [data, setData] = useState(mockData);
-    const [status, setStatus] = useState<Status>("idle");
+    const [data] = useState(mockData);
+    // const [status, setStatus] = useState<Status>("idle");
     const [words, setWords] = useState<WordState[]>(() => {
         const splittedWords = data.text.split("|").filter(word => word.trim() !== '');
         return splittedWords.map(word => ({

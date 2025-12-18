@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './styles.scss';
 import { TrainerTitle } from '../../../components/TrainerTitle';
 import type { Id, Status } from '../../../types/types';
@@ -32,8 +32,8 @@ export const ChoiceCorrectItems = () => {
     const [items, setItems] = useState<Item[]>(
         mockData.data.map(item => ({ ...item, submitted: false }))
     );
-    const [correct, setCorrect] = useState<{ value: string; }[]>(mockData.correctVariants);
-    const [submittedItems, setSubmittedItems] = useState<Item[]>([]);
+    const [correct] = useState<{ value: string; }[]>(mockData.correctVariants);
+    // const [submittedItems, setSubmittedItems] = useState<Item[]>([]);
     const [status, setStatus] = useState<Status>("idle");
     const totalSlots = 9;
     const slots = Array.from({ length: totalSlots }, (_, i) => i + 1);
@@ -43,7 +43,7 @@ export const ChoiceCorrectItems = () => {
     const getItemByPosition = (position: number) => {
         return items.find(item => item.position === position);
     };
-    const handleCheck = () => {
+    const handleCheck = useCallback(() => {
         const submitted = items.filter(item => item.submitted);
 
         if (submitted.length !== 3) return;
@@ -53,7 +53,7 @@ export const ChoiceCorrectItems = () => {
         );
 
         setStatus(isCorrect ? "success" : "error");
-    }
+    }, [items, correct])
     const handleItemClick = (item: Item) => {
         setItems(prevItems =>
             prevItems.map(prevItem =>
@@ -65,7 +65,7 @@ export const ChoiceCorrectItems = () => {
     };
     useEffect(() => {
         handleCheck();
-    }, [items])
+    }, [items, handleCheck])
     const addClass = (item: Item) => {
         if (item.submitted) {
             if (correct.find(el => el.value === item.value)) {
