@@ -1,0 +1,248 @@
+.WordCategorizer {
+	&__controls {
+		display: flex;
+		gap: 16px;
+		margin-bottom: 24px;
+	}
+
+	&__button {
+		padding: 8px 16px;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 14px;
+		transition: all 0.3s ease;
+
+		&--reset {
+			background-color: #f0f0f0;
+			color: #333;
+
+			&:hover {
+				background-color: #e0e0e0;
+			}
+		}
+
+		&--check {
+			background-color: #4caf50;
+			color: white;
+
+			&:hover {
+				background-color: #45a049;
+			}
+		}
+	}
+
+	&__subtitle {
+		margin-bottom: 16px;
+		font-size: 18px;
+		color: #333;
+	}
+
+	&__inner {
+		display: flex;
+		gap: 32px;
+	}
+
+	&__words {
+		flex: 1;
+	}
+
+	&Cols {
+		flex: 2;
+		display: flex;
+		gap: 24px;
+	}
+
+	&Col {
+		flex: 1;
+		background-color: #f8f9fa;
+		border-radius: 12px;
+		padding: 16px;
+		min-height: 300px;
+		transition: all 0.3s ease;
+		border: 2px dashed transparent;
+
+		&--over {
+			border-color: #4caf50;
+			background-color: rgba(76, 175, 80, 0.1);
+		}
+
+		&__title {
+			margin: 0 0 16px 0;
+			color: #333;
+			font-size: 16px;
+		}
+
+		&__inner {
+			min-height: 200px;
+		}
+
+		&__empty {
+			text-align: center;
+			color: #999;
+			padding: 32px;
+			font-style: italic;
+		}
+
+		&__words {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+	}
+
+	&List {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	&Word {
+		padding: 12px 16px;
+		background-color: white;
+		border-radius: 8px;
+		cursor: grab;
+		user-select: none;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+		border: 2px solid transparent;
+
+		&:hover {
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			transform: translateY(-2px);
+		}
+
+		&:active {
+			cursor: grabbing;
+		}
+
+		&--dragging {
+			opacity: 0.8;
+			transform: rotate(5deg);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+.WordCategorizerList {
+	display: flex;
+	align-items: start;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.WordCategorizerWord {
+	width: 150px;
+	height: 40px;
+	background-color: var(--primary-medium);
+	border-radius: 12px;
+	text-align: center;
+	cursor: grab;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+	&:hover {
+		background-color: var(--primary-light);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	span {
+		font-size: 16px;
+		color: #fff;
+		font-family: sans-serif;
+		font-weight: 500;
+		user-select: none;
+	}
+}
+
+.WordCategorizerCols {
+	display: flex;
+	align-items: stretch;
+	gap: 20px;
+	min-height: 500px;
+}
+
+.WordCategorizerCol {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 15px;
+	border-radius: 12px;
+	background-color: white;
+	min-height: 500px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+	&__title {
+		height: 30px;
+		font-size: 16px;
+		font-family: sans-serif;
+		font-weight: 600;
+		color: var(--text-dark);
+		margin: 0 0 15px 0;
+		padding: 5px 10px;
+		background-color: var(--primary-medium);
+		color: white;
+		border-radius: 8px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__inner {
+		width: 100%;
+		height: 100%;
+		flex-grow: 1;
+		background-color: #f8fafc;
+		border-radius: 12px;
+		padding: 15px;
+		border: 2px dashed #cbd5e1;
+		.WordCategorizerCol__words_wrapper {
+			background-color: transparent;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__words {
+		min-height: 400px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	&__word {
+		background-color: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		padding: 10px 15px;
+		transition: all 0.2s ease;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #f1f5f9;
+			border-color: var(--primary-light);
+		}
+
+		span {
+			font-size: 15px;
+			color: var(--text-dark);
+			font-family: sans-serif;
+			font-weight: 500;
+		}
+	}
+}
+
+.WordCategorizerWord.dragging {
+	opacity: 0.5;
+	transform: scale(0.95);
+}
+
+.WordCategorizerCol.drag-over {
+	border-color: var(--primary-medium);
+	background-color: rgba(74, 111, 165, 0.05);
+}
