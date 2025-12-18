@@ -95,6 +95,10 @@ export const Main = () => {
                             <Link to="/choiceCorrectItems">ChoiceCorrectItems</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/politeWordsClicker">PoliteWordsClicker</Link>
+                        </div>
+
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 
