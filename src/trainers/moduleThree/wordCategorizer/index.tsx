@@ -43,20 +43,14 @@ export const WordCategorizer = () => {
     ];
 
     const categories = [
-        { id: 'living', title: 'Кто? Что?' },
-        { id: 'action', title: 'Что делать?' },
-        { id: 'property', title: 'Какой?' },
+        { id: 1, category: "living", title: 'Кто? Что?', correctDistribution: ['Собака', 'Кошка', 'Стол'] },
+        { id: 2, category: "action", title: 'Что делать?', correctDistribution: ['Бегать', 'Прыгать'] },
+        { id: 3, category: "property", title: 'Какой?', correctDistribution: ['Красный', 'Синий'] },
     ];
 
-
     const [words, setWords] = useState<WordItem[]>(initialWords);
-
-
     const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-
-
     const activeWord = words.find(word => word.id === activeId);
-
 
     const sensors = useSensors(
         useSensor(PointerSensor, {
@@ -80,7 +74,8 @@ export const WordCategorizer = () => {
 
         const activeId = active.id.toString();
         const overId = over.id.toString();
-        const isOverCategory = categories.some(cat => cat.id === overId);
+        const isOverCategory = categories.some(cat => cat.category === overId);
+
         if (isOverCategory) {
             setWords(prev => prev.map(word =>
                 word.id === activeId ? { ...word, category: overId } : word
@@ -103,14 +98,16 @@ export const WordCategorizer = () => {
             const activeIndex = words.findIndex(word => word.id === activeId);
             const overIndex = words.findIndex(word => word.id === overId);
 
-            const activeWord = words[activeIndex];
-            const overWord = words[overIndex];
+            if (activeIndex !== -1 && overIndex !== -1) {
+                const activeWord = words[activeIndex];
+                const overWord = words[overIndex];
 
-            if (activeWord.category === overWord.category) {
-                setWords(prev => {
-                    const newWords = arrayMove(prev, activeIndex, overIndex);
-                    return newWords;
-                });
+                if (activeWord.category === overWord.category) {
+                    setWords(prev => {
+                        const newWords = arrayMove(prev, activeIndex, overIndex);
+                        return newWords;
+                    });
+                }
             }
         }
 
@@ -119,18 +116,14 @@ export const WordCategorizer = () => {
 
     const handleReset = () => {
         setWords(initialWords);
+        setStatus("idle");
     };
 
     const handleCheck = () => {
-        const correctDistribution = {
-            'living': ['1', '2', '7'],
-            'action': ['3', '4'],
-            'property': ['5', '6'],
-        };
-
         const isCorrect = words.every(word => {
             if (word.category) {
-                return correctDistribution[word.category as keyof typeof correctDistribution]?.includes(word.id);
+                const foundCategory = categories.find(c => c.category === word.category);
+                return foundCategory ? foundCategory.correctDistribution.includes(word.text) : false;
             }
             return false;
         });
@@ -151,8 +144,10 @@ export const WordCategorizer = () => {
     return (
         <div className="WordCategorizer">
             <TrainerTitle>Распредели слова по группам</TrainerTitle>
+
             {status === "success" && "Success"}
             {status === "error" && "Error"}
+
             <div className="WordCategorizer__controls">
                 <button
                     className="WordCategorizer__button WordCategorizer__button--reset"
@@ -193,9 +188,9 @@ export const WordCategorizer = () => {
                         {categories.map((category) => (
                             <WordContainer
                                 key={category.id}
-                                id={category.id}
+                                id={category.category}
                                 title={category.title}
-                                words={getWordsByCategory(category.id)}
+                                words={getWordsByCategory(category.category)}
                             />
                         ))}
                     </div>
