@@ -43,6 +43,7 @@ import LaceApp from "../components/xarrows";
 import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
 import { PoliteWordsClicker } from "../trainers/moduleTwo/PoliteWordsClicker";
 import { WordCategorizer } from "../trainers/moduleThree/wordCategorizer";
+import { ColorWords } from "../trainers/moduleThree/colorWords";
 
 export const router = createBrowserRouter([
     {
@@ -259,6 +260,12 @@ export const router = createBrowserRouter([
         path: "/wordCategorizer",
         element: <Page>
             <WordCategorizer />
+        </Page>
+    },
+    {
+        path: "/colorWords",
+        element: <Page>
+            <ColorWords />
         </Page>
     }
 ])
