@@ -1,0 +1,23 @@
+.SlItem {
+	cursor: pointer;
+	vertical-align: middle;
+	overflow: hidden;
+	user-select: none;
+	position: relative;
+	background-color: var(--primary-medium);
+	// padding: 5px;
+	border-radius: 5px;
+	// width: 100px;
+	width: 100%;
+	text-align: center;
+	&:focus-visible {
+		outline: 2px solid #007bff;
+		outline-offset: 2px;
+	}
+
+	&--empty {
+		padding: 0 10px;
+		color: #666;
+		font-style: italic;
+	}
+}

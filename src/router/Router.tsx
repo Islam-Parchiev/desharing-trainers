@@ -44,6 +44,8 @@ import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
 import { PoliteWordsClicker } from "../trainers/moduleTwo/PoliteWordsClicker";
 import { WordCategorizer } from "../trainers/moduleThree/wordCategorizer";
 import { ColorWords } from "../trainers/moduleThree/colorWords";
+import { SentenceBuilder } from "../trainers/moduleThree/SentenceBuilder";
+import { SyllableBuilder } from "../trainers/moduleThree/SyllableBuilder";
 
 export const router = createBrowserRouter([
     {
@@ -266,6 +268,18 @@ export const router = createBrowserRouter([
         path: "/colorWords",
         element: <Page>
             <ColorWords />
+        </Page>
+    },
+    {
+        path: "/sentenceBuilder",
+        element: <Page>
+            <SentenceBuilder />
+        </Page>
+    },
+    {
+        path: "/syllableBuilder",
+        element: <Page>
+            <SyllableBuilder />
         </Page>
     }
 ])
