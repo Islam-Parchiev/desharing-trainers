@@ -25,7 +25,7 @@ const mockData = {
 export const SyllableBuilder = () => {
     const [status, setStatus] = useState<Status>("idle");
     const [slots, setSlots] = useState<{ id: Id; currentValue: string | null; correctValue: string; }[]>(mockData.slots)
-    const [data, setData] = useState(mockData);
+    const [data] = useState(mockData);
     const [variants] = useState<{ id: Id; value: string; }[]>(mockData.variants);
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;

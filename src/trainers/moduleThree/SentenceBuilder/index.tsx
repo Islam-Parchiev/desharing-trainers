@@ -2,7 +2,7 @@
 import { TrainerTitle } from '../../../components/TrainerTitle';
 import './styles.scss';
 import { SentenceItem } from './SentenceItem';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { Status } from '../../../types/types';
 import { Button } from '../../../shared/ui/Button';
 
@@ -30,7 +30,6 @@ type SentenceData = {
     correctAnswer: string;
     currentAnswer: string | null;
 };
-
 export const SentenceBuilder = () => {
     const [status, setStatus] = useState<Status>("idle");
     const [data, setData] = useState<SentenceData[]>(
@@ -40,13 +39,11 @@ export const SentenceBuilder = () => {
         }))
     );
 
-    // Функция для обновления ответа в конкретном элементе
     const handleAnswerUpdate = (index: number, answer: string | null) => {
         setData(prev => prev.map((item, i) =>
             i === index ? { ...item, currentAnswer: answer } : item
         ));
     };
-
 
     const checkAllAnswers = () => {
         const allAnswered = data.every(item => item.currentAnswer !== null);
@@ -63,8 +60,6 @@ export const SentenceBuilder = () => {
             setStatus("error");
         }
     };
-
-
 
     return (
         <div className="SentenceBuilder">
