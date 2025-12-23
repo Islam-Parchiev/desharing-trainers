@@ -1,24 +1,14 @@
 .SyllableSlot {
 	font-size: 24px;
 	background-color: #fff;
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 8px;
-	border: 2px dashed #000;
+	border: 1px solid var(--primary-medium);
 	transition: all 0.3s ease;
-
-	&:empty {
-		border: 2px dashed #666;
-
-		&::before {
-			content: 'Перетащите сюда';
-			color: #999;
-			font-size: 12px;
-		}
-	}
 }
 
 .drop-zone {

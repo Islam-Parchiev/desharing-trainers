@@ -1,31 +1,20 @@
 .SyllableBuilderVariant {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border: 2px solid #000;
-    border-radius: 8px;
-    cursor: grab;
-    font-size: 24px;
-    font-weight: bold;
-    user-select: none;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      background-color: #e8e8e8;
-      transform: translateY(-2px);
-    }
-    
-    &.dragging {
-      cursor: grabbing;
-      opacity: 0.7;
-    }
-    
-    &.overlay {
-      cursor: grabbing;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transform: rotate(5deg);
-    }
-  }
+	width: 70px;
+	height: 70px;
+	border: 1px solid var(--primary-medium);
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	cursor: grab;
+	// transition: 0.3s ease-in-out;
+	user-select: none;
+	span {
+		font-size: 29px;
+		font-weight: 700;
+	}
+	&:hover {
+		scale: 1.1;
+	}
+}

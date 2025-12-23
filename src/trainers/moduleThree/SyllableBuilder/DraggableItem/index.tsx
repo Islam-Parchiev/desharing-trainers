@@ -1,37 +1,29 @@
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import cn from 'classnames';
+import { useDraggable } from '@dnd-kit/core';
 import './styles.scss';
-interface DraggableVariantProps {
-    id: string;
-    value: string;
-    isDragging: boolean;
-}
+import type { Id } from '../../../../types/types';
+export const DraggableVariant = ({ id, value, isDisabled }: { id: Id; value: string; isDisabled: boolean; }) => {
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({
+        id,
+        data: { value },
+        disabled: isDisabled,
 
-export const DraggableVariant = ({ id, value, isDragging }: DraggableVariantProps) => {
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-        transform,
-        transition,
-        isDragging: isSortableDragging,
-    } = useSortable({ id });
 
-    const style = {
-        transform: CSS.Transform.toString(transform),
-        transition,
-        opacity: isSortableDragging ? 0.5 : 1,
-    };
+    })
+    const style = transform
+        ? {
+            transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        }
+        : undefined;
 
     return (
-        <div
-            ref={setNodeRef}
+        <li
+            className={cn("SyllableBuilderVariant", isDisabled && "disabled")}
             style={style}
-            className={`SyllableBuilderVariant ${isDragging ? 'dragging' : ''}`}
-            {...attributes}
             {...listeners}
-        >
+            {...attributes}
+            ref={setNodeRef}>
             <span>{value}</span>
-        </div>
+        </li>
     );
 };

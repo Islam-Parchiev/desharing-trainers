@@ -1,58 +1,15 @@
-// Slot.tsx
-import { useState } from 'react';
+import { useDroppable } from '@dnd-kit/core';
+import './styles.scss';
+import type { Id } from '../../../../types/types';
 
-interface SyllableSlotProps {
-    id: number;
-    currentValue: string;
-    correctValue: string;
-    slotNumber: number;
-    isFilled: boolean;
-    isCorrect: boolean;
-    onDrop: (slotId: number, value: string) => void;
-}
-
-export const SyllableSlot: React.FC<SyllableSlotProps> = ({
-    id,
-    currentValue,
-    slotNumber,
-    isFilled,
-    isCorrect,
-    onDrop
-}) => {
-    const [isDraggingOver, setIsDraggingOver] = useState(false);
-
-    const handleDragOver = (e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDraggingOver(true);
-    };
-
-    const handleDragLeave = () => {
-        setIsDraggingOver(false);
-    };
-
-    const handleDropEvent = (e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDraggingOver(false);
-        const value = e.dataTransfer.getData('text/plain');
-        onDrop(id, value);
-    };
-
+export const SyllableSlot = ({ id, currentValue = "test" }: { id: Id; currentValue: string | null; }) => {
+    const { setNodeRef } = useDroppable({ id })
     return (
         <div
-            className={`SyllableSlot ${isFilled ? 'SyllableSlot--filled' : ''
-                } ${isCorrect ? 'SyllableSlot--correct' : ''
-                } ${isDraggingOver ? 'SyllableSlot--dragging-over' : ''
-                }`}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDropEvent}
-            data-slot-id={id}
+            className={`SyllableSlot`}
+            ref={setNodeRef}
         >
-            {isFilled ? (
-                <span className="SyllableSlot__value">{currentValue}</span>
-            ) : (
-                <span className="SyllableSlot__placeholder">Слог {slotNumber}</span>
-            )}
+            <span className="SyllableSlot__value">{currentValue}</span>
         </div>
     );
 };
