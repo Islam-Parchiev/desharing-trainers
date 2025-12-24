@@ -1,0 +1,119 @@
+{
+    "posts": [
+        {
+            "id": "1",
+            "title": "a title",
+            "views": 100
+        },
+        {
+            "id": "2",
+            "title": "another title",
+            "views": 200
+        }
+    ],
+    "comments": [
+        {
+            "id": "1",
+            "text": "a comment about post 1",
+            "postId": "1"
+        },
+        {
+            "id": "2",
+            "text": "another comment about post 1",
+            "postId": "1"
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    },
+    "table": {
+        "tableCols": [
+            {
+                "colHeader": "Первый"
+            },
+            {
+                "colHeader": "Второй"
+            }
+        ],
+        "questions": [
+            {
+                "id": 1,
+                "question": "Заполните пропущенные числа",
+                "variants": [
+                    {
+                        "id": 1,
+                        "content": "5"
+                    },
+                    {
+                        "id": 2,
+                        "content": "10"
+                    }
+                ],
+                "slots": [
+                    {
+                        "id": 1,
+                        "correctValue": "5",
+                        "currentValue": null
+                    },
+                    {
+                        "id": 2,
+                        "correctValue": "10",
+                        "currentValue": null
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "question": "Выберите цвета",
+                "variants": [
+                    {
+                        "id": 3,
+                        "content": "Красный"
+                    },
+                    {
+                        "id": 4,
+                        "content": "Синий"
+                    }
+                ],
+                "slots": [
+                    {
+                        "id": 3,
+                        "correctValue": "Красный",
+                        "currentValue": null
+                    },
+                    {
+                        "id": 4,
+                        "correctValue": "Синий",
+                        "currentValue": null
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "question": "Сопоставьте животных",
+                "variants": [
+                    {
+                        "id": 5,
+                        "content": "Собака"
+                    },
+                    {
+                        "id": 6,
+                        "content": "Кошка"
+                    }
+                ],
+                "slots": [
+                    {
+                        "id": 5,
+                        "correctValue": "Собака",
+                        "currentValue": null
+                    },
+                    {
+                        "id": 6,
+                        "correctValue": "Кошка",
+                        "currentValue": null
+                    }
+                ]
+            }
+        ]
+    }
+}

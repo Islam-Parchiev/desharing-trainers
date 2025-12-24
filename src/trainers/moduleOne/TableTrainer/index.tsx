@@ -6,49 +6,20 @@ import { TableSlot } from './TableSlot';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { Button } from '../../../shared/ui/Button';
 import type { Id, Status } from '../../../types/types';
-const tableQuestions: { id: Id; question: string; variants: { id: Id; content: string }[]; slots: { id: Id; correctValue: string; currentValue: string | null; }[]; }[] = [
-    {
-        id: 1,
-        question: "test",
-        variants: [{ id: 1, content: "1" }, { id: 2, content: "2" }],
-        slots: [{ id: 1, correctValue: "1", currentValue: null }, { id: 2, correctValue: "2", currentValue: null }]
-    },
-    {
-        id: 2,
-        question: "test2",
-        variants: [{ id: 3, content: "3" }, { id: 4, content: "4" }],
-        slots: [{ id: 3, correctValue: "4", currentValue: null }, { id: 4, correctValue: "3", currentValue: null }]
-    },
-    {
-        id: 3,
-        question: "test3",
-        variants: [{ id: 5, content: "5" }, { id: 6, content: "6" }],
-        slots: [{ id: 5, correctValue: "6", currentValue: null }, { id: 6, correctValue: "5", currentValue: null }]
-    },
-    {
-        id: 4,
-        question: "test4",
-        variants: [{ id: 7, content: "7" }, { id: 8, content: "8" }],
-        slots: [{ id: 7, correctValue: "8", currentValue: null }, { id: 8, correctValue: "7", currentValue: null }]
-    }
-]
-const tableCols = [
-    {
-        colHeader: "test1"
-    },
-    {
-        colHeader: "test2"
-    }
-]
-
-export const TableTrainer = () => {
-    const [data, setData] = useState([...tableQuestions.map(item => {
+type TableQuestion = { id: Id; question: string; variants: { id: Id; content: string }[]; slots: { id: Id; correctValue: string; currentValue: string | null; }[]; };
+export interface TableTrainerData {
+    questions: TableQuestion[];
+    tableCols: { colHeader: string; }[]
+}
+export const TableTrainer = (fetchedData: TableTrainerData) => {
+    const [data, setData] = useState([...fetchedData.questions.map(item => {
         return {
             ...item,
             completed: false,
             currentValue: null,
         }
     })]);
+    const [columns] = useState(fetchedData.tableCols);
     const [currentQuestionN, setCurrentQuestionN] = useState(0);
     const currentQuestion = data[currentQuestionN];
     const [status, setStatus] = useState<Status>("idle");
@@ -138,14 +109,17 @@ export const TableTrainer = () => {
                     <thead className='TableTrainer__table-head'>
                         <tr>
                             <th className='TableTrainer__table--questionCol'></th>
-                            {tableCols.map((h, index) => (
+                            {columns.map((h, index) => (
                                 <th key={`${h.colHeader}-${index}`}>{h.colHeader}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((question, index) => <tr key={`question-${index}`} className={cn('TableTrainerItem', isVisible(question, index) && "visible")}>
-                            <td className='TableTrainer__table--questionCol'>{question.question}</td>
+                            <td className='TableTrainer__table--questionCol'><span>
+                                {question.question}
+                            </span>
+                            </td>
                             {question.slots.map(slot => <td key={`table-slot-${slot.id}`}>
                                 <TableSlot
                                     value={slot.currentValue}
