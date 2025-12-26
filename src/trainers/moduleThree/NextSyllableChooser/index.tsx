@@ -84,7 +84,7 @@ export const NextSyllableChooser = () => {
     const handleItemClick = (clickedCell: SyllableItem) => {
         console.log(data.currentPoint.content + clickedCell.content);
 
-        if (data.correctAnswers.includes(data.currentPoint.content + clickedCell.content)) {
+        if (clickedCell.correct && data.correctAnswers.includes(data.currentPoint.content + clickedCell.content)) {
             setSelectedAnswers(prev => [...prev, data.currentPoint.content + clickedCell.content])
             setData(prev => {
                 const updatedData = prev.data.map(item => {
