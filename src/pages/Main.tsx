@@ -110,6 +110,9 @@ export const Main = () => {
                             <Link to="/syllableBuilder">syllableBuilder</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/nextSyllableChooser">NextSyllableChooser(InProgress)</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 
