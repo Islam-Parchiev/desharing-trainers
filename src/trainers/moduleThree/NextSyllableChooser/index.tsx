@@ -75,7 +75,7 @@ const mockData: MockData = {
         { id: 49, content: "ви", selected: false, correct: false }
     ],
     currentPoint: { id: 8, content: "мо" },
-    correctAnswers: ["море", "репа", "пара"]
+    correctAnswers: ["море", "репа", "пара", "рама", "маска", "скала", "лама", "масло", "слово", "вода", "дача",]
 }
 export const NextSyllableChooser = () => {
     const [data, setData] = useState(mockData);
