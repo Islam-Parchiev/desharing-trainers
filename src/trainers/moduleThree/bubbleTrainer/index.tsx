@@ -77,7 +77,7 @@ export const BubbleTrainer = () => {
                 {status === "success" && "Success"}
                 {status === "error" && "Error"}
                 <div className="BubbleTrainer__main">
-                    {words.map((item, index) => (
+                    {words.map((item) => (
                         <div
                             key={item.id}
                             className="BubbleTrainerSlot"

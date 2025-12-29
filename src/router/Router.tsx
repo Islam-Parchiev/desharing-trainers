@@ -48,6 +48,7 @@ import { SentenceBuilder } from "../trainers/moduleThree/SentenceBuilder";
 import { SyllableBuilder } from "../trainers/moduleThree/SyllableBuilder";
 import { NextSyllableChooser } from "../trainers/moduleThree/NextSyllableChooser";
 import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
+import { LetterSoundCategorizer } from "../trainers/moduleThree/LetterSoundCategorizer";
 
 export const router = createBrowserRouter([
     {
@@ -294,6 +295,12 @@ export const router = createBrowserRouter([
         path: "/bubbleTrainer",
         element: <Page>
             <BubbleTrainer />
+        </Page>
+    },
+    {
+        path:"/letterSoundCategorizer",
+        element:<Page>
+            <LetterSoundCategorizer/>
         </Page>
     }
 ])
