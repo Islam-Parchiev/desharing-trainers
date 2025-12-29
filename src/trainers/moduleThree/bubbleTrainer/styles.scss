@@ -1,0 +1,23 @@
+.BubbleTrainer {
+	&__main {
+		position: relative;
+		width: 100%;
+		min-height: 700px;
+	}
+}
+.BubbleTrainerSlot {
+	width: 160px;
+	height: 160px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	background-image: url('./bubble.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	&__selected {
+		background-color: var(--primary-medium);
+		color: #fff;
+	}
+}

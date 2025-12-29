@@ -47,6 +47,7 @@ import { ColorWords } from "../trainers/moduleThree/colorWords";
 import { SentenceBuilder } from "../trainers/moduleThree/SentenceBuilder";
 import { SyllableBuilder } from "../trainers/moduleThree/SyllableBuilder";
 import { NextSyllableChooser } from "../trainers/moduleThree/NextSyllableChooser";
+import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -287,6 +288,12 @@ export const router = createBrowserRouter([
         path: "/nextSyllableChooser",
         element: <Page>
             <NextSyllableChooser />
+        </Page>
+    },
+    {
+        path: "/bubbleTrainer",
+        element: <Page>
+            <BubbleTrainer />
         </Page>
     }
 ])

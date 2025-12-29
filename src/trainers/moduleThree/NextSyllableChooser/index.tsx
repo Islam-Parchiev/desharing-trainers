@@ -50,7 +50,7 @@ const mockData: MockData = {
         { id: 24, content: "ма", selected: false, correct: true },
         { id: 25, content: "жи", selected: false, correct: false },
         { id: 26, content: "ду", selected: false, correct: false },
-        { id: 27, content: "рь", selected: false, correct: false },
+        { id: 27, content: "рь", selected: false, correct: true },
         { id: 28, content: "те", selected: false, correct: false },
         { id: 29, content: "со", selected: false, correct: false },
         { id: 30, content: "па", selected: false, correct: false },
@@ -82,17 +82,23 @@ export const NextSyllableChooser = () => {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
     const [status, setStatus] = useState<Status>("idle");
     const handleItemClick = (clickedCell: SyllableItem) => {
-        console.log(data.currentPoint.content + clickedCell.content);
+        if (selectedAnswers.length === data.correctAnswers.length || clickedCell.selected) {
+            return;
+        }
 
-        if (clickedCell.correct && data.correctAnswers.includes(data.currentPoint.content + clickedCell.content)) {
-            setSelectedAnswers(prev => [...prev, data.currentPoint.content + clickedCell.content])
+        const currentAnswer = data.currentPoint.content + clickedCell.content;
+        const isCorrectAnswer = clickedCell.correct && data.correctAnswers.includes(currentAnswer);
+
+        if (isCorrectAnswer) {
+            const newSelectedAnswers = [...selectedAnswers, currentAnswer];
+            setSelectedAnswers(newSelectedAnswers);
+
             setData(prev => {
-                const updatedData = prev.data.map(item => {
-                    if (item.id === prev.currentPoint.id || item.id === clickedCell.id) {
-                        return { ...item, selected: true };
-                    }
-                    return item;
-                });
+                const updatedData = prev.data.map(item =>
+                    item.id === prev.currentPoint.id || item.id === clickedCell.id
+                        ? { ...item, selected: true }
+                        : item
+                );
 
                 return {
                     ...prev,
@@ -103,13 +109,14 @@ export const NextSyllableChooser = () => {
                     }
                 };
             });
+
+            if (newSelectedAnswers.length === data.correctAnswers.length) {
+                setStatus("success");
+            }
         } else {
             setStatus("error");
         }
-        if (selectedAnswers.length === data.correctAnswers.length) {
-            setStatus("success");
-        }
-    }
+    };
     const render = () => {
         return data.data.map(cell => {
             return <div onClick={() => handleItemClick(cell)} className={cn("maze__cell", cell.id === data.currentPoint.id ? "maze__cell--start" : "", cell.selected && "maze__cell--selected")}>{cell.content}</div>
