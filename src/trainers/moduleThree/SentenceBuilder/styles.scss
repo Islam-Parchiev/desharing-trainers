@@ -1,5 +1,123 @@
 .SentenceBuilder {
-    &__items {
-        display: flex;
-    }
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 24px;
+	background-color: var(--neutral-white);
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+
+	&__main {
+		padding: 24px;
+		background-color: var(--neutral-lightest);
+		border-radius: 8px;
+		border: 1px solid var(--neutral-light);
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	// Status messages
+	& > div > [class*='status'] {
+		display: none;
+	}
+
+	& [class*='success'],
+	& [class*='error'] {
+		padding: 16px;
+		border-radius: 8px;
+		text-align: center;
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 16px;
+		animation: fadeIn 0.3s ease-in-out;
+	}
+
+	& [class*='success'] {
+		background-color: var(--primary-lightest);
+		color: var(--primary-darkest);
+		border: 1px solid var(--primary-light);
+	}
+
+	& [class*='error'] {
+		background-color: var(--negative-lightest);
+		color: var(--negative-darkest);
+		border: 1px solid var(--negative-light);
+	}
+
+	// Button container
+	& .Button {
+		align-self: center;
+		min-width: 160px;
+		padding: 14px 32px;
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.2s ease;
+
+		&:hover:not(:disabled) {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		&:active:not(:disabled) {
+			transform: translateY(0);
+		}
+	}
+}
+
+// Animation for status messages
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+	.SentenceBuilder {
+		padding: 16px;
+
+		&__inner {
+			gap: 24px;
+		}
+
+		&__main {
+			padding: 16px;
+		}
+
+		&__items {
+			gap: 20px;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.SentenceBuilder {
+		border-radius: 8px;
+		padding: 12px;
+
+		&__main {
+			padding: 12px;
+		}
+
+		& .Button {
+			width: 100%;
+			min-width: auto;
+		}
+	}
 }

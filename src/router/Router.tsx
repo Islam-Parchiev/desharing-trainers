@@ -49,6 +49,7 @@ import { SyllableBuilder } from "../trainers/moduleThree/SyllableBuilder";
 import { NextSyllableChooser } from "../trainers/moduleThree/NextSyllableChooser";
 import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
 import { LetterSoundCategorizer } from "../trainers/moduleThree/LetterSoundCategorizer";
+import { ReorderLetters } from "../trainers/moduleThree/ReorderLetters";
 
 export const router = createBrowserRouter([
     {
@@ -298,9 +299,14 @@ export const router = createBrowserRouter([
         </Page>
     },
     {
-        path:"/letterSoundCategorizer",
-        element:<Page>
-            <LetterSoundCategorizer/>
+        path: "/letterSoundCategorizer",
+        element: <Page>
+            <LetterSoundCategorizer title="test" />
+        </Page>
+    }, {
+        path: "/reorderLetters",
+        element: <Page>
+            <ReorderLetters />
         </Page>
     }
 ])

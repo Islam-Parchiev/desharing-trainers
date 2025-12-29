@@ -1,0 +1,24 @@
+.ReorderLetters {
+	&__cards {
+		display: flex;
+		align-items: start;
+		gap: 20px;
+	}
+}
+
+.ReorderLettersCard {
+	width: 120px;
+	height: 140px;
+	color: #000;
+	border: 10px solid #fffcf0;
+	background-color: #eadfd4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: grab;
+	user-select: none;
+	span {
+		font-size: 37px;
+		font-family: sans-serif;
+	}
+}

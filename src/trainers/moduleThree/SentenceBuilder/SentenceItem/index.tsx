@@ -1,41 +1,55 @@
-// SentenceItem.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SlItem } from "../SlItem";
 import './styles.scss';
-import type { Status } from "../../../../types/types";
 
-// Сделаем props необязательными с значениями по умолчанию
-export const SentenceItem = ({
-    title = "Укажите title",
-    words = ["test", "test1", "test2"],
-    status = "idle",
-    onAnswerChange
-}: {
+interface SentenceItemProps {
     title?: string;
     words?: string[];
     correctAnswer?: string;
-    status?: Status;
-    currentAnswer: null | string;
+    currentAnswer: string | null;
     onAnswerChange?: (answer: string | null) => void;
-    setStatus?: (value: Status) => void;
-}) => {
-    const [selectedIndex, setSelectedIndex] = useState<number>(1);
+}
+
+export const SentenceItem = ({
+    title = "Укажите title",
+    words = ["test", "test1", "test2"],
+    correctAnswer = "",
+    currentAnswer,
+    onAnswerChange
+}: SentenceItemProps) => {
+    const [selectedIndex, setSelectedIndex] = useState<number>(() => {
+        if (currentAnswer === null) return 0;
+        const index = words.indexOf(currentAnswer);
+        return index >= 0 ? index : 0;
+    });
+
+    useEffect(() => {
+        if (currentAnswer === null) {
+            setSelectedIndex(0);
+        } else {
+            const index = words.indexOf(currentAnswer);
+            if (index >= 0 && index !== selectedIndex) {
+                setSelectedIndex(index);
+            }
+        }
+    }, [currentAnswer, words]);
 
     const handleSelect = (index: number) => {
         setSelectedIndex(index);
         if (onAnswerChange) {
-            onAnswerChange(words[selectedIndex]);
+            onAnswerChange(words[index]);
         }
     };
-    const showResult = status === "success" || status === "error" || null;
+
     return (
         <div className="SentenceItem">
             <span className="SentenceItem__title">{title}</span>
-            {showResult && <span>{showResult}</span>}
             <SlItem
                 onSelect={handleSelect}
                 selectedIndex={selectedIndex}
                 words={words}
+                correctAnswer={correctAnswer}
+                currentAnswer={currentAnswer}
             />
         </div>
     );
