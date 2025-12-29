@@ -1,0 +1,29 @@
+.LetterSoundCategorizer {
+	&__main {
+		width: 500px;
+		height: 350px;
+		background-color: #2c6300;
+		border: 15px solid #8f8d13ee;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 12px;
+	}
+	&__content {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	&__word-letter {
+		cursor: pointer;
+		font-size: 61px;
+		color: #fff;
+		font-family: sans-serif;
+		&:hover {
+			color: #a5a0a0;
+		}
+		&.selected {
+			color: #a5a0a0;
+		}
+	}
+}
