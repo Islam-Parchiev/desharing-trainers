@@ -11,7 +11,7 @@ const mock = {
 }
 
 export const LetterSoundCategorizer = ({ title = "Нажми на буквы, которые обозначают ГЛАСНЫЕ звуки" }: { title: string; }) => {
-    const [data, setData] = useState(mock);
+    const [data] = useState(mock);
     const [selectedLetters, setSelectedLetters] = useState<string[]>([]);
     const [status, setStatus] = useState<Status>("idle");
 

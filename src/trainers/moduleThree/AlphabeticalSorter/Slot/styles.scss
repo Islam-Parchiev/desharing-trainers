@@ -1,0 +1,25 @@
+.AlphabeticalSlot {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	&__title {
+		font-size: 24px;
+	}
+	&__slot {
+		width: 180px;
+		height: 40px;
+		border-radius: 20px;
+		border: 2px solid var(--primary-medium);
+		background-color: #fff;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 21px;
+		font-family: sans-serif;
+	}
+	&.filled &__slot {
+		background-color: var(--primary-medium);
+		color: #fff;
+	}
+}

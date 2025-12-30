@@ -122,6 +122,9 @@ export const Main = () => {
                             <Link to="/reorderLetters">ReorderLetters(InProgress)</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/AlphabeticalSorter">AlphabeticalSorter(InProgress)</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 

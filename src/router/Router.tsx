@@ -50,6 +50,7 @@ import { NextSyllableChooser } from "../trainers/moduleThree/NextSyllableChooser
 import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
 import { LetterSoundCategorizer } from "../trainers/moduleThree/LetterSoundCategorizer";
 import { ReorderLetters } from "../trainers/moduleThree/ReorderLetters";
+import { AlphabeticalSorter } from "../trainers/moduleThree/AlphabeticalSorter";
 
 export const router = createBrowserRouter([
     {
@@ -307,6 +308,12 @@ export const router = createBrowserRouter([
         path: "/reorderLetters",
         element: <Page>
             <ReorderLetters />
+        </Page>
+    },
+    {
+        path: "/alphabeticalSorter",
+        element: <Page>
+            <AlphabeticalSorter />
         </Page>
     }
 ])
