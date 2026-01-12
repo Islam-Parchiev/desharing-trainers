@@ -6,6 +6,7 @@ import type { Id, Status } from '../../../types/types';
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { Variant } from './Variant';
 import { Button } from '../../../shared/ui/Button';
+import { Alphabet } from '../../../components/Alphabet';
 export const AlphabeticalSorter = () => {
     const [slots, setSlots] = useState<{ id: Id; currentValue: string | null; correctValue: string; slotTitle: string | null; }[]>([
         {
@@ -92,29 +93,29 @@ export const AlphabeticalSorter = () => {
         }
     }
     const handleReset = () => {
-        setSlots(
-            slots.map(slot => { ...slot, currentValue: null })
-        )
+        setSlots(prev => prev.map(item => ({ ...item, currentValue: null })))
     }
-return (
-    <div className='AlphabeticalSorter'>
-        <div className="AlphabeticalSorter__inner">
-            <DndContext onDragEnd={handleDragEnd}>
+    return (
+        <div className='AlphabeticalSorter'>
+            <Alphabet />
+            <div className="AlphabeticalSorter__inner">
+                <DndContext onDragEnd={handleDragEnd}>
 
-                <TrainerTitle>Расставь слова в алфавитном порядке</TrainerTitle>
-                {status === "success" && "Success"}
-                {status === "error" && "Error"}
-                <div className="AlphabeticalSorter__slots">
-                    {slots.map(slot => <AlphabeticalSlot id={slot.id} title={slot.slotTitle} value={slot.currentValue} key={'slot-' + slot.id} />)}
-                </div>
-                <div className="AlphabeticalSorter__variants">
-                    <ul className="list-reset AlphabeticalSorter__variants-list">
-                        {variants.map(variant => <Variant id={variant.id} isDisabled={disableVariant(variant)} value={variant.value} />)}
-                    </ul>
-                </div>
-            </DndContext>
-            <Button onClick={handleCheck}>check</Button>
+                    <TrainerTitle>Расставь слова в алфавитном порядке</TrainerTitle>
+                    {status === "success" && "Success"}
+                    {status === "error" && "Error"}
+                    <div className="AlphabeticalSorter__slots">
+                        {slots.map(slot => <AlphabeticalSlot id={slot.id} title={slot.slotTitle} value={slot.currentValue} key={'slot-' + slot.id} />)}
+                    </div>
+                    <div className="AlphabeticalSorter__variants">
+                        <ul className="list-reset AlphabeticalSorter__variants-list">
+                            {variants.map(variant => <Variant id={variant.id} isDisabled={disableVariant(variant)} value={variant.value} />)}
+                        </ul>
+                    </div>
+                </DndContext>
+                <Button onClick={handleReset}>Reset</Button>
+                <Button onClick={handleCheck}>check</Button>
+            </div>
         </div>
-    </div>
-)
+    )
 }
