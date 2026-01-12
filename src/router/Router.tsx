@@ -51,6 +51,8 @@ import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
 import { LetterSoundCategorizer } from "../trainers/moduleThree/LetterSoundCategorizer";
 import { ReorderLetters } from "../trainers/moduleThree/ReorderLetters";
 import { AlphabeticalSorter } from "../trainers/moduleThree/AlphabeticalSorter";
+import { ConnectLetters } from "../trainers/moduleThree/ConnectLetters";
+import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
 
 export const router = createBrowserRouter([
     {
@@ -302,7 +304,7 @@ export const router = createBrowserRouter([
     {
         path: "/letterSoundCategorizer",
         element: <Page>
-            <LetterSoundCategorizer title="test" />
+            <LetterSoundCategorizer title="выберите гласные буквы" />
         </Page>
     }, {
         path: "/reorderLetters",
@@ -314,6 +316,18 @@ export const router = createBrowserRouter([
         path: "/alphabeticalSorter",
         element: <Page>
             <AlphabeticalSorter />
+        </Page>
+    },
+    {
+        path: "/connectLetters",
+        element: <Page>
+            <ConnectLetters />
+        </Page>
+    },
+    {
+        path: "/solveRiddle",
+        element: <Page>
+            <SolveRiddle />
         </Page>
     }
 ])

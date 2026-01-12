@@ -125,6 +125,12 @@ export const Main = () => {
                             <Link to="/AlphabeticalSorter">AlphabeticalSorter(InProgress)</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/ConnectLetters">ConnectLetters(InProgress)</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/solveRiddle">solveRiddle(InProgress)</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
 
