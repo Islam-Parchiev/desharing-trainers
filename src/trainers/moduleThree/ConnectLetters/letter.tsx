@@ -1,13 +1,36 @@
-import cn from 'classnames';
 import './styles.scss';
 
-export const Letter = ({ content = 'a', coordinates = { x: 0, y: 0 }, selected }: { content: string; coordinates: { x: number; y: number; }; selected: boolean; }) => {
-    return <>
-
-        <div className={cn("Letter", selected && "selected")} style={{ left: coordinates.x, top: coordinates.y }}>
-            <div className="Letter__center">
-                {content}
-            </div>
-        </div>
-    </>
+interface LetterProps {
+    selected: boolean;
+    completed: boolean;
+    content: string;
+    coordinates: { x: number; y: number };
+    onClick: () => void;
+    disabled: boolean;
 }
+
+export const Letter = ({
+    selected,
+    completed,
+    content,
+    coordinates,
+    onClick,
+    disabled,
+}: LetterProps) => {
+    return (
+        <div
+            className={`Letter ${selected ? 'letter--selected' : ''} ${completed ? 'letter--completed' : ''
+                } ${disabled ? 'letter--disabled' : ''}`}
+            style={{
+                position: 'absolute',
+                left: coordinates.x,
+                top: coordinates.y,
+                transform: 'translate(-50%, -50%)',
+                cursor: disabled ? 'default' : 'pointer',
+            }}
+            onClick={disabled ? undefined : onClick}
+        >
+            {content}
+        </div>
+    );
+};
