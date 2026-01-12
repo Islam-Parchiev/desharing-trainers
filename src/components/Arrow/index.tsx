@@ -46,11 +46,11 @@ const SVGArrow = ({
             />
 
             {/* Стрелка */}
-            {/* <polygon
+            <polygon
                 points={`0,${-arrowSize / 2} ${arrowSize * 2},0 0,${arrowSize / 2}`}
                 fill={color}
-                transform={`translate(${end.x-15},${end.y-4}) rotate(${angle+3})`}
-            /> */}
+                transform={`translate(${end.x - 15},${end.y - 4}) rotate(${angle + 3})`}
+            />
         </svg>
     );
 };

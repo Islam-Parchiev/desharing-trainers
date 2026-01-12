@@ -34,7 +34,7 @@ export const Main = () => {
                             <Link to="/eight">Тренажер 8</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/nine">TableTrainer(InProgress)</Link>
+                            <Link to="/nine">TableTrainer</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/ten">Тренажер 10</Link>
@@ -110,25 +110,28 @@ export const Main = () => {
                             <Link to="/syllableBuilder">syllableBuilder</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/nextSyllableChooser">NextSyllableChooser(InProgress)</Link>
+                            <Link to="/nextSyllableChooser">NextSyllableChooser</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/bubbleTrainer">BubbleTrainer(InProgress)</Link>
+                            <Link to="/bubbleTrainer">BubbleTrainer</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/letterSoundCategorizer">LetterSoundCategorizer(InProgress)</Link>
+                            <Link to="/letterSoundCategorizer">LetterSoundCategorizer</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/reorderLetters">ReorderLetters(InProgress)</Link>
+                            <Link to="/reorderLetters">ReorderLetters</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/AlphabeticalSorter">AlphabeticalSorter(InProgress)</Link>
+                            <Link to="/AlphabeticalSorter">AlphabeticalSorter</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/ConnectLetters">ConnectLetters(InProgress)</Link>
+                            <Link to="/ConnectLetters">ConnectLetters</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/solveRiddle">solveRiddle(InProgress)</Link>
+                            <Link to="/solveRiddle">solveRiddle</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/wordCliker">wordClicker</Link>
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
