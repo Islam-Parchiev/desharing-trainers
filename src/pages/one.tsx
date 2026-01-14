@@ -14,7 +14,8 @@ export const One = () => {
                     id={multipleCurrentTask.id}
                     questionTitle={multipleCurrentTask.questionTitle}
                     variants={multipleCurrentTask.variants}
-                    key={multipleCurrentTask.id + 'testtt'} />
+                    key={multipleCurrentTask.id + 'testtt'}
+                    handleNext={() => console.log('test')} />
             </Card>
         </section>
     </main>

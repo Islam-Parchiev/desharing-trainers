@@ -54,6 +54,7 @@ import { AlphabeticalSorter } from "../trainers/moduleThree/AlphabeticalSorter";
 import { ConnectLetters } from "../trainers/moduleThree/ConnectLetters";
 import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
 import { WordClick } from "../trainers/moduleThree/WordClick";
+import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 
 export const router = createBrowserRouter([
     {
@@ -334,7 +335,13 @@ export const router = createBrowserRouter([
     {
         path: "/wordCliker",
         element: <Page>
-            <WordClick/>
+            <WordClick />
+        </Page>
+    },
+    {
+        path: "/whatIsSpeech",
+        element: <Page>
+            <WhatIsSpeech />
         </Page>
     }
 ])

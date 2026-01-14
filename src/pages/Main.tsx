@@ -136,6 +136,9 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/whatIsSpeech">Что такое речь ?</Link>
+                        </div>
 
                     </div>
                 </div>

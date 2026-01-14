@@ -1,35 +1,33 @@
 import { useState } from "react";
 import type { Variant } from "../../../App";
 import { VariantItem } from "../../../components/VariantItem";
-import type { Id } from "../../../types/types";
+import type { Id, Status } from "../../../types/types";
+import { Button } from "../../../shared/ui/Button";
 
 export interface ChoiceRightVariant {
     id: Id;
     questionTitle: string;
-    correctVariants: Id[];
-    variants: Variant[]
+    correctVariants: string[];
+    variants: Variant[];
+    handleNext: () => void;
 }
 
-export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variants }: ChoiceRightVariant) => {
-    const [selectedVariantIds, setSelectedVariantIds] = useState<Id[]>([]);
+export const ChoiceMultipleVariants = ({ questionTitle, handleNext, correctVariants, variants }: ChoiceRightVariant) => {
+    const [selectedVariants, setSelectedVariants] = useState<string[]>([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
+    const [status, setStatus] = useState<Status>("idle")
 
     const handleCheck = () => {
         setIsSubmitted(true);
 
-        if (selectedVariantIds.length === correctVariants.length) {
-            if (selectedVariantIds.every(item => correctVariants.includes(item))) {
-                setSuccess(true);
-                setError(false);
+        if (selectedVariants.length === correctVariants.length) {
+            if (selectedVariants.every(item => correctVariants.includes(item))) {
+                setStatus("success")
                 return true;
             }
-            setError(true);
-            setSuccess(false);
+            setStatus("error")
         } else {
-            setError(true);
-            setSuccess(false);
+            setStatus("error")
         }
         return false;
     };
@@ -37,15 +35,14 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
     const handleVariantClick = (item: Variant) => {
         if (isSubmitted) {
             setIsSubmitted(false);
-            setSuccess(false);
-            setError(false);
+            setStatus("idle");
         }
 
-        if (selectedVariantIds.find(id => id === item.id)) {
-            setSelectedVariantIds(prev => prev.filter(id => id !== item.id));
+        if (selectedVariants.find(variant => variant === item.title)) {
+            setSelectedVariants(prev => prev.filter(variant => variant !== item.title));
         } else {
-            if (selectedVariantIds.length < correctVariants.length) {
-                setSelectedVariantIds(prev => [...prev, item.id]);
+            if (selectedVariants.length < correctVariants.length) {
+                setSelectedVariants(prev => [...prev, item.title]);
             }
         }
     };
@@ -53,17 +50,17 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
     const addClasses = (item: Variant) => {
         let className = "";
 
-        if (selectedVariantIds.find(id => id === item.id)) {
+        if (selectedVariants.find(variant => variant === item.title)) {
             className += "selected-var ";
         }
 
         if (isSubmitted) {
-            if (correctVariants.includes(item.id)) {
+            if (correctVariants.includes(item.title)) {
                 className += "correct-variant ";
-            } else if (selectedVariantIds.includes(item.id) && !correctVariants.includes(item.id)) {
+            } else if (selectedVariants.includes(item.title) && !correctVariants.includes(item.title)) {
                 className += "incorrect-variant ";
             }
-            if (!selectedVariantIds.includes(item.id) && !correctVariants.includes(item.id)) {
+            if (!selectedVariants.includes(item.title) && !correctVariants.includes(item.title)) {
                 className += "other-variants "
             }
         }
@@ -75,8 +72,8 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
         <div className="ChoiceRightVariant">
             <div className="ChoiceRightVariant__inner">
                 <h5 className="ChoiceRightVariant__title">{questionTitle}</h5>
-                {error && <div className="error-message">error</div>}
-                {success && <div className="success-message">success</div>}
+                {status === "error" && <div className="error-message">error</div>}
+                {status === "success" && <div className="success-message">success</div>}
                 <div className="variants">
                     {variants.map((item) => (
                         <VariantItem
@@ -89,10 +86,10 @@ export const ChoiceMultipleVariants = ({ questionTitle, correctVariants, variant
                     ))}
                 </div>
 
-                {selectedVariantIds.length === correctVariants.length && !isSubmitted && (
-                    <button onClick={handleCheck}>Check Answer</button>
+                {selectedVariants.length === correctVariants.length && !isSubmitted && (
+                    <Button variant="primary" onClick={handleCheck}>Check Answer</Button>
                 )}
-                {isSubmitted && <button onClick={() => {/* Add your next logic here */ }}>next</button>}
+                {isSubmitted && <Button variant="primary" onClick={handleNext}>next</Button>}
             </div>
         </div>
     );
