@@ -12,4 +12,8 @@ export interface IChooseMultipleVariants {
 	title: string
 	variants: { id: Id; title: string }[]
 }
+export interface IConclusion {
+	type: 'Conclusion'
+}
+export type AlphabetCardType = IConclusion | IChooseCorrectVariant
 export type CardDataType = IChooseCorrectVariant | IChooseMultipleVariants
