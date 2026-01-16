@@ -3,54 +3,26 @@ import { TrainerTitle } from "../../../components/TrainerTitle";
 import { Button } from "../../../shared/ui/Button";
 import { SlotInput } from "./SlotInput";
 import './styles.scss';
-import type { Status } from "../../../types/types";
+// import type { Status } from "../../../types/types";
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { ConclusionVariant } from "./Variant";
+import type { IConclusion } from "../../../widgets/Card/types";
 
-const mockData = {
-    content: [
-        { value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .", completed: false },
-    ],
-    variants: [
-        {
-            id: 1,
-            value: "изменять"
-        },
-        {
-            id: 2,
-            value: "заглавная"
-        },
-        {
-            id: 3,
-            value: "по смыслу"
-        },
-        {
-            id: 4,
-            value: "точка"
-        },
-        {
-            id: 5,
-            value: "связаны"
-        }
-    ],
-    slots: [
-        { id: 1, current: null, correct: 'по смыслу' },
-        { id: 2, current: null, correct: 'связаны' },
-    ]
-};
 
-export const Conclusion = () => {
-    const [content] = useState(mockData.content);
-    const [slots, setSlots] = useState([...mockData.slots]);
-    const [variants] = useState([...mockData.variants]);
-    const [status, setStatus] = useState<Status>("idle");
+type ConclusionProps = Omit<IConclusion, "type">
+export const Conclusion = ({ data, handleNext, handleError, handleSuccess }: { data: ConclusionProps; handleNext?: () => void; handleSuccess?: () => void; handleError?: () => void; }) => {
+    const [content] = useState(data.content);
+    const [slots, setSlots] = useState([...data.slots]);
+    const [variants] = useState([...data.variants]);
 
     const handleCheck = () => {
         const allCorrect = slots.every(slot => slot.correct === slot.current);
         if (allCorrect) {
-            setStatus("success");
+            // setStatus("success");
+            handleSuccess?.();
         } else {
-            setStatus("error");
+            // setStatus("error");
+            handleError?.()
         }
     };
 
@@ -65,12 +37,6 @@ export const Conclusion = () => {
                         : slot
                 )
             );
-        }
-        const text = "Слова в предложении {{связаны}} между собой {{по смыслу}}.";
-        const regex = /\{\{([^{}]+)\}\}/g;
-        const matches = text.matchAll(regex);
-        for (const match of matches) {
-            console.log(match);
         }
     };
     const renderContent = (sentence: string) => {
@@ -123,8 +89,6 @@ export const Conclusion = () => {
                         ))}
                     </ul>
                     <Button onClick={handleCheck} size="small">Проверить</Button>
-                    {status === "success" && <div className="Conclusion__status Conclusion__status--success">Всё правильно!</div>}
-                    {status === "error" && <div className="Conclusion__status Conclusion__status--error">Есть ошибки. Попробуйте снова.</div>}
                 </div>
             </DndContext>
         </div>

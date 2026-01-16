@@ -285,3 +285,36 @@ export const AccentLetterMocks = [
 	{ id: 4, letter: 'О', checked: false, correct: false },
 	{ id: 5, letter: 'Д', checked: false, correct: false },
 ]
+
+
+export const mockConclusionData = {
+    content: [
+        { value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .", completed: false },
+    ],
+    variants: [
+        {
+            id: 1,
+            value: "изменять"
+        },
+        {
+            id: 2,
+            value: "заглавная"
+        },
+        {
+            id: 3,
+            value: "по смыслу"
+        },
+        {
+            id: 4,
+            value: "точка"
+        },
+        {
+            id: 5,
+            value: "связаны"
+        }
+    ],
+    slots: [
+        { id: 1, current: null, correct: 'по смыслу' },
+        { id: 2, current: null, correct: 'связаны' },
+    ]
+};

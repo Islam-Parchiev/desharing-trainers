@@ -13,7 +13,15 @@ export interface IChooseMultipleVariants {
 	variants: { id: Id; title: string }[]
 }
 export interface IConclusion {
-	type: 'Conclusion'
+	type: 'Conlusion'
+	content: { value: string; completed: boolean }[]
+	variants: {
+		id: Id
+		value: string
+	}[]
+
+	slots: { id: Id; current: null | string; correct: string }[]
 }
+
 export type AlphabetCardType = IConclusion | IChooseCorrectVariant
 export type CardDataType = IChooseCorrectVariant | IChooseMultipleVariants

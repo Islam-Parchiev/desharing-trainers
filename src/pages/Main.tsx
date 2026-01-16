@@ -137,9 +137,12 @@ export const Main = () => {
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
                         <div className="ItemTrainerLink">
-                            <Link to="/whatIsSpeech">Что такое речь ?</Link>
+                            <Link to="/alphabet">Алфавит</Link>
                         </div>
 
+                        <div className="ItemTrainerLink">
+                            <Link to="/whatIsSpeech">Что такое речь ?</Link>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -4,7 +4,7 @@ import type { CardDataType } from "../../widgets/Card/types";
 import { ChooseCorrectVariant } from "../../trainers/moduleThree/ChooseCorrectVariant";
 import { ChoiceMultipleVariants } from "../../trainers/moduleOne/ChoiceMultipleVariants";
 
-export const useWhatIsSpeechCard = ({ data: fetchedData }: { data: CardDataType[] }) => {
+export function useWhatIsSpeechCard({ data: fetchedData }: { data: CardDataType[] }) {
     const [status, setStatus] = useState<Status>("idle");
     const [errors, setErrors] = useState(0);
     const [currentTaskId, setCurrentTaskId] = useState(0);
@@ -73,7 +73,7 @@ export const useWhatIsSpeechCard = ({ data: fetchedData }: { data: CardDataType[
                     />
                 );
             default:
-                return null;
+                return "error";
         }
     }
 

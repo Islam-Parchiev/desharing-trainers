@@ -55,6 +55,8 @@ import { ConnectLetters } from "../trainers/moduleThree/ConnectLetters";
 import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
 import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
+import { AlphabetCard } from "../pages/Cards/Alphabet";
+
 
 export const router = createBrowserRouter([
     {
@@ -342,6 +344,12 @@ export const router = createBrowserRouter([
         path: "/whatIsSpeech",
         element: <Page>
             <WhatIsSpeech />
+        </Page>
+    },
+    {
+        path: "/alphabet",
+        element: <Page>
+            <AlphabetCard />
         </Page>
     }
 ])
