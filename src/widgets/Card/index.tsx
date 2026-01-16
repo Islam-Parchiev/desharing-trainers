@@ -1,99 +1,9 @@
-import { useState } from "react"
+import { type ReactNode } from "react"
 import { AttestationItem } from "../../components/AttestationItem"
-import type { Status } from "../../types/types"
 import styles from './styles.module.scss';
-import { ChooseCorrectVariant } from "../../trainers/moduleThree/ChooseCorrectVariant";
-import type { CardDataType } from "./types";
-import { ChoiceMultipleVariants } from "../../trainers/moduleOne/ChoiceMultipleVariants";
-const cardData: CardDataType[] = [
-    {
-        type: 'ChooseCorrectVariant',
-        title: "Речь - это умение...",
-        correctVariant: "говорить",
-        variants: ["хрюкать", "говорить", "молчать"]
-    },
-    {
-        type: 'ChooseCorrectVariant',
-        title: "Речью обладают только...",
-        correctVariant: "люди",
-        variants: ["предметы", "животные", "люди"]
-    },
-    {
-        type: "ChooseMultipleVariants",
-        correctVariants: ["спрашивают", "просят", "рассказывают"],
-        title: "Что делают люди с помощью речи ? Выбери 3 ответа",
-        variants: [
-            { id: 1, title: "рычат" },
-            { id: 2, title: "спрашивают" },
-            { id: 3, title: "молчат" },
-            { id: 4, title: "просят" },
-            { id: 5, title: "рассказывают" }
-        ]
-    }
-]
-export const Card = () => {
-    const [status, setStatus] = useState<Status>("idle");
-    const [errors, setErrors] = useState(0);
-    const [currentTaskN, setCurrentTaskN] = useState(0);
+import type { Status } from "../../types/types";
+export const Card = ({ children, currentTaskNumber, status, trainersLength }: { children: ReactNode; status: Status; currentTaskNumber: number; trainersLength: number }) => {
 
-    const currentTask = cardData[currentTaskN];
-    const onError = () => {
-        setErrors(prev => prev + 1);
-    }
-    const onSuccess = () => {
-        setStatus("success");
-    }
-    const isLastTask = () => {
-        if (currentTaskN === cardData.length - 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    const handleNextTask = () => {
-        if (status === "success" && isLastTask()) {
-            setStatus("finish");
-            setCurrentTaskN(prev => prev + 1);
-            return;
-        }
-        if (status === "success") {
-            if (!isLastTask()) {
-                setCurrentTaskN(prev => prev + 1);
-                setStatus("idle")
-            }
-            return;
-        } else {
-            onError();
-            if (!isLastTask()) {
-
-                setCurrentTaskN(prev => prev + 1);
-                setStatus("idle");
-            }
-            return;
-        }
-    }
-
-    const renderTrainer = () => {
-        switch (currentTask.type) {
-            case "ChooseCorrectVariant":
-                return <ChooseCorrectVariant
-                    correctVariant={currentTask.correctVariant}
-                    variants={currentTask.variants}
-                    handleError={onError}
-                    title={currentTask.title}
-                    handleNext={handleNextTask}
-                    handleSuccess={onSuccess}
-                />
-            case "ChooseMultipleVariants":
-                return <ChoiceMultipleVariants
-                    correctVariants={currentTask.correctVariants}
-                    questionTitle={currentTask.title}
-                    variants={currentTask.variants}
-                    id={currentTask.title}
-                    handleNext={handleNextTask}
-                />
-        }
-    }
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -107,13 +17,13 @@ export const Card = () => {
                 </button>
                 <AttestationItem
                     active={status === 'idle'}
-                    current={currentTaskN}
-                    max={cardData.length}
+                    current={currentTaskNumber}
+                    max={trainersLength}
                 />
             </div>
 
             <div className={styles.main}>
-                {renderTrainer()}
+                {children}
             </div>
             {status === "success" && "Success"}
             {status === "error" && "Error"}

@@ -10,9 +10,10 @@ export interface ChoiceRightVariant {
     correctVariants: string[];
     variants: Variant[];
     handleNext: () => void;
+    handleSuccess?: () => void;
 }
 
-export const ChoiceMultipleVariants = ({ questionTitle, handleNext, correctVariants, variants }: ChoiceRightVariant) => {
+export const ChoiceMultipleVariants = ({ questionTitle, handleNext, correctVariants, variants, handleSuccess }: ChoiceRightVariant) => {
     const [selectedVariants, setSelectedVariants] = useState<string[]>([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [status, setStatus] = useState<Status>("idle")
@@ -22,6 +23,8 @@ export const ChoiceMultipleVariants = ({ questionTitle, handleNext, correctVaria
 
         if (selectedVariants.length === correctVariants.length) {
             if (selectedVariants.every(item => correctVariants.includes(item))) {
+
+                handleSuccess?.();
                 setStatus("success")
                 return true;
             }
