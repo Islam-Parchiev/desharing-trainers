@@ -1,6 +1,7 @@
 import type { ITask } from '../App'
 import type { TheoryDataItem } from '../theory/Child'
 import type { ChoiceRightVariant } from '../trainers/moduleOne/ChoiceMultipleVariants'
+import type { Tool } from '../trainers/moduleThree/colorWords'
 import type { TrainerTypes } from '../types/types'
 
 export const VariantTasks: ITask[] = [
@@ -315,3 +316,31 @@ export const mockConclusionData = {
 		{ id: 2, current: null, correct: 'связаны' },
 	],
 }
+
+export const mockDataColorWords = [
+	{ id: 1, content: 'Кошка', correctColor: '#0000ff' },
+	{ id: 2, content: 'Стол', correctColor: '#ff0000' },
+	{ id: 3, content: 'Собака', correctColor: '#0000ff' },
+	{ id: 4, content: 'Солнце', correctColor: '#ff0000' },
+	{ id: 5, content: 'Учитель', correctColor: '#0000ff' },
+	{ id: 6, content: 'Книга', correctColor: '#ff0000' },
+	{ id: 7, content: 'Птица', correctColor: '#0000ff' },
+	{ id: 8, content: 'Дождь', correctColor: '#ff0000' },
+	{ id: 9, content: 'Ребёнок', correctColor: '#0000ff' },
+]
+export const mockDataColorTools: Tool[] = [
+	{
+		type: 'paint',
+		toolColor: '#0000ff',
+		toolName: 'Люди и животные',
+	},
+	{
+		type: 'paint',
+		toolColor: '#ff0000',
+		toolName: 'Неживые предметы и явления',
+	},
+	{
+		type: 'erase',
+		toolName: 'Стереть',
+	},
+]

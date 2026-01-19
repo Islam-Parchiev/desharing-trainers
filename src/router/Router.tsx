@@ -57,7 +57,7 @@ import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
-import { mockConclusionData } from "../mocks/data";
+import { mockConclusionData, mockDataColorTools, mockDataColorWords } from "../mocks/data";
 
 
 export const router = createBrowserRouter([
@@ -280,7 +280,12 @@ export const router = createBrowserRouter([
     {
         path: "/colorWords",
         element: <Page>
-            <ColorWords />
+            <ColorWords
+                data={mockDataColorWords}
+                tools={mockDataColorTools}
+                handleSuccess={() => alert('success')}
+                handleError={() => alert('error')}
+                title="Раскрась слова" />
         </Page>
     },
     {

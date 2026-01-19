@@ -1,38 +1,55 @@
 import { useState } from 'react';
 import { TrainerTitle } from '../../../components/TrainerTitle';
 import { Button } from '../../../shared/ui/Button';
-import './styles.scss';
 import type { Status } from '../../../types/types';
+import './styles.scss';
 
-type WordType = {
+type DataType = {
     id: number;
-    text: string;
-    color: 'blue' | 'red' | null;
+    content: string;
     correctColor: string;
 };
 
-export const ColorWords = () => {
-    const [selectedTool, setSelectedTool] = useState<'blue' | 'red' | 'erase'>('blue');
+export interface Tool {
+    type: "paint" | "erase";
+    toolColor?: string;
+    toolName: string;
+}
+
+interface ColorWordsProps {
+    tools: Tool[];
+    data: DataType[];
+    handleSuccess?: () => void;
+    handleError?: () => void;
+    title: string;
+}
+
+interface WordState extends DataType {
+    color: string | null;
+}
+
+export const ColorWords = ({ data, tools, title, handleError, handleSuccess }: ColorWordsProps) => {
+    const [selectedTool, setSelectedTool] = useState<Tool>(tools[0]);
     const [status, setStatus] = useState<Status>("idle");
-    const [words, setWords] = useState<WordType[]>([
-        { id: 1, text: 'Кошка', color: null, correctColor: 'blue' },
-        { id: 2, text: 'Стол', color: null, correctColor: 'red' },
-        { id: 3, text: 'Собака', color: null, correctColor: 'blue' },
-        { id: 4, text: 'Солнце', color: null, correctColor: 'red' },
-        { id: 5, text: 'Учитель', color: null, correctColor: 'blue' },
-        { id: 6, text: 'Книга', color: null, correctColor: 'red' },
-        { id: 7, text: 'Птица', color: null, correctColor: 'blue' },
-        { id: 8, text: 'Дождь', color: null, correctColor: 'red' },
-        { id: 9, text: 'Ребёнок', color: null, correctColor: 'blue' },
-    ]);
+    const [words, setWords] = useState<WordState[]>(data.map(item => ({
+        ...item,
+        color: null
+    })));
 
     const handleWordClick = (wordId: number) => {
         setWords(words.map(word => {
             if (word.id === wordId) {
-                return {
-                    ...word,
-                    color: selectedTool === 'erase' ? null : selectedTool
-                };
+                if (selectedTool.type === 'erase') {
+                    return {
+                        ...word,
+                        color: null
+                    };
+                } else {
+                    return {
+                        ...word,
+                        color: selectedTool.toolColor || null
+                    };
+                }
             }
             return word;
         }));
@@ -42,41 +59,50 @@ export const ColorWords = () => {
         setWords(words.map(word => ({ ...word, color: null })));
         setStatus("idle");
     };
+
     const handleCheck = () => {
         if (words.every(word => word.color === word.correctColor)) {
             setStatus("success");
+            handleSuccess?.();
+            return;
         } else {
             setStatus("error");
+            handleError?.();
         }
-    }
+    };
+
     return (
         <div className='ColorWords'>
             <div className="ColorWords__inner">
-                <TrainerTitle>Раскрась слова</TrainerTitle>
+                <TrainerTitle>{title}</TrainerTitle>
                 {status === "error" && "Error"}
                 {status === "success" && "Success"}
                 <div className="ColorWords__tools">
-                    <Button
-                        size="medium"
-                        className={`ColorWords__tool ColorWords__tool--blue ${selectedTool === 'blue' ? 'ColorWords__tool--active' : ''}`}
-                        onClick={() => setSelectedTool('blue')}
-                    >
-                        <i />Люди и животные
-                    </Button>
-                    <Button
-                        size="medium"
-                        className={`ColorWords__tool ColorWords__tool--red ${selectedTool === 'red' ? 'ColorWords__tool--active' : ''}`}
-                        onClick={() => setSelectedTool('red')}
-                    >
-                        <i />Неживые предметы и явления
-                    </Button>
-                    <Button
-                        size="medium"
-                        className={`ColorWords__tool ${selectedTool === 'erase' ? 'ColorWords__tool--active' : ''}`}
-                        onClick={() => setSelectedTool('erase')}
-                    >
-                        Стереть
-                    </Button>
+                    {tools.map(tool => {
+                        if (tool.type === 'paint') {
+                            return (
+                                <Button
+                                    key={tool.toolName}
+                                    size="medium"
+                                    className={`ColorWords__tool ${selectedTool.toolName === tool.toolName ? 'ColorWords__tool--active' : ''}`}
+                                    onClick={() => setSelectedTool(tool)}
+                                >
+                                    <i style={{ backgroundColor: tool.toolColor }} />{tool.toolName}
+                                </Button>
+                            );
+                        } else {
+                            return (
+                                <Button
+                                    key={tool.toolName}
+                                    size="medium"
+                                    className={`ColorWords__tool ${selectedTool.toolName === tool.toolName ? 'ColorWords__tool--active' : ''}`}
+                                    onClick={() => setSelectedTool(tool)}
+                                >
+                                    {tool.toolName}
+                                </Button>
+                            );
+                        }
+                    })}
                     <Button
                         size="medium"
                         onClick={handleReset}
@@ -87,18 +113,21 @@ export const ColorWords = () => {
                         size="medium"
                         onClick={handleCheck}
                     >
-                        check
+                        Проверить
                     </Button>
-
                 </div>
                 <div className="ColorWords__content">
                     {words.map((word) => (
                         <div
                             key={word.id}
-                            className={`ColorWord ${word.color ? `ColorWord--${word.color}` : ''}`}
+                            className={`ColorWord`}
                             onClick={() => handleWordClick(word.id)}
+                            style={{
+                                backgroundColor: word.color || "#fff",
+
+                            }}
                         >
-                            <span>{word.text}</span>
+                            <span>{word.content}</span>
                         </div>
                     ))}
                 </div>
