@@ -10,7 +10,7 @@ const mockData = {
 }
 
 export const WordClick = () => {
-    const [data, setData] = useState(mockData);
+    const [data] = useState(mockData);
     const [selected, setSelected] = useState<string[]>([]);
     const splittedSentence = data.sentence.split(' ');
 

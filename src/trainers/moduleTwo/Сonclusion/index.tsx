@@ -10,7 +10,7 @@ import type { IConclusion } from "../../../widgets/Card/types";
 
 
 type ConclusionProps = Omit<IConclusion, "type">
-export const Conclusion = ({ data, handleNext, handleError, handleSuccess }: { data: ConclusionProps; handleNext?: () => void; handleSuccess?: () => void; handleError?: () => void; }) => {
+export const Conclusion = ({ data, handleError, handleSuccess }: { data: ConclusionProps; handleNext?: () => void; handleSuccess?: () => void; handleError?: () => void; }) => {
     const [content] = useState(data.content);
     const [slots, setSlots] = useState([...data.slots]);
     const [variants] = useState([...data.variants]);

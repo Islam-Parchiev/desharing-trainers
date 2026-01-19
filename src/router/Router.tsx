@@ -57,6 +57,7 @@ import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
+import { mockConclusionData } from "../mocks/data";
 
 
 export const router = createBrowserRouter([
@@ -147,7 +148,7 @@ export const router = createBrowserRouter([
     {
         path: '/conclusion',
         element: <Page>
-            <Conclusion />
+            <Conclusion data={mockConclusionData} handleError={() => alert('error')} handleSuccess={() => alert('succes')} handleNext={() => alert('next')} />
         </Page>
     },
     {

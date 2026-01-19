@@ -71,7 +71,7 @@ export const VariantTasks: ITask[] = [
 		correctVariantId: 3,
 	},
 ]
-export const MultipleVariantsTasks: ChoiceRightVariant[] = [
+export const MultipleVariantsTasks: Omit<ChoiceRightVariant, 'handleNext'>[] = [
 	{
 		id: 1,
 		correctVariants: ['спрашивают', 'просят', 'рассказывают'],
@@ -286,35 +286,32 @@ export const AccentLetterMocks = [
 	{ id: 5, letter: 'Д', checked: false, correct: false },
 ]
 
-
 export const mockConclusionData = {
-    content: [
-        { value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .", completed: false },
-    ],
-    variants: [
-        {
-            id: 1,
-            value: "изменять"
-        },
-        {
-            id: 2,
-            value: "заглавная"
-        },
-        {
-            id: 3,
-            value: "по смыслу"
-        },
-        {
-            id: 4,
-            value: "точка"
-        },
-        {
-            id: 5,
-            value: "связаны"
-        }
-    ],
-    slots: [
-        { id: 1, current: null, correct: 'по смыслу' },
-        { id: 2, current: null, correct: 'связаны' },
-    ]
-};
+	content: [{ value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .', completed: false }],
+	variants: [
+		{
+			id: 1,
+			value: 'изменять',
+		},
+		{
+			id: 2,
+			value: 'заглавная',
+		},
+		{
+			id: 3,
+			value: 'по смыслу',
+		},
+		{
+			id: 4,
+			value: 'точка',
+		},
+		{
+			id: 5,
+			value: 'связаны',
+		},
+	],
+	slots: [
+		{ id: 1, current: null, correct: 'по смыслу' },
+		{ id: 2, current: null, correct: 'связаны' },
+	],
+}
