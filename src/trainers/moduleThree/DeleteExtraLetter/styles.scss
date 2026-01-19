@@ -1,0 +1,35 @@
+.DeleteExtraLetter {
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&__content {
+		margin-top: 20%;
+	}
+	&__letter {
+		cursor: pointer;
+		font-size: 45px;
+		font-family: sans-serif;
+		font-weight: 900;
+		letter-spacing: 5px;
+		transition: all 0.3s ease-in, color 0.2s ease-in;
+		width: 42px;
+		user-select: none;
+		&:hover {
+			color: var(--primary-medium);
+		}
+		&.hidden {
+			// position: absolute;
+			pointer-events: none;
+			opacity: 0;
+			display: inline-block;
+			width: 0px;
+		}
+		&.disabled {
+			color: #9b8f8f;
+			cursor: default;
+			pointer-events: none;
+		}
+	}
+}

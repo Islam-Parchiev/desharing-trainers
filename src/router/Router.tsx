@@ -56,6 +56,7 @@ import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
 import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
+import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
 
 
 export const router = createBrowserRouter([
@@ -350,6 +351,12 @@ export const router = createBrowserRouter([
         path: "/alphabet",
         element: <Page>
             <AlphabetCard />
+        </Page>
+    },
+    {
+        path: "/extraLetter",
+        element: <Page>
+            <DeleteExtraLetter content="ЧАЯЙ" extraLetters={["Я"]} />
         </Page>
     }
 ])
