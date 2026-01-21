@@ -58,6 +58,7 @@ import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
 import { mockConclusionData, mockDataColorTools, mockDataColorWords } from "../mocks/data";
 import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
+import { FindMistake } from "../trainers/moduleThree/FindMistake";
 
 
 export const router = createBrowserRouter([
@@ -244,7 +245,7 @@ export const router = createBrowserRouter([
     {
         path: "/FixMistakesInText",
         element: <Page>
-           <FixMistakesWrapper/>
+            <FixMistakesWrapper />
         </Page>
     },
     {
@@ -363,6 +364,12 @@ export const router = createBrowserRouter([
         path: "/extraLetter",
         element: <Page>
             <DeleteExtraLetter content="ЧАЯЙ" extraLetters={["Я"]} />
+        </Page>
+    },
+    {
+        path: "/findMistake",
+        element: <Page>
+            <FindMistake />
         </Page>
     }
 ])

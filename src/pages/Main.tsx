@@ -137,6 +137,9 @@ export const Main = () => {
                             <Link to="/extraLetter">DeleteExtraLetter</Link>
                         </div>
                         <div className="ItemTrainerLink">
+                            <Link to="/findMistake">FindMistake</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>
                         <div className="ItemTrainerLink">
