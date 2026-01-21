@@ -2,25 +2,31 @@ import { useState } from 'react';
 import { TrainerTitle } from '../../../components/TrainerTitle';
 import { WordSwitcher } from './WordSwitcher';
 import './styles.scss';
-import type { Status } from '../../../types/types';
+import type { Id, Status } from '../../../types/types';
 
-const mockData = {
-    text: "{{1}} утреннее {{2}} {{3}} в тёмной морской воде.",
-    correctText: "Мягкое утреннее солнце отражается в тёмной морской воде.",
-    words: [
-        { id: 1, wordN: 1, variants: ["Мягкое", "мягкое"], correct: "Мягкое" },
-        { id: 2, wordN: 2, variants: ["Солнце", "солнце.", "солнце"], correct: "солнце" },
-        { id: 3, wordN: 3, variants: ["Отражается", "отражается"], correct: "отражается" }
-    ]
+
+interface IFixMistakeWord {
+    id: Id;
+    wordN: number;
+    variants: string[];
+    correct: string;
 }
-
-
-export const FixMistakesInText = () => {
-    const [data] = useState(mockData);
+interface IFixMistakesData {
+    text: string;
+    correctText: string;
+    words: IFixMistakeWord[]
+}
+interface FixMistakesInTextProps {
+    handleSuccess: () => void;
+    handleError: () => void;
+    data: IFixMistakesData;
+    status: Status;
+    setStatus: (value: Status) => void;
+}
+export const FixMistakesInText = ({ data, handleError, handleSuccess, status, setStatus }: FixMistakesInTextProps) => {
     const [selectedIndices, setSelectedIndices] = useState<number[]>(
         new Array(data.words.length).fill(0)
     );
-    const [status, setStatus] = useState<Status>("idle");
     const [checkResults, setCheckResults] = useState<boolean[] | null>(null);
 
     const handleSelect = (wordNumber: number, index: number) => {
@@ -44,7 +50,15 @@ export const FixMistakesInText = () => {
         const allCorrect = results.every(result => result === true);
 
         setCheckResults(results);
-        setStatus(allCorrect ? "success" : "error");
+        if (allCorrect) {
+            setStatus("success");
+            handleSuccess?.();
+            return;
+        } else {
+            setStatus("error");
+            handleError?.();
+            return;
+        }
     };
 
     const resetAnswers = () => {

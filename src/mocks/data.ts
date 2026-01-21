@@ -344,3 +344,13 @@ export const mockDataColorTools: Tool[] = [
 		toolName: 'Стереть',
 	},
 ]
+
+export const FixMistakesInTextMockData = {
+	text: '{{1}} утреннее {{2}} {{3}} в тёмной морской воде.',
+	correctText: 'Мягкое утреннее солнце отражается в тёмной морской воде.',
+	words: [
+		{ id: 1, wordN: 1, variants: ['Мягкое', 'мягкое'], correct: 'Мягкое' },
+		{ id: 2, wordN: 2, variants: ['Солнце', 'солнце.', 'солнце'], correct: 'солнце' },
+		{ id: 3, wordN: 3, variants: ['Отражается', 'отражается'], correct: 'отражается' },
+	],
+}

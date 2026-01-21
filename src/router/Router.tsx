@@ -37,7 +37,6 @@ import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
 import { FixTicket } from "../trainers/moduleTwo/FixTicket";
 import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
 import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
-import { FixMistakesInText } from "../trainers/moduleTwo/fixMistakesInText";
 import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
 import LaceApp from "../components/xarrows";
 import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
@@ -58,6 +57,7 @@ import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
 import { mockConclusionData, mockDataColorTools, mockDataColorWords } from "../mocks/data";
+import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
 
 
 export const router = createBrowserRouter([
@@ -244,7 +244,7 @@ export const router = createBrowserRouter([
     {
         path: "/FixMistakesInText",
         element: <Page>
-            <FixMistakesInText />
+           <FixMistakesWrapper/>
         </Page>
     },
     {
