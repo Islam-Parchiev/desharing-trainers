@@ -37,7 +37,7 @@ export const WordSwitcher = ({
             style={{ maxHeight: itemHeight + "px" }}>
             <div className="WordSwitcher__window" style={boxStyle}>
                 {variants.map((variant, index) => (
-                    <span key={`${variant}-${index}`} className="WordSwitcher__item">
+                    <span key={`${variant}-${index}`} className={`WordSwitcher__item ${index === selectedIndex ? 'selected' : ''}`}>
                         {variant}
                     </span>
                 ))}

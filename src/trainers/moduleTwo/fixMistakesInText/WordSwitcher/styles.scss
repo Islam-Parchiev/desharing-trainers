@@ -1,36 +1,41 @@
 // styles.scss
 .WordSwitcher {
-    display: inline-block;
-    cursor: pointer;
-    vertical-align: middle;
-    overflow: hidden;
-    user-select: none; 
-    position: relative;
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: middle;
+	overflow: hidden;
+	user-select: none;
+	position: relative;
 
-    // &:focus {
-    //   outline: 2px solid #007bff;
-    //   outline-offset: 2px;
-    // }
-    
-    &--empty {
-      padding: 0 10px;
-      color: #666;
-      font-style: italic;
-    }
-    
-    &__window {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    &__item {
-      height: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-      color:var(--primary-medium)
-    }
-  }
+	// &:focus {
+	//   outline: 2px solid #007bff;
+	//   outline-offset: 2px;
+	// }
+
+	&--empty {
+		padding: 0 10px;
+		color: #666;
+		font-style: italic;
+	}
+
+	&__window {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__item {
+		height: 25px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		text-align: center;
+		color: var(--primary-medium);
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		&.selected {
+			opacity: 1;
+		}
+	}
+}
