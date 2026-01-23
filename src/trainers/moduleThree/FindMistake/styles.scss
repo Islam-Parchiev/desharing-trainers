@@ -1,0 +1,13 @@
+.FindMistake {
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		align-items: center;
+	}
+	&__content {
+		font-size: 27px;
+		font-weight: 500;
+		font-family: sans-serif;
+	}
+}

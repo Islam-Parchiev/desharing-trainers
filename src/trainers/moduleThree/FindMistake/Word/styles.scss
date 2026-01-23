@@ -1,0 +1,29 @@
+.WordWithMistake {
+	display: inline-block;
+	position: relative;
+	&-variantsModal {
+		position: absolute;
+		top: -35px;
+		left: 0;
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+		padding: 5px;
+		background: #dddddc;
+		border-radius: 7px;
+	}
+	&__variant {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	&__content {
+		&.modal-opened {
+			text-decoration: line-through;
+			opacity: 0.5;
+		}
+	}
+}
