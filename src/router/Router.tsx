@@ -1,34 +1,34 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-// import { NativeLanguage } from "../pages/NativeLanguage";
-import { Language } from "../pages/Language";
-import { Test } from "../pages/Test";
-import { One } from "../pages/one";
-import { Two } from "../pages/two";
-import { Three } from "../pages/three";
-import { Four } from "../pages/four";
-import { Five } from "../pages/five";
-import { Six } from "../pages/six";
-import { Seven } from "../pages/seven";
-import { Eight } from "../pages/eight";
-import { Main } from "../pages/Main";
-import { TheoryChildPage } from "../pages/theoryChild";
-import { Nine } from "../pages/nine";
-import { Dialog } from "../pages/dialog";
-import { Example } from "../pages/Example";
-import { Eleven } from "../pages/eleven";
-import { Twelve } from "../pages/twelve";
-import { Therteen } from "../pages/therteen";
-import { Page } from "../pages/page";
-import { IsCorrect } from "../trainers/moduleTwo/IsCorrect";
-import { WhatIs } from "../trainers/moduleTwo/WhatIs";
-import { Conclusion } from "../trainers/moduleTwo/Сonclusion";
-import { StoryPuzzleSolver } from "../trainers/moduleTwo/StoryPuzzleSolver";
-import { DecryptMessage } from "../trainers/moduleTwo/DecryptMessage";
-import { DecryptMsgDND } from "../trainers/moduleTwo/DecryptMsgDND";
-import { CryptMessage } from "../trainers/moduleTwo/CryptMessage";
-import { MatchingGame } from "../trainers/moduleTwo/MatchingGame";
-import { NewWords } from "../trainers/moduleTwo/NewWords";
-// import TestDnd from "../components/testdnd";
+
+const Language = lazy(() => import("../pages/Language").then(module => ({ default: module.Language })));
+const Test = lazy(() => import("../pages/Test").then(module => ({ default: module.Test })));
+const One = lazy(() => import("../pages/one").then(module => ({ default: module.One })));
+const Two = lazy(() => import("../pages/two").then(module => ({ default: module.Two })));
+const Three = lazy(() => import("../pages/three").then(module => ({ default: module.Three })));
+const Four = lazy(() => import("../pages/four").then(module => ({ default: module.Four })));
+const Five = lazy(() => import("../pages/five").then(module => ({ default: module.Five })));
+const Six = lazy(() => import("../pages/six").then(module => ({ default: module.Six })));
+const Seven = lazy(() => import("../pages/seven").then(module => ({ default: module.Seven })));
+const Eight = lazy(() => import("../pages/eight").then(module => ({ default: module.Eight })));
+const Main = lazy(() => import("../pages/Main").then(module => ({ default: module.Main })));
+const TheoryChildPage = lazy(() => import("../pages/theoryChild").then(module => ({ default: module.TheoryChildPage })));
+const Nine = lazy(() => import("../pages/nine").then(module => ({ default: module.Nine })));
+const Dialog = lazy(() => import("../pages/dialog").then(module => ({ default: module.Dialog })));
+const Example = lazy(() => import("../pages/Example").then(module => ({ default: module.Example })));
+const Eleven = lazy(() => import("../pages/eleven").then(module => ({ default: module.Eleven })));
+const Twelve = lazy(() => import("../pages/twelve").then(module => ({ default: module.Twelve })));
+const Therteen = lazy(() => import("../pages/therteen").then(module => ({ default: module.Therteen })));
+const Page = lazy(() => import("../pages/page").then(module => ({ default: module.Page })));
+const IsCorrect = lazy(() => import("../trainers/moduleTwo/IsCorrect").then(module => ({ default: module.IsCorrect })));
+const WhatIs = lazy(() => import("../trainers/moduleTwo/WhatIs").then(module => ({ default: module.WhatIs })));
+const Conclusion = lazy(() => import("../trainers/moduleTwo/Сonclusion").then(module => ({ default: module.Conclusion })));
+const StoryPuzzleSolver = lazy(() => import("../trainers/moduleTwo/StoryPuzzleSolver").then(module => ({ default: module.StoryPuzzleSolver })));
+const DecryptMessage = lazy(() => import("../trainers/moduleTwo/DecryptMessage").then(module => ({ default: module.DecryptMessage })));
+const DecryptMsgDND = lazy(() => import("../trainers/moduleTwo/DecryptMsgDND").then(module => ({ default: module.DecryptMsgDND })));
+const CryptMessage = lazy(() => import("../trainers/moduleTwo/CryptMessage").then(module => ({ default: module.CryptMessage })));
+const MatchingGame = lazy(() => import("../trainers/moduleTwo/MatchingGame").then(module => ({ default: module.MatchingGame })));
+const NewWords = lazy(() => import("../trainers/moduleTwo/NewWords").then(module => ({ default: module.NewWords })));
 import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
 import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
@@ -60,133 +60,221 @@ import { mockConclusionData, mockDataColorTools, mockDataColorWords } from "../m
 import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
 import { FindMistake } from "../trainers/moduleThree/FindMistake";
 
-
+// eslint-disable-next-line react-refresh/only-export-components
+const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+    <Suspense
+        fallback={
+            <div className="flex items-center justify-center min-h-screen">
+                loading...
+            </div>
+        }
+    >
+        {children}
+    </Suspense>
+);
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main />
+        element: <SuspenseWrapper>
+            <Main />
+        </SuspenseWrapper>,
     },
     {
         path: '/:id',
-        element: <Language />
+        element: <SuspenseWrapper>
+            <Language />
+        </SuspenseWrapper>
+
     },
     {
         path: '/test',
-        element: <Test />
+        element: <SuspenseWrapper>
+
+            <Test />
+        </SuspenseWrapper>
     },
     {
         path: '/one',
-        element: <One />
+        element: <SuspenseWrapper>
+
+            <One />
+        </SuspenseWrapper>
     },
     {
         path: '/two',
-        element: <Two />
+        element: <SuspenseWrapper>
+
+            <Two />
+        </SuspenseWrapper>
     },
     {
         path: '/three',
-        element: <Three />
+        element: <SuspenseWrapper>
+            <Three />
+        </SuspenseWrapper>
     },
     {
         path: '/four',
-        element: <Four />
+        element: <SuspenseWrapper>
+
+            <Four />
+        </SuspenseWrapper>
     },
     {
         path: '/five',
-        element: <Five />
+        element: <SuspenseWrapper>
+
+            <Five />
+        </SuspenseWrapper>
     },
     {
         path: '/six',
-        element: <Six />
+        element: <SuspenseWrapper>
+
+            <Six />
+        </SuspenseWrapper>
     },
     {
         path: '/seven',
-        element: <Seven />
+        element: <SuspenseWrapper>
+
+            <Seven />
+        </SuspenseWrapper>
     },
     {
         path: '/eight',
-        element: <Eight />
+        element: <SuspenseWrapper>
+
+            <Eight />
+        </SuspenseWrapper>
     },
     {
         path: '/nine',
-        element: <Nine />
+        element: <SuspenseWrapper>
+
+            <Nine />
+        </SuspenseWrapper>
     },
     {
         path: '/ten',
-        element: <Dialog />
+        element: <SuspenseWrapper>
+
+            <Dialog />
+        </SuspenseWrapper>
     },
     {
         path: '/theoryChild',
-        element: <TheoryChildPage />
+        element: <SuspenseWrapper>
+
+            <TheoryChildPage />
+        </SuspenseWrapper>
     },
     {
         path: '/example',
-        element: <Example />
+        element: <SuspenseWrapper>
+            <Example />
+        </SuspenseWrapper>
     },
     {
         path: '/eleven',
-        element: <Eleven />
+        element: <SuspenseWrapper>
+            <Eleven />
+        </SuspenseWrapper>
     },
     {
         path: '/twelve',
-        element: <Twelve />
+        element: <SuspenseWrapper>
+
+            <Twelve />
+        </SuspenseWrapper>
     },
     {
         path: '/therteen',
-        element: <Therteen />
+        element: <SuspenseWrapper>
+
+            <Therteen />
+        </SuspenseWrapper>
     },
     {
         path: '/isCorrect',
-        element: <Page>
-            <IsCorrect />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <IsCorrect />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: '/whatIs',
-        element: <Page>
-            <WhatIs />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <WhatIs />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: '/conclusion',
-        element: <Page>
-            <Conclusion data={mockConclusionData} handleError={() => alert('error')} handleSuccess={() => alert('succes')} handleNext={() => alert('next')} />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <Conclusion data={mockConclusionData} handleError={() => alert('error')} handleSuccess={() => alert('succes')} handleNext={() => alert('next')} />
+            </Page >
+        </SuspenseWrapper>
     },
     {
         path: "/storyPuzzle",
-        element: <Page>
-            <StoryPuzzleSolver />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <StoryPuzzleSolver />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/decryptMessage",
-        element: <Page>
-            <DecryptMessage />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <DecryptMessage />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/decryptMsgDND",
-        element: <Page>
-            <DecryptMsgDND />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <DecryptMsgDND />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/cryptMsg",
-        element: <Page>
-            <CryptMessage />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <CryptMessage />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/matchingGame",
-        element: <Page>
-            <MatchingGame />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <MatchingGame />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/newWords",
-        element: <Page>
-            <NewWords />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <NewWords />
+            </Page>
+        </SuspenseWrapper>
     },
     // {
     //     path: "/testDnd",
