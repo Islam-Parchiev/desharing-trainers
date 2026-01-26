@@ -1,0 +1,23 @@
+.CollectPhrases {
+	&__main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+
+.CollectPhrasesVariant {
+	width: 200px;
+	height: 46px;
+	background: #ede2d6;
+	border-radius: 23px;
+	box-sizing: border-box;
+	font-size: 24px;
+	line-height: 46px;
+	transition: background 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}

@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux';
 import { Button } from '../../../shared/ui/Button';
 import { changeCurrentStep } from './model/vocabulary.slice';
-
-import './styles.scss';
 import { VocabularyIntro } from './VocabularyIntro';
 import { VocabularyPractice } from './VocabularyPractice';
 import { VocabularyTheory } from './VocabularyTheory';
 import type { Status } from '../../../types/types';
+import './styles.scss';
 export const VocabularyTrainer = () => {
     const [status, setStatus] = useState<Status>("idle")
     const { currentStep } = useAppSelector(state => state.vocabularyTrainerReducer);
@@ -30,12 +29,6 @@ export const VocabularyTrainer = () => {
         }
 
     }
-   
-   
-   
-   
-   
-   
     const handleNextStep = () => {
         if (currentStep === "intro") {
 

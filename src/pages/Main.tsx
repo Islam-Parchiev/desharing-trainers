@@ -4,7 +4,7 @@ export const Main = () => {
     return (
         <main className="Page Main">
             <section>
-                <div className="Card">
+                <div className="Card MainCard">
                     <div className="LinksTrainer">
 
                         <div className="ItemTrainerLink">
@@ -139,6 +139,10 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/findMistake">FindMistake</Link>
                         </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/collectPhrases">collect phrases</Link>
+                        </div>
+
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
                         </div>

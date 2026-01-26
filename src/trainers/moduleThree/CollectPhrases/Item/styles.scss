@@ -1,0 +1,37 @@
+.CollectPhrases__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	&_info {
+		span {
+			font-size: 27px;
+			font-family: sans-serif;
+		}
+	}
+	&_slot {
+		width: 170px;
+		height: 40px;
+		border: 2px solid #000;
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 24px;
+		line-height: 46px;
+		&.filled {
+			border: none;
+			background: #ede2d6;
+			border-radius: 23px;
+			transition: background 0.2s;
+		}
+	}
+	&_image {
+		width: 100px;
+		height: 100px;
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

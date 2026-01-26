@@ -105,24 +105,24 @@ a {
 .bg-v {
 	position: relative;
 	&::before {
-		content: "";
+		content: '';
 		position: absolute;
 		width: 50px;
 		height: 50px;
-		background-color:yellow;
-	top: 0;
-	left: 0;
-	z-index: 999;
+		background-color: yellow;
+		top: 0;
+		left: 0;
+		z-index: 999;
 	}
-	background-image: url("./assets/1.png");
+	background-image: url('./assets/1.png');
 }
 .correct-variant {
 	background-color: #1baa7d !important;
-	color:#fff !important;
+	color: #fff !important;
 }
 .incorrect-variant {
 	background-color: #e52914 !important;
-	color:#fff !important;
+	color: #fff !important;
 }
 .other-variants {
 	background-color: #7d7979 !important;
@@ -145,11 +145,11 @@ a {
 }
 .ChoiceRightVariant {
 	&__title {
-			font-family: var(--font-family);
-font-weight: 700;
-font-size: 24px;
-line-height: 150%;
-color: var(--neutral-darkest);
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 150%;
+		color: var(--neutral-darkest);
 	}
 	&__inner {
 		display: flex;
@@ -195,8 +195,8 @@ color: var(--neutral-darkest);
 }
 .ChoiceRightImage__wrapper {
 	display: flex;
-flex-direction: column;
-align-items: center;
+	flex-direction: column;
+	align-items: center;
 }
 .LinksTrainer {
 	display: flex;
@@ -205,7 +205,7 @@ align-items: center;
 	flex-wrap: wrap;
 	gap: 15px;
 }
-.ItemTrainerLink  {
+.ItemTrainerLink {
 	flex-basis: 10%;
 	height: 100px;
 	box-shadow: 1px 1px 10px 1px #000;
@@ -222,3 +222,6 @@ align-items: center;
 	justify-content: center;
 }
 
+.MainCard {
+	height: auto !important;
+}

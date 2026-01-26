@@ -14,7 +14,11 @@ export interface ITask {
   correctVariantId: number;
 }
 function App() {
-  return <RouterProvider router={router}/>
+  return <RouterProvider router={router} />
 }
 
 export default App
+
+
+
+// Подбери слова к картинкам,Распредели слова

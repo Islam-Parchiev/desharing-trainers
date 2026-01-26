@@ -29,6 +29,8 @@ const DecryptMsgDND = lazy(() => import("../trainers/moduleTwo/DecryptMsgDND").t
 const CryptMessage = lazy(() => import("../trainers/moduleTwo/CryptMessage").then(module => ({ default: module.CryptMessage })));
 const MatchingGame = lazy(() => import("../trainers/moduleTwo/MatchingGame").then(module => ({ default: module.MatchingGame })));
 const NewWords = lazy(() => import("../trainers/moduleTwo/NewWords").then(module => ({ default: module.NewWords })));
+const CollectPhrases = lazy(() => import("../trainers/moduleThree/CollectPhrases").then(module => ({ default: module.CollectPhrases })))
+// import { PictureWordMatcher } from "../trainers/moduleThree/PictureWordMatcher";
 import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
 import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
@@ -463,5 +465,13 @@ export const router = createBrowserRouter([
         element: <Page>
             <FindMistake />
         </Page>
+    },
+    {
+        path: "/collectPhrases",
+        element: <SuspenseWrapper>
+            <Page>
+                <CollectPhrases />
+            </Page>
+        </SuspenseWrapper>
     }
 ])
