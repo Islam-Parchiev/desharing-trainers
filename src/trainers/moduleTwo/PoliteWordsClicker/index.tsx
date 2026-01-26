@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { TrainerTitle } from '../../../components/TrainerTitle';
+import type { WordClicker } from '../../../types/types';
 import './styles.scss';
-// import type { Status } from '../../../types/types';
-
-const mockData = {
-    text: "Муха | Жу, | хоть | не | хотела, | В | скорый | поезд | залетела.| Ей | букашки | Фло | и | Фти | Скажут: | 'Доброго пути!' | Здравствуйте ",
-    correctItems: ["'Доброго пути!'", "Здравствуйте"]
-}
 
 type WordState = {
     text: string;
@@ -14,20 +9,24 @@ type WordState = {
     isSelected: boolean;
 }
 
-export const PoliteWordsClicker = () => {
-    const [data] = useState(mockData);
-    // const [status, setStatus] = useState<Status>("idle");
+interface PoliteWordsClickerProps extends WordClicker {
+    handleError: () => void;
+    handleSuccess: () => void;
+}
+export const PoliteWordsClicker = ({ correctValues, text, title, handleError, handleSuccess }: PoliteWordsClickerProps) => {
     const [words, setWords] = useState<WordState[]>(() => {
-        const splittedWords = data.text.split("|").filter(word => word.trim() !== '');
-        return splittedWords.map(word => ({
+
+        const regex = /([^\s"']+|"[^"]*"|'[^']*')/g;
+        const matches = text.match(regex) || [];
+
+        return matches.map(word => ({
             text: word,
-            isPolite: data.correctItems.some(correct =>
+            isPolite: correctValues.some(correct =>
                 word.includes(correct) || correct.includes(word)
             ),
             isSelected: false
         }));
     });
-
 
     const handleWordClick = (index: number) => {
 
@@ -37,25 +36,25 @@ export const PoliteWordsClicker = () => {
     };
 
 
-    const allPoliteSelected = words
-        .filter(word => word.isPolite)
-        .every(word => word.isSelected);
+
 
 
     const handleReset = () => {
         setWords(prev => prev.map(word => ({ ...word, isSelected: false })));
     };
-
+    const handleCheck = () => {
+        if (words.filter(word => word.isPolite).every(word => word.isSelected)) {
+            handleSuccess()
+            return
+        } else {
+            handleError()
+            return
+        }
+    }
     return (
         <div className="PoliteWordsClicker">
             <div className="PoliteWordsClicker__inner">
-                <TrainerTitle>Нажми на вежливые слова</TrainerTitle>
-
-                {allPoliteSelected && (
-                    <div className="PoliteWordsClicker__success">
-                        Success
-                    </div>
-                )}
+                <TrainerTitle>{title}</TrainerTitle>
 
                 <div className="PoliteWordsClicker__content">
                     {words.map((word, index) => (
@@ -76,7 +75,7 @@ export const PoliteWordsClicker = () => {
                     >
                         Сбросить выбор
                     </button>
-
+                    <button onClick={handleCheck}>check</button>
                 </div>
             </div>
         </div>

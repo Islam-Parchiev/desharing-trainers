@@ -28,9 +28,6 @@ data:[
 
 //////////////////////////////////////////////////////////////////////////////$Recycle.Bin
 
-
-
-
 // TrainerType - ChoiceMultipleVariants
 
 // export interface ChoiceRightVariant {
@@ -41,21 +38,19 @@ data:[
 // }
 
 // [
-    // {
-    //     id:1,
-    //     correctVariants:[2,4,5],
-    //     questionTitle:"Что делают люди с помощью речи ? Выбери 3 ответа",
-    //     variants:[
-    //         {id:1,title:"рычат"},
-    //         {id:2,title:"спрашивают"},
-    //         {id:3,title:"молчат"},
-    //         {id:4,title:"просят"},
-    //         {id:5,title:"рассказывают"}
-    //     ]
-    // }
+// {
+//     id:1,
+//     correctVariants:[2,4,5],
+//     questionTitle:"Что делают люди с помощью речи ? Выбери 3 ответа",
+//     variants:[
+//         {id:1,title:"рычат"},
+//         {id:2,title:"спрашивают"},
+//         {id:3,title:"молчат"},
+//         {id:4,title:"просят"},
+//         {id:5,title:"рассказывают"}
+//     ]
+// }
 // ]
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // TrainerType - ChoiceRightImage
@@ -98,8 +93,6 @@ data:[
 //     correctVariantId:1
 // }
 
-
-
 // TrainerType - DialogTrainer
 
 // interface DialogSentence {
@@ -126,17 +119,16 @@ data:[
 //     { id: 4, type: "slot", correctValue: "В музыкальную школу!", currentValue: null }
 // ] - DialogItem[]
 // variants:[
-        // {
-          // id: 1,
-          // value: "Привет, Серёжа!"
-      // },
-      // {
-          // id: 2,
-          // value: "В музыкальную школу!"
-      // }
-  // ]
+// {
+// id: 1,
+// value: "Привет, Серёжа!"
+// },
+// {
+// id: 2,
+// value: "В музыкальную школу!"
 // }
-
+// ]
+// }
 
 // TrainerType - DnDColumns
 
@@ -178,7 +170,6 @@ data:[
 // ]
 // }
 
-
 // TrainerType - DragAndDrop
 // export interface IWord {
 //   id: Id;
@@ -197,7 +188,6 @@ data:[
 //   slots: ISlot[];
 //   setSlots: Dispatch<SetStateAction<ISlot[]>>;
 // }
-
 
 /* {
 words:[{ id: 1, title: "Мяуканье" }, { id: 2, title: "V8" }, { id: 3, title: "Лай" }]
@@ -222,9 +212,6 @@ slots:[
         }
     ]
 }*/
-
-
-
 
 // TrainerType - FillInTrainer
 // interface IVariant { id: Id; variant: string; correct: boolean; }
@@ -253,7 +240,7 @@ variants:[
     ]
 }*/
 
-
-
 // TrainerType -  TableTrainer
 // IN DEVELOPING
+
+// politeWordsClicker - wordCliker

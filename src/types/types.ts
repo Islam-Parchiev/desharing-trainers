@@ -17,3 +17,9 @@ interface IChoiceRightVariant {
 	}
 }
 export type TrainerTypes = ChoiceMultipleVariants | IChoiceRightVariant
+
+export interface WordClicker {
+	text: string
+	title: string
+	correctValues: string[]
+}

@@ -17,18 +17,24 @@
 	color: #fff;
 }
 .WordClick__word {
-    padding: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background-color: #f0f0f0;
-    }
-    
-    &--selected {
-      background-color: #4CAF50;
-      color: white;
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
-  }
+	padding: 2px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
+
+	&--selected {
+		background-color: #4caf50;
+		color: white;
+		padding: 2px 4px;
+		border-radius: 4px;
+	}
+	&--error {
+		background-color: red;
+		color: white;
+		padding: 2px 4px;
+		border-radius: 4px;
+	}
+}

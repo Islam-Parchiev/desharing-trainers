@@ -2,7 +2,7 @@ import type { ITask } from '../App'
 import type { TheoryDataItem } from '../theory/Child'
 import type { ChoiceRightVariant } from '../trainers/moduleOne/ChoiceMultipleVariants'
 import type { Tool } from '../trainers/moduleThree/colorWords'
-import type { TrainerTypes } from '../types/types'
+import type { TrainerTypes, WordClicker } from '../types/types'
 
 export const VariantTasks: ITask[] = [
 	{
@@ -353,4 +353,15 @@ export const FixMistakesInTextMockData = {
 		{ id: 2, wordN: 2, variants: ['Солнце', 'солнце.', 'солнце'], correct: 'солнце' },
 		{ id: 3, wordN: 3, variants: ['Отражается', 'отражается'], correct: 'отражается' },
 	],
+}
+
+export const mockDataPoliteWords: WordClicker = {
+	text: "Муха Жу, хоть не хотела, В скорый поезд залетела. Ей букашки Фло и Фти Скажут: 'Доброго пути!' Здравствуйте ",
+	correctValues: ["'Доброго пути!'", 'Здравствуйте'],
+	title: 'Нажми на вежливые слова',
+}
+export const mockDataWordClick: WordClicker = {
+	text: 'Учёба и труд рядом идут.',
+	title: 'Нажми на слова в которых ВСЕ согласные ТВЕРДЫЕ',
+	correctValues: ['труд', 'идут.'],
 }

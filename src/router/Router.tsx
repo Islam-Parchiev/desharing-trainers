@@ -56,9 +56,10 @@ import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
-import { mockConclusionData, mockDataColorTools, mockDataColorWords } from "../mocks/data";
+import { mockConclusionData, mockDataColorTools, mockDataColorWords, mockDataPoliteWords, mockDataWordClick } from "../mocks/data";
 import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
 import { FindMistake } from "../trainers/moduleThree/FindMistake";
+import { WordClickerWithWrapper } from "../trainers/moduleThree/WordClick/wrapper";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -357,7 +358,10 @@ export const router = createBrowserRouter([
     {
         path: "/politeWordsClicker",
         element: <Page>
-            <PoliteWordsClicker />
+            <PoliteWordsClicker
+                correctValues={mockDataPoliteWords.correctValues}
+                text={mockDataPoliteWords.text}
+                title={mockDataPoliteWords.title} />
         </Page>
     },
     {
@@ -433,7 +437,7 @@ export const router = createBrowserRouter([
     {
         path: "/wordCliker",
         element: <Page>
-            <WordClick />
+            <WordClickerWithWrapper data={mockDataWordClick} />
         </Page>
     },
     {

@@ -16,8 +16,89 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+
+	/* Анимация появления */
+	animation: bubbleAppear 0.6s ease-out both;
+
+	/* Постоянная плавающая анимация (опционально) */
+	animation: floatBubble 4s ease-in-out infinite both;
+
 	&__selected {
 		background-color: var(--primary-medium);
 		color: #fff;
+		/* Анимация выделения */
+		animation: pulseSelected 2s infinite;
+	}
+
+	transition: transform 0.5s ease-in-out;
+
+	// &:hover {
+	// scale: 1.05;
+	// translate: 10px;
+	// transform: translateY(10px) scale(1.05);
+	/* Анимация при наведении (опционально) */
+	// animation: hoverShake 0.3s ease;
+	// }
+}
+
+/* 1. Анимация появления с bounce-эффектом */
+@keyframes bubbleAppear {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	70% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* 2. Плавное плавание (для постоянной анимации) */
+@keyframes floatBubble {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-15px) rotate(1deg);
+	}
+}
+
+/* 3. Пульсация для выделенного элемента */
+@keyframes pulseSelected {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(var(--primary-medium-rgb), 0.4);
+	}
+	50% {
+		box-shadow: 0 0 0 10px rgba(var(--primary-medium-rgb), 0);
+	}
+}
+
+/* 4. Анимация встряски при наведении */
+@keyframes hoverShake {
+	0%,
+	100% {
+		transform: translateY(10px) rotate(0deg);
+	}
+	25% {
+		transform: translateY(10px) rotate(-2deg);
+	}
+	75% {
+		transform: translateY(10px) rotate(2deg);
+	}
+}
+
+/* 5. Дополнительная анимация "дыхания" */
+@keyframes bubbleBreath {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.03);
 	}
 }
