@@ -1,0 +1,45 @@
+.DistributeWords {
+	height: 100%;
+	&__inner {
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+		height: 100%;
+	}
+}
+.DistributeWordsColumn {
+	width: 30%;
+	background: rgb(170, 170, 252);
+	border-radius: 16px;
+	height: 100%;
+	padding: 15px;
+	&__inner {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	&__footer {
+		width: 100%;
+		height: 40px;
+		border: 1px solid #000;
+		border-radius: 16px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		justify-content: center;
+	}
+}
+.DistributeWordsColumn__slot {
+	margin-top: 20px;
+	width: 100%;
+	height: 40px;
+	border-radius: 16px;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+.DistributeWordsVariant {
+	width: 200px;
+	cursor: grab;
+	user-select: none;
+	text-align: center;
+}

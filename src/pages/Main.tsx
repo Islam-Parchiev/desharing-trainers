@@ -142,6 +142,9 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/collectPhrases">collect phrases</Link>
                         </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/distributeWords">DistributeWords</Link>
+                        </div>
 
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>

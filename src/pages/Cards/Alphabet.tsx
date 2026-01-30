@@ -37,7 +37,8 @@ const cardData: AlphabetCardType[] = [
             { id: 1, current: null, correct: 'по смыслу' },
             { id: 2, current: null, correct: 'связаны' },
         ]
-    }
+    },
+
 ]
 export const AlphabetCard = () => {
     const {

@@ -41,7 +41,7 @@ export const CollectPhrases = () => {
             currentVariant: null
         }))]
     );
-    const [variants, setVariants] = useState([...mockData.variants]);
+    const [variants] = useState([...mockData.variants]);
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
@@ -50,13 +50,6 @@ export const CollectPhrases = () => {
 
         const draggedVariant = active.data.current?.variant;
         const slotTitle = over.id as string;
-        const isVariantAlreadyUsed = slots.some(
-            slot => slot.currentVariant === draggedVariant && slot.title !== slotTitle
-        );
-
-        if (isVariantAlreadyUsed) {
-            return;
-        }
 
         setSlots(prevSlots =>
             prevSlots.map(slot =>
@@ -65,13 +58,19 @@ export const CollectPhrases = () => {
                     : slot
             )
         );
-        setVariants(prev => prev.filter(v => v !== draggedVariant));
     };
     const check = () => {
         if (slots.every(slot => slot.correctVariant === slot.currentVariant)) {
             setStatus("success")
         } else {
             setStatus("error")
+        }
+    }
+    const variantIsDisabled = (variant: string) => {
+        if (slots.find(slot => slot.currentVariant === variant)) {
+            return true
+        } else {
+            return false
         }
     }
     return (
@@ -97,7 +96,7 @@ export const CollectPhrases = () => {
                                 <Variant
                                     key={"variant-" + variant}
                                     variant={variant}
-                                    isDisabled={false}
+                                    isDisabled={variantIsDisabled(variant)}
                                 />
                             ))}
                         </div>
