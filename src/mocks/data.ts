@@ -287,44 +287,112 @@ export const AccentLetterMocks = [
 	{ id: 5, letter: 'Д', checked: false, correct: false },
 ]
 
-export const mockConclusionData = {
-	content: [
-		{ id: 1, value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .', completed: false },
-		{ id: 2, value: 'Слова в предложении связаны между {{собой}} по смыслу .', completed: false },
-	],
-	variants: [
-		{
-			id: 1,
-			value: 'изменять',
-		},
-		{
-			id: 2,
-			value: 'заглавная',
-		},
-		{
-			id: 3,
-			value: 'по смыслу',
-		},
-		{
-			id: 4,
-			value: 'точка',
-		},
-		{
-			id: 5,
-			value: 'связаны',
-		},
-		{
-			id: 6,
-			value: 'собой',
-		},
-	],
-	slots: [
-		{ id: 11, contentId: 1, current: null, correct: 'по смыслу' },
-		{ id: 22, contentId: 1, current: null, correct: 'связаны' },
-		{ id: 33, contentId: 2, current: null, correct: 'собой' },
-	],
-}
-
+export const mockConclusionData = [
+	{
+		id: 1,
+		value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .',
+		completed: false,
+		variants: [
+			{
+				id: 1,
+				value: 'изменять',
+			},
+			{
+				id: 2,
+				value: 'заглавная',
+			},
+			{
+				id: 3,
+				value: 'по смыслу',
+			},
+			{
+				id: 4,
+				value: 'точка',
+			},
+			{
+				id: 5,
+				value: 'связаны',
+			},
+			{
+				id: 6,
+				value: 'собой',
+			},
+		],
+		slots: [
+			{ id: 1, current: null, correct: 'по смыслу' },
+			{ id: 2, current: null, correct: 'связаны' },
+		],
+	},
+	{
+		id: 2,
+		value: 'Слова в предложении связаны между {{машен}} по смыслу .',
+		completed: false,
+		variants: [
+			{
+				id: 1,
+				value: 'изменять',
+			},
+			{
+				id: 2,
+				value: 'заглавная',
+			},
+			{
+				id: 3,
+				value: 'по смыслу',
+			},
+			{
+				id: 4,
+				value: 'точка',
+			},
+			{
+				id: 5,
+				value: 'связаны',
+			},
+			{
+				id: 6,
+				value: 'машен',
+			},
+		],
+		slots: [{ id: 3, current: null, correct: 'машен' }],
+	},
+]
+// {
+// 	content: [
+// 		{ id: 1, value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .', completed: false },
+// 		{ id: 2, value: 'Слова в предложении связаны между {{собой}} по смыслу .', completed: false },
+// 	],
+// 	variants: [
+// 		{
+// 			id: 1,
+// 			value: 'изменять',
+// 		},
+// 		{
+// 			id: 2,
+// 			value: 'заглавная',
+// 		},
+// 		{
+// 			id: 3,
+// 			value: 'по смыслу',
+// 		},
+// 		{
+// 			id: 4,
+// 			value: 'точка',
+// 		},
+// 		{
+// 			id: 5,
+// 			value: 'связаны',
+// 		},
+// 		{
+// 			id: 6,
+// 			value: 'собой',
+// 		},
+// 	],
+// 	slots: [
+// 		{ id: 11, contentId: 1, current: null, correct: 'по смыслу' },
+// 		{ id: 22, contentId: 1, current: null, correct: 'связаны' },
+// 		{ id: 33, contentId: 2, current: null, correct: 'собой' },
+// 	],
+// }
 export const mockDataColorWords = [
 	{ id: 1, content: 'Кошка', correctColor: '#0000ff' },
 	{ id: 2, content: 'Стол', correctColor: '#ff0000' },
