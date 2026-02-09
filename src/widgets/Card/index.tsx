@@ -2,8 +2,16 @@ import { type ReactNode } from "react"
 import { AttestationItem } from "../../components/AttestationItem"
 import styles from './styles.module.scss';
 import type { Status } from "../../types/types";
-export const Card = ({ children, currentTaskNumber, status, trainersLength }: { children: ReactNode; status: Status; currentTaskNumber: number; trainersLength: number }) => {
-
+export const Card = ({ children, currentTaskNumber, status, trainersLength, getStatistics }: {
+    children: ReactNode; status: Status; currentTaskNumber: number; trainersLength: number; getStatistics: () => {
+        mistakes: number;
+        time: number;
+        accuracy: string;
+        totalAttempts: number;
+        correctAttempts: number;
+    }
+}) => {
+    const statistic = getStatistics()
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -22,9 +30,15 @@ export const Card = ({ children, currentTaskNumber, status, trainersLength }: { 
                 />
             </div>
 
-            <div className={styles.main}>
+            {status !== "finish" ? <div className={styles.main}>
                 {children}
-            </div>
+            </div> : <div>
+                <div>{statistic.mistakes}</div>
+                <div>{statistic.accuracy}</div>
+                <div>{statistic.correctAttempts}</div>
+                <div>{statistic.time}</div>
+                <div>{statistic.totalAttempts}</div>
+            </div>}
             {status === "success" && "Success"}
             {status === "error" && "Error"}
             {status === "finish" && "Finish"}

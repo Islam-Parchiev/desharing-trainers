@@ -288,7 +288,10 @@ export const AccentLetterMocks = [
 ]
 
 export const mockConclusionData = {
-	content: [{ value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .', completed: false }],
+	content: [
+		{ id: 1, value: 'Слова в предложении {{связаны}} между собой {{по смыслу}} .', completed: false },
+		{ id: 2, value: 'Слова в предложении связаны между {{собой}} по смыслу .', completed: false },
+	],
 	variants: [
 		{
 			id: 1,
@@ -310,10 +313,15 @@ export const mockConclusionData = {
 			id: 5,
 			value: 'связаны',
 		},
+		{
+			id: 6,
+			value: 'собой',
+		},
 	],
 	slots: [
-		{ id: 1, current: null, correct: 'по смыслу' },
-		{ id: 2, current: null, correct: 'связаны' },
+		{ id: 11, contentId: 1, current: null, correct: 'по смыслу' },
+		{ id: 22, contentId: 1, current: null, correct: 'связаны' },
+		{ id: 33, contentId: 2, current: null, correct: 'собой' },
 	],
 }
 

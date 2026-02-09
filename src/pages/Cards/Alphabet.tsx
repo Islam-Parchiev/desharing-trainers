@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Card } from "../../widgets/Card"
 import type { AlphabetCardType } from "../../widgets/Card/types";
 import { useAlphabetCard } from "../../hooks/trainers/useAlphabetCard";
@@ -9,7 +10,7 @@ const cardData: AlphabetCardType[] = [
         variants: ["по росту", "по порядку", "по красоте", "вперемешку"]
     },
     {
-        type: "Conlusion",
+        type: "Conclusion",
         content: [{ value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .", completed: false }],
         variants: [
             {
@@ -42,9 +43,18 @@ const cardData: AlphabetCardType[] = [
 ]
 export const AlphabetCard = () => {
     const {
-        currentTaskId, dataLength, renderTrainer, status
+        currentTaskId, dataLength, renderTrainer, status, startTimer, getStatistics,
+        handleNextTask
     } = useAlphabetCard({ data: cardData })
-    return <Card status={status} currentTaskNumber={currentTaskId} trainersLength={dataLength}>
+
+    useEffect(() => {
+        if (currentTaskId === 0 && status === 'idle') {
+            startTimer();
+        }
+    }, [currentTaskId, status, startTimer]);
+
+    return <Card getStatistics={getStatistics} status={status} currentTaskNumber={currentTaskId} trainersLength={dataLength}>
         {renderTrainer()}
+        <button onClick={handleNextTask}>next</button>
     </Card>
 }

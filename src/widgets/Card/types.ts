@@ -13,14 +13,14 @@ export interface IChooseMultipleVariants {
 	variants: { id: Id; title: string }[]
 }
 export interface IConclusion {
-	type: 'Conlusion'
-	content: { value: string; completed: boolean }[]
+	type: 'Conclusion'
+	content: { id: Id; value: string; completed: boolean }[]
 	variants: {
 		id: Id
 		value: string
 	}[]
 
-	slots: { id: Id; current: null | string; correct: string }[]
+	slots: { id: Id; contentId: Id; current: null | string; correct: string }[]
 }
 
 export type AlphabetCardType = IConclusion | IChooseCorrectVariant

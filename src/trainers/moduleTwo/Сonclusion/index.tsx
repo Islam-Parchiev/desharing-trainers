@@ -7,14 +7,17 @@ import './styles.scss';
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { ConclusionVariant } from "./Variant";
 import type { IConclusion } from "../../../widgets/Card/types";
+import { prev } from "../../../widgets/Example/Theory/theory.slice";
 
 
 type ConclusionProps = Omit<IConclusion, "type">
 export const Conclusion = ({ data, handleError, handleSuccess }: { data: ConclusionProps; handleNext?: () => void; handleSuccess?: () => void; handleError?: () => void; }) => {
-    const [content] = useState(data.content);
+    const [content, setContent] = useState([...data.content]);
+    const [isError, setIsError] = useState(false);
     const [slots, setSlots] = useState([...data.slots]);
     const [variants] = useState([...data.variants]);
-
+    const [currentItemIndex, setCurrentItemIndex] = useState(0);
+    const currentItem = content[currentItemIndex];
     const handleCheck = () => {
         const allCorrect = slots.every(slot => slot.correct === slot.current);
         if (allCorrect) {
@@ -28,11 +31,12 @@ export const Conclusion = ({ data, handleError, handleSuccess }: { data: Conclus
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
-
+        console.log('over', over);
+        console.log('active', active)
         if (over) {
             setSlots(prevSlots =>
                 prevSlots.map(slot =>
-                    slot.id === Number(over.id)
+                    slot.id === +over.id
                         ? { ...slot, current: active.data.current?.value || null }
                         : slot
                 )
@@ -65,15 +69,61 @@ export const Conclusion = ({ data, handleError, handleSuccess }: { data: Conclus
             return <span key={index}>{part}</span>;
         });
     };
+    const isLastTask = () => {
+        if (currentItem.value === content[content.length - 1].value) {
+            return true
+        }
+        return false
+    }
+    const isVisible = (item: {
+        value: string;
+        completed: boolean;
+    }) => {
+        if (currentItem.value === item.value) {
+            return "visible"
+        }
+        if (item.completed === true) return "visible"
+        return ""
+    }
+    const handleNext = () => {
+        const currentItemSlots = slots.filter(slot => slot.contentId === currentItem.id);
+        const isAllCorrect = currentItemSlots.every(
+            slot => slot.contentId === currentItem.id && slot.current === slot.correct
+        );
 
+        if (isAllCorrect) {
+            setContent(prev =>
+                prev.map(item =>
+                    item.id === currentItem.id
+                        ? { ...item, completed: true }
+                        : item
+                )
+            );
+
+            setCurrentItemIndex(prev => {
+                const nextIndex = prev + 1;
+
+                // if (onComplete) onComplete(currentItem.id, nextIndex);
+                return nextIndex;
+            });
+        } else {
+            setIsError(true);
+
+            const wrongSlots = slots.filter(
+                slot => !(slot.contentId === currentItem.id && slot.current === slot.correct)
+            );
+            console.log('CHETO TAM:', wrongSlots);
+        }
+    };
     return (
         <div className="Conclusion__wrapper">
             <DndContext onDragEnd={handleDragEnd}>
                 <TrainerTitle>Сделай вывод</TrainerTitle>
+                {isError && "Some error"}
                 <div className="Conclusion">
                     <div className="Conclusion__main">
                         {content.map((sentence, index) => (
-                            <div key={index} className="Conclusion__row visible">
+                            <div key={index} className={`Conclusion__row ${isVisible(sentence)}`}>
                                 {renderContent(sentence.value)}
                             </div>
                         ))}
@@ -88,7 +138,8 @@ export const Conclusion = ({ data, handleError, handleSuccess }: { data: Conclus
                             />
                         ))}
                     </ul>
-                    <Button onClick={handleCheck} size="small">Проверить</Button>
+                    <Button onClick={handleNext} size="small">Next</Button>
+                    {isLastTask() && <Button onClick={handleCheck}>Finish</Button>}
                 </div>
             </DndContext>
         </div>
