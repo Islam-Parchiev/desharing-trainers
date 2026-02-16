@@ -63,6 +63,7 @@ import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
 import { FindMistake } from "../trainers/moduleThree/FindMistake";
 import { WordClickerWithWrapper } from "../trainers/moduleThree/WordClick/wrapper";
 import { DistributeWords } from "../trainers/moduleThree/DistributeWords";
+import { ConnectItems } from "../trainers/ConnectItems";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -480,6 +481,14 @@ export const router = createBrowserRouter([
         element: <SuspenseWrapper>
             <Page>
                 <DistributeWords />
+            </Page>
+        </SuspenseWrapper>
+    },
+    {
+        path: '/connectItems',
+        element: <SuspenseWrapper>
+            <Page>
+                <ConnectItems />
             </Page>
         </SuspenseWrapper>
     }
