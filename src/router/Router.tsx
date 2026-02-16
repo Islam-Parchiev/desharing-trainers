@@ -54,7 +54,7 @@ import { ReorderLetters } from "../trainers/moduleThree/ReorderLetters";
 import { AlphabeticalSorter } from "../trainers/moduleThree/AlphabeticalSorter";
 import { ConnectLetters } from "../trainers/moduleThree/ConnectLetters";
 import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
-import { WordClick } from "../trainers/moduleThree/WordClick";
+// import { WordClick } from "../trainers/moduleThree/WordClick";
 import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
 import { AlphabetCard } from "../pages/Cards/Alphabet";
 import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
@@ -223,7 +223,7 @@ export const router = createBrowserRouter([
         element: <SuspenseWrapper>
 
             <Page>
-                <Conclusion data={mockConclusionData} handleError={() => alert('error')} handleSuccess={() => alert('succes')} handleNext={() => alert('next')} />
+                <Conclusion data={mockConclusionData} handleError={() => alert('error')} handleSuccess={() => alert('succes')} />
             </Page >
         </SuspenseWrapper>
     },
@@ -365,7 +365,9 @@ export const router = createBrowserRouter([
             <PoliteWordsClicker
                 correctValues={mockDataPoliteWords.correctValues}
                 text={mockDataPoliteWords.text}
-                title={mockDataPoliteWords.title} />
+                title={mockDataPoliteWords.title}
+                handleError={() => alert("error")}
+                handleSuccess={() => alert("success")} />
         </Page>
     },
     {
