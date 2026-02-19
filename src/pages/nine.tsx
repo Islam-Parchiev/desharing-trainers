@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { TableTrainer, type TableTrainerData } from "../trainers/moduleOne/TableTrainer"
 const mockData = {
     tableCols: [
@@ -91,8 +91,8 @@ const mockData = {
     ]
 }
 export const Nine = () => {
-    const [mData, setMdata] = useState<TableTrainerData | null>(mockData);
-    const [status, setStatus] = useState<"loading" | "success" | "error">("success");
+    const [mData] = useState<TableTrainerData | null>(mockData);
+    const [status] = useState<"loading" | "success" | "error">("success");
     // useEffect(() => {
     //     const fetchData = async () => {
     //         setStatus("loading");

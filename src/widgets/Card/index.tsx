@@ -3,7 +3,7 @@ import { AttestationItem } from "../../components/AttestationItem"
 import styles from './styles.module.scss';
 import type { Status } from "../../types/types";
 export const Card = ({ children, currentTaskNumber, status, trainersLength, getStatistics }: {
-    children: ReactNode; status: Status; currentTaskNumber: number; trainersLength: number; getStatistics: () => {
+    children: ReactNode; status: Status; currentTaskNumber: number; trainersLength: number; getStatistics?: () => {
         mistakes: number;
         time: number;
         accuracy: string;
@@ -11,7 +11,13 @@ export const Card = ({ children, currentTaskNumber, status, trainersLength, getS
         correctAttempts: number;
     }
 }) => {
-    const statistic = getStatistics()
+    const statistic = getStatistics ? getStatistics() : {
+        mistakes: 0,
+        time: 0,
+        accuracy: '',
+        totalAttempts: 0,
+        correctAttempts: 0,
+    }
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>

@@ -325,7 +325,7 @@ export const mockConclusionData = [
 	},
 	{
 		id: 2,
-		value: 'Слова в предложении связаны между {{машен}} по смыслу .',
+		value: 'Слова в предложении связаны между {{собой}} по смыслу .',
 		completed: false,
 		variants: [
 			{
@@ -350,10 +350,10 @@ export const mockConclusionData = [
 			},
 			{
 				id: 6,
-				value: 'машен',
+				value: 'собой',
 			},
 		],
-		slots: [{ id: 3, current: null, correct: 'машен' }],
+		slots: [{ id: 3, current: null, correct: 'собой' }],
 	},
 ]
 // {

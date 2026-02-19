@@ -10,8 +10,10 @@ const cardData: AlphabetCardType[] = [
         variants: ["по росту", "по порядку", "по красоте", "вперемешку"]
     },
     {
+        id: 2,
+        completed: false,
+        value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .",
         type: "Conclusion",
-        content: [{ value: "Слова в предложении {{связаны}} между собой {{по смыслу}} .", completed: false }],
         variants: [
             {
                 id: 1,

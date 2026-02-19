@@ -77,7 +77,7 @@ export function useAlphabetCard({ data: fetchedData }: { data: AlphabetCardType[
             setCurrentTaskId(prev => prev + 1);
             setStatus("idle");
         }
-    }, [isLastTask]);
+    }, [isLastTask, pauseTimer]);
 
     const completedItems = data.filter(item => item.completed === true);
 
@@ -101,7 +101,7 @@ export function useAlphabetCard({ data: fetchedData }: { data: AlphabetCardType[
                 return (
                     <Conclusion
                         key={currentTaskId}
-                        data={currentTask}
+                        data={[currentTask]}
                         handleSuccess={onSuccess}
                         handleError={onError}
                     />

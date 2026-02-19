@@ -107,6 +107,18 @@ export const Conclusion = ({ data, handleSuccess, handleError }: ConclusionProps
         return "";
     }, [currentItem.id]);
 
+    const handleCheck = useCallback(() => {
+        const allCorrect = content.every(item =>
+            item.slots.every(slot => slot.correct === slot.current)
+        );
+
+        if (allCorrect) {
+            handleSuccess?.();
+        } else {
+            handleError?.();
+        }
+    }, [content, handleSuccess, handleError]);
+
     const handleNext = useCallback(() => {
         const isAllCorrect = currentItem.slots.every(
             slot => slot.current === slot.correct
@@ -137,19 +149,7 @@ export const Conclusion = ({ data, handleSuccess, handleError }: ConclusionProps
             );
             console.log(wrongSlots);
         }
-    }, [currentItem, isLastTask, handleError]);
-
-    const handleCheck = useCallback(() => {
-        const allCorrect = content.every(item =>
-            item.slots.every(slot => slot.correct === slot.current)
-        );
-
-        if (allCorrect) {
-            handleSuccess?.();
-        } else {
-            handleError?.();
-        }
-    }, [content, handleSuccess, handleError]);
+    }, [currentItem.slots, currentItem.id, isLastTask, handleCheck, handleError]);
 
     const usedVariants = useMemo(() => {
         const used = new Set<string>();
