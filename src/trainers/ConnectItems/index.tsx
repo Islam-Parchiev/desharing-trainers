@@ -47,12 +47,13 @@ export const ConnectItems = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [activeSource]);
 
-    const startConnection = (id: string): void => {
+    const startConnection = (e: React.MouseEvent, id: string): void => {
         if (connections.some((c) => c.source === id)) return;
+        setMousePos({ x: e.clientX, y: e.clientY });
         setActiveSource(id);
     };
 
-    const endConnection = (catId: string): void => {
+    const endConnection = (e: React.MouseEvent<HTMLButtonElement>, catId: string): void => {
         if (activeSource) {
             setConnections((prev) => [...prev, { source: activeSource, target: catId }]);
             setActiveSource(null);
@@ -81,7 +82,7 @@ export const ConnectItems = () => {
             <TrainerTitle>Соедини слова с категорией</TrainerTitle>
             {isSuccess && <div className="success-message">Поздравляем! Все связи правильные!</div>}
             <ArcherContainer
-                key={activeSource ? `drawing-${mousePos.x}-${mousePos.y}` : 'idle'}
+                // key={activeSource ? `drawing-${mousePos.x}-${mousePos.y}` : 'idle'}
                 strokeColor="#4f46e5"
                 strokeWidth={3}
                 endShape={{ arrow: { arrowLength: 0 } }}
@@ -122,7 +123,7 @@ export const ConnectItems = () => {
                                     >
                                         {w.label}
                                     </div> */}
-                                    <Button variant="primary" onClick={() => startConnection(w.id)}>
+                                    <Button variant="primary" onClick={(e) => startConnection(e, w.id)}>
                                         <div>
 
                                             {w.label}
@@ -136,19 +137,12 @@ export const ConnectItems = () => {
                     <div className="ConnectItems__column">
                         {CATS.map((c) => (
                             <ArcherElement key={c.id} id={c.id}>
-                                <Button asChild variant="primary" onClick={() => endConnection(c.id)}>
+                                <Button asChild variant="primary" onClick={(e) => endConnection(e, c.id)}>
                                     <div>
 
                                         {c.label}
                                     </div>
                                 </Button>
-                                {/* <div
-                                    onClick={() => endConnection(c.id)}
-                                    className="category"
-                                    style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', cursor: 'pointer' }}
-                                >
-                                    {c.label}
-                                </div> */}
                             </ArcherElement>
                         ))}
                     </div>
