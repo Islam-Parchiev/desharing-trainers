@@ -7,11 +7,12 @@ import { Button } from '../../shared/ui/Button';
 interface QuizItem {
     id: string;
     label: string;
-    correct: string;
+    correctCategory: string;
 }
 
 interface Category {
     id: string;
+    name: string;
     label: string;
 }
 
@@ -21,15 +22,15 @@ interface Connection {
 }
 
 const WORDS: QuizItem[] = [
-    { id: 'w0', label: 'Яблоко', correct: 'cat-1' },
-    { id: 'w1', label: 'Морковь', correct: 'cat-0' },
-    { id: 'w2', label: 'Банан', correct: 'cat-1' },
-    { id: 'w3', label: 'Картофель', correct: 'cat-0' },
+    { id: 'w0', label: 'Яблоко', correctCategory: 'Fruits' },
+    { id: 'w1', label: 'Морковь', correctCategory: 'Vegetables' },
+    { id: 'w2', label: 'Банан', correctCategory: 'Fruits' },
+    { id: 'w3', label: 'Картофель', correctCategory: 'Vegetables' },
 ];
 
 const CATS: Category[] = [
-    { id: 'cat-0', label: 'Овощи' },
-    { id: 'cat-1', label: 'Фрукты' },
+    { id: 'cat-0', name: "Vegetables", label: 'Овощи' },
+    { id: 'cat-1', name: "Fruits", label: 'Фрукты' },
 ];
 
 export const ConnectItems = () => {
@@ -37,14 +38,25 @@ export const ConnectItems = () => {
     const [activeSource, setActiveSource] = useState<string | null>(null);
     const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            if (activeSource) {
-                setMousePos({ x: e.clientX, y: e.clientY });
-            }
+            if (activeSource) setMousePos({ x: e.clientX, y: e.clientY });
         };
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [activeSource]);
+
+    useEffect(() => {
+        const handleGlobalClick = (e: MouseEvent) => {
+            if (!activeSource) return;
+            const target = e.target as HTMLElement;
+            if (!target.closest('[data-name="test-end"]') && !target.closest('.ConnectItems__column')) {
+                setActiveSource(null);
+            }
+        };
+        window.addEventListener('mousedown', handleGlobalClick);
+        return () => window.removeEventListener('mousedown', handleGlobalClick);
     }, [activeSource]);
 
     const startConnection = (e: React.MouseEvent, id: string): void => {
@@ -53,9 +65,9 @@ export const ConnectItems = () => {
         setActiveSource(id);
     };
 
-    const endConnection = (e: React.MouseEvent<HTMLButtonElement>, catId: string): void => {
+    const endConnection = (catId: string): void => {
         if (activeSource) {
-            setConnections((prev) => [...prev, { source: activeSource, target: catId }]);
+            setConnections((prev) => [...prev.filter(c => c.source !== activeSource), { source: activeSource, target: catId }]);
             setActiveSource(null);
         }
     };
@@ -68,7 +80,8 @@ export const ConnectItems = () => {
 
         const allCorrect = connections.every((conn) => {
             const word = WORDS.find((w) => w.id === conn.source);
-            return word && word.correct === conn.target;
+            const category = CATS.find((c) => c.id === conn.target);
+            return word && category && word.correctCategory === category.name;
         });
 
         if (allCorrect) {
@@ -77,24 +90,19 @@ export const ConnectItems = () => {
             alert('Некоторые связи неправильные. Попробуйте еще раз!');
         }
     };
+
     return (
         <div className='ConnectItems'>
             <TrainerTitle>Соедини слова с категорией</TrainerTitle>
             {isSuccess && <div className="success-message">Поздравляем! Все связи правильные!</div>}
-            <ArcherContainer
-                // key={activeSource ? `drawing-${mousePos.x}-${mousePos.y}` : 'idle'}
-                strokeColor="#4f46e5"
-                strokeWidth={3}
-                endShape={{ arrow: { arrowLength: 0 } }}
-                offset={0}
-            >
 
+            <ArcherContainer strokeColor="#4f46e5" strokeWidth={3} endShape={{ arrow: { arrowLength: 0 } }} offset={0}>
                 <div className="ConnectItems__content" style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
-                    <div className="ConnectItems__column" style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+
+                    <div className="ConnectItems__column" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                         {WORDS.map((w) => {
                             const conn = connections.find((c) => c.source === w.id);
                             const isDragging = activeSource === w.id;
-
                             const relations: RelationType[] = [];
 
                             if (conn) {
@@ -102,7 +110,6 @@ export const ConnectItems = () => {
                                     targetId: conn.target,
                                     targetAnchor: 'left',
                                     sourceAnchor: 'right',
-                                    // lineStyle: 'polyline' делает линию прямой между точками
                                     style: { strokeColor: '#4f46e5', lineStyle: 'straight' },
                                 });
                             } else if (isDragging) {
@@ -116,62 +123,40 @@ export const ConnectItems = () => {
 
                             return (
                                 <ArcherElement key={w.id} id={w.id} relations={relations}>
-                                    {/* <div
-                                        onClick={() => startConnection(w.id)}
-                                        className={`node ${conn ? 'connected' : ''} ${isDragging ? 'dragging' : ''}`}
-                                        style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', cursor: 'pointer' }}
-                                    >
+                                    <Button variant={conn ? "secondary" : "primary"} onClick={(e) => startConnection(e, w.id)}>
                                         {w.label}
-                                    </div> */}
-                                    <Button variant="primary" onClick={(e) => startConnection(e, w.id)}>
-                                        <div>
-
-                                            {w.label}
-                                        </div>
-
                                     </Button>
                                 </ArcherElement>
                             );
                         })}
                     </div>
-                    <div className="ConnectItems__column">
+
+                    <div className="ConnectItems__column" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                         {CATS.map((c) => (
                             <ArcherElement key={c.id} id={c.id}>
-                                <Button asChild variant="primary" onClick={(e) => endConnection(e, c.id)}>
-                                    <div>
-
-                                        {c.label}
-                                    </div>
+                                <Button variant="primary" onClick={() => endConnection(c.id)} data-name="test-end">
+                                    {c.label}
                                 </Button>
                             </ArcherElement>
                         ))}
                     </div>
                 </div>
+
                 {activeSource && (
                     <ArcherElement id="mouse-pointer">
-                        <div
-                            style={{
-                                position: 'fixed',
-                                left: mousePos.x,
-                                top: mousePos.y,
-                                width: '1px',
-                                height: '1px',
-                                pointerEvents: 'none',
-                            }}
-                        />
+                        <div style={{ position: 'fixed', left: mousePos.x, top: mousePos.y, width: '1px', height: '1px', pointerEvents: 'none' }} />
                     </ArcherElement>
                 )}
             </ArcherContainer>
-            {connections.length > 0 && (
-                <button className="reset-btn" onClick={() => setConnections([])}>
-                    Сбросить
-                </button>
-            )}
-            {connections.length === WORDS.length && (
-                <button className="check-btn" onClick={checkConnections}>
-                    Проверить
-                </button>
-            )}
+
+            <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
+                {connections.length > 0 && (
+                    <button className="reset-btn" onClick={() => { setConnections([]); setIsSuccess(false); }}>Сбросить</button>
+                )}
+                {connections.length === WORDS.length && !isSuccess && (
+                    <button className="check-btn" onClick={checkConnections}>Проверить</button>
+                )}
+            </div>
         </div>
-    )
-}
+    );
+};
