@@ -30,6 +30,7 @@ const CryptMessage = lazy(() => import("../trainers/moduleTwo/CryptMessage").the
 const MatchingGame = lazy(() => import("../trainers/moduleTwo/MatchingGame").then(module => ({ default: module.MatchingGame })));
 const NewWords = lazy(() => import("../trainers/moduleTwo/NewWords").then(module => ({ default: module.NewWords })));
 const CollectPhrases = lazy(() => import("../trainers/moduleThree/CollectPhrases").then(module => ({ default: module.CollectPhrases })))
+const UnitCounter = lazy(() => import("../trainers/UnitCounter").then(module => ({ default: module.UnitCounter })))
 // import { PictureWordMatcher } from "../trainers/moduleThree/PictureWordMatcher";
 import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
@@ -491,6 +492,20 @@ export const router = createBrowserRouter([
         element: <SuspenseWrapper>
             <Page>
                 <ConnectItems />
+            </Page>
+        </SuspenseWrapper>
+    },
+    {
+        path: '/unitCounter',
+        element: <SuspenseWrapper>
+            <Page>
+                <UnitCounter
+                    content="редька"
+                    correctVariant={5}
+                    variants={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                    handleError={() => alert('error')}
+                    handleSuccess={() => alert('success')}
+                    title="Сколько звуков в слове?" />
             </Page>
         </SuspenseWrapper>
     }
