@@ -1,16 +1,16 @@
 import { Modal } from "../../../../widgets/modal"
 import './styles.scss';
-export const NewWordsModal = ({ onClose }: { onClose: () => void; }) => {
+export const NewWordsModal = ({ onClose, title, description }: { title: string; description: string; onClose: () => void; }) => {
     return (
         <Modal onClose={onClose}>
             <div className="NewWordsModal__content">
                 <h2 className="NewWordsModal__title">
-                    Юнга
+                    {title}
                 </h2>
                 <p className="NewWordsModal__descr">
-                    Младший матрос на корабле
+                    {description}
                 </p>
             </div>
-         </Modal>
+        </Modal>
     )
 }

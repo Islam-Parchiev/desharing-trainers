@@ -163,6 +163,9 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/connectItems">ConnectItems</Link>
                         </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/unitCounter">UnitCounter</Link>
+                        </div>
                     </div>
                 </div>
             </section>
