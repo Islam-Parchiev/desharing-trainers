@@ -1,0 +1,30 @@
+.LetterRecognitionTrainer {
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-items: center;
+	}
+	&__word_window {
+		background-color: #2cb3e9;
+		border-radius: 12px;
+		height: 60px;
+		width: 200px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 21px;
+		color: #fff;
+		position: relative;
+	}
+	&__sound {
+		position: absolute;
+		top: -17px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&__col {
+		&-items {
+			padding-top: 12px;
+		}
+	}
+}

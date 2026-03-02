@@ -31,6 +31,9 @@ const MatchingGame = lazy(() => import("../trainers/moduleTwo/MatchingGame").the
 const NewWords = lazy(() => import("../trainers/moduleTwo/NewWords").then(module => ({ default: module.NewWords })));
 const CollectPhrases = lazy(() => import("../trainers/moduleThree/CollectPhrases").then(module => ({ default: module.CollectPhrases })))
 const UnitCounter = lazy(() => import("../trainers/UnitCounter").then(module => ({ default: module.UnitCounter })))
+const LetterRecognitionTrainer = lazy(() => import("../trainers/LetterRecognitionTrainer").then(module => ({ default: module.UniversalBinaryTrainer })))
+// import { LetterRecognitionTrainer } from "../trainers/LetterRecognitionTrainer";
+
 // import { PictureWordMatcher } from "../trainers/moduleThree/PictureWordMatcher";
 import LineDragApp from "../components/lacotest";
 import { Reorder } from "../components/reorder";
@@ -508,5 +511,27 @@ export const router = createBrowserRouter([
                     title="Сколько звуков в слове?" />
             </Page>
         </SuspenseWrapper>
-    }
+    },
+    {
+        path: '/letterRecognitionTrainer',
+        element: <SuspenseWrapper>
+            <Page>
+                <LetterRecognitionTrainer
+                    title="Распредели слова"
+                    columns={[
+                        { btnLabel: "Слышу [Й]", value: true },
+                        { btnLabel: "Не слышу", value: false }
+                    ]}
+                    items={
+                        [
+                            { "id": 1, "content": "Лайка", "correctValue": true, "media": "/sounds/dog.mp3" },
+                            { "id": 2, "content": "Стол", "correctValue": false, "media": "/sounds/table.mp3" },
+                            { "id": 3, "content": "Чайка", "correctValue": true, "media": "/sounds/table.mp3" }
+                        ]
+                    }
+                    onSuccess={() => alert('Ура!')}
+                    onError={() => alert('Fail')} />
+            </Page>
+        </SuspenseWrapper>
+    },
 ])

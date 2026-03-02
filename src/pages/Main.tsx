@@ -148,10 +148,10 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/distributeWords">DistributeWords</Link>
                         </div>
-
+                        {/* 
                         <div className="ItemTrainerLink">
                             <Link to="/theoryChild">Теория 1</Link>
-                        </div>
+                        </div> */}
                         <div className="ItemTrainerLink">
                             <Link to="/alphabet">Алфавит</Link>
                         </div>
@@ -165,6 +165,9 @@ export const Main = () => {
                         </div>
                         <div className="ItemTrainerLink">
                             <Link to="/unitCounter">UnitCounter</Link>
+                        </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/letterRecognitionTrainer">LetterRecognitionTrainer</Link>
                         </div>
                     </div>
                 </div>
