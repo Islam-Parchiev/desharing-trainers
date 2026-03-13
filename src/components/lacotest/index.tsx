@@ -7,7 +7,7 @@ interface Point {
     y: number;
 }
 
-const LineDragApp: React.FC = () => {
+export const LineDragApp: React.FC = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [lineStart, setLineStart] = useState({ x: 0, y: 0 });
     const [lineEnd, setLineEnd] = useState({ x: 0, y: 0 });
@@ -170,4 +170,3 @@ const LineDragApp: React.FC = () => {
     );
 };
 
-export default LineDragApp;

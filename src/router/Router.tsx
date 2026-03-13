@@ -32,43 +32,39 @@ const NewWords = lazy(() => import("../trainers/moduleTwo/NewWords").then(module
 const CollectPhrases = lazy(() => import("../trainers/moduleThree/CollectPhrases").then(module => ({ default: module.CollectPhrases })))
 const UnitCounter = lazy(() => import("../trainers/UnitCounter").then(module => ({ default: module.UnitCounter })))
 const LetterRecognitionTrainer = lazy(() => import("../trainers/LetterRecognitionTrainer").then(module => ({ default: module.UniversalBinaryTrainer })))
-// import { LetterRecognitionTrainer } from "../trainers/LetterRecognitionTrainer";
-
-// import { PictureWordMatcher } from "../trainers/moduleThree/PictureWordMatcher";
-import LineDragApp from "../components/lacotest";
-import { Reorder } from "../components/reorder";
-import { StoryReorder } from "../trainers/moduleTwo/StoryReorder";
-import { WrappedFlow } from "../components/fl";
-import { VocabularyTrainer } from "../trainers/moduleTwo/VocabularyTrainer";
-import { FixTicket } from "../trainers/moduleTwo/FixTicket";
-import { ParagraphIndentTrainer } from "../trainers/moduleTwo/ParagraphIndentTrainer";
-import { SignToWordMatcher } from "../trainers/moduleTwo/SignToWordMatcher";
-import { TextArchitect } from "../trainers/moduleTwo/TextArchitect";
+const LineDragApp = lazy(() => import("../components/lacotest").then(module => ({ default: module.LineDragApp })))
+const Reorder = lazy(() => import("../components/reorder").then(module => ({ default: module.Reorder })))
+const StoryReorder = lazy(() => import("../trainers/moduleTwo/StoryReorder").then(module => ({ default: module.StoryReorder })));
+const WrappedFlow = lazy(() => import("../components/fl").then(module => ({ default: module.WrappedFlow })));
+const VocabularyTrainer = lazy(() => import("../trainers/moduleTwo/VocabularyTrainer").then(module => ({ default: module.VocabularyTrainer })));
+const FixTicket = lazy(() => import("../trainers/moduleTwo/FixTicket").then(module => ({ default: module.FixTicket })));
+const ParagraphIndentTrainer = lazy(() => import("../trainers/moduleTwo/ParagraphIndentTrainer").then(module => ({ default: module.ParagraphIndentTrainer })));
+const SignToWordMatcher = lazy(() => import("../trainers/moduleTwo/SignToWordMatcher").then(module => ({ default: module.SignToWordMatcher })));
+const TextArchitect = lazy(() => import("../trainers/moduleTwo/TextArchitect").then(module => ({ default: module.TextArchitect })));
+const ChoiceCorrectItems = lazy(() => import("../trainers/moduleTwo/ChoiceCorrectItems").then(module => ({ default: module.ChoiceCorrectItems })));
+const PoliteWordsClicker = lazy(() => import("../trainers/moduleTwo/PoliteWordsClicker").then(module => ({ default: module.PoliteWordsClicker })));
+const WordCategorizer = lazy(() => import("../trainers/moduleThree/wordCategorizer").then(module => ({ default: module.WordCategorizer })));
+const ColorWords = lazy(() => import("../trainers/moduleThree/colorWords").then(module => ({ default: module.ColorWords })));
 import LaceApp from "../components/xarrows";
-import { ChoiceCorrectItems } from "../trainers/moduleTwo/ChoiceCorrectItems";
-import { PoliteWordsClicker } from "../trainers/moduleTwo/PoliteWordsClicker";
-import { WordCategorizer } from "../trainers/moduleThree/wordCategorizer";
-import { ColorWords } from "../trainers/moduleThree/colorWords";
-import { SentenceBuilder } from "../trainers/moduleThree/SentenceBuilder";
-import { SyllableBuilder } from "../trainers/moduleThree/SyllableBuilder";
-import { NextSyllableChooser } from "../trainers/moduleThree/NextSyllableChooser";
-import { BubbleTrainer } from "../trainers/moduleThree/bubbleTrainer";
-import { LetterSoundCategorizer } from "../trainers/moduleThree/LetterSoundCategorizer";
-import { ReorderLetters } from "../trainers/moduleThree/ReorderLetters";
-import { AlphabeticalSorter } from "../trainers/moduleThree/AlphabeticalSorter";
-import { ConnectLetters } from "../trainers/moduleThree/ConnectLetters";
-import { SolveRiddle } from "../trainers/moduleThree/SolveRiddle";
-// import { WordClick } from "../trainers/moduleThree/WordClick";
-import { WhatIsSpeech } from "../pages/Cards/WhatIsSpeech";
-import { AlphabetCard } from "../pages/Cards/Alphabet";
-import { DeleteExtraLetter } from "../trainers/moduleThree/DeleteExtraLetter";
-import { mockConclusionData, mockDataColorTools, mockDataColorWords, mockDataPoliteWords, mockDataWordClick } from "../mocks/data";
 import { FixMistakesWrapper } from "../components/FixMistakesWrapper";
-import { FindMistake } from "../trainers/moduleThree/FindMistake";
-import { WordClickerWithWrapper } from "../trainers/moduleThree/WordClick/wrapper";
-import { DistributeWords } from "../trainers/moduleThree/DistributeWords";
-import { ConnectItems } from "../trainers/ConnectItems";
 import PuzzleGame from "../trainers/PuzzleT";
+const SentenceBuilder = lazy(() => import("../trainers/moduleThree/SentenceBuilder").then(m => ({ default: m.SentenceBuilder })));
+const SyllableBuilder = lazy(() => import("../trainers/moduleThree/SyllableBuilder").then(m => ({ default: m.SyllableBuilder })));
+const NextSyllableChooser = lazy(() => import("../trainers/moduleThree/NextSyllableChooser").then(m => ({ default: m.NextSyllableChooser })));
+const BubbleTrainer = lazy(() => import("../trainers/moduleThree/bubbleTrainer").then(m => ({ default: m.BubbleTrainer })));
+const LetterSoundCategorizer = lazy(() => import("../trainers/moduleThree/LetterSoundCategorizer").then(m => ({ default: m.LetterSoundCategorizer })));
+const ReorderLetters = lazy(() => import("../trainers/moduleThree/ReorderLetters").then(m => ({ default: m.ReorderLetters })));
+const AlphabeticalSorter = lazy(() => import("../trainers/moduleThree/AlphabeticalSorter").then(m => ({ default: m.AlphabeticalSorter })));
+const ConnectLetters = lazy(() => import("../trainers/moduleThree/ConnectLetters").then(m => ({ default: m.ConnectLetters })));
+const SolveRiddle = lazy(() => import("../trainers/moduleThree/SolveRiddle").then(m => ({ default: m.SolveRiddle })));
+const WhatIsSpeech = lazy(() => import("../pages/Cards/WhatIsSpeech").then(m => ({ default: m.WhatIsSpeech })));
+const AlphabetCard = lazy(() => import("../pages/Cards/Alphabet").then(m => ({ default: m.AlphabetCard })));
+const DeleteExtraLetter = lazy(() => import("../trainers/moduleThree/DeleteExtraLetter").then(m => ({ default: m.DeleteExtraLetter })));
+const FindMistake = lazy(() => import("../trainers/moduleThree/FindMistake").then(m => ({ default: m.FindMistake })));
+const WordClickerWithWrapper = lazy(() => import("../trainers/moduleThree/WordClick/wrapper").then(m => ({ default: m.WordClickerWithWrapper })));
+const DistributeWords = lazy(() => import("../trainers/moduleThree/DistributeWords").then(m => ({ default: m.DistributeWords })));
+const ConnectItems = lazy(() => import("../trainers/ConnectItems").then(m => ({ default: m.ConnectItems })));
+import { mockConclusionData, mockDataColorTools, mockDataColorWords, mockDataPoliteWords, mockDataWordClick } from "../mocks/data";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -294,186 +290,296 @@ export const router = createBrowserRouter([
     // },
     {
         path: "/laco",
-        element: <Page>
-            <LineDragApp />
-        </Page>
+        element: <SuspenseWrapper>
+            <Page>
+                <LineDragApp />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/reorder",
-        element: <Page>
-            <Reorder />
-        </Page>
+        element: <SuspenseWrapper>
+            <Page>
+                <Reorder />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/storyReorder",
-        element: <Page>
-            <StoryReorder />
-        </Page>
+        element: <SuspenseWrapper>
+            <Page>
+                <StoryReorder />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/flowT",
-        element: <Page>
-            <WrappedFlow />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <WrappedFlow />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/vocabularyTrainer",
-        element: <Page>
-            <VocabularyTrainer />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <VocabularyTrainer />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/fixTicket",
-        element: <Page>
-            <FixTicket />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <FixTicket />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/paragraphIndentTrainer",
-        element: <Page>
-            <ParagraphIndentTrainer />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <ParagraphIndentTrainer />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/signToWordMatcher",
-        element: <Page>
-            <SignToWordMatcher />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <SignToWordMatcher />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/FixMistakesInText",
-        element: <Page>
-            <FixMistakesWrapper />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <FixMistakesWrapper />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/textArchitect",
-        element: <Page>
-            <TextArchitect />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <TextArchitect />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/xarrows",
-        element: <Page>
-            <LaceApp />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <LaceApp />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/choiceCorrectItems",
-        element: <Page>
-            <ChoiceCorrectItems />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <ChoiceCorrectItems />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/politeWordsClicker",
-        element: <Page>
-            <PoliteWordsClicker
-                correctValues={mockDataPoliteWords.correctValues}
-                text={mockDataPoliteWords.text}
-                title={mockDataPoliteWords.title}
-                handleError={() => alert("error")}
-                handleSuccess={() => alert("success")} />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <PoliteWordsClicker
+                        correctValues={mockDataPoliteWords.correctValues}
+                        text={mockDataPoliteWords.text}
+                        title={mockDataPoliteWords.title}
+                        handleError={() => alert("error")}
+                        handleSuccess={() => alert("success")}
+                    />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/wordCategorizer",
-        element: <Page>
-            <WordCategorizer />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <WordCategorizer />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/colorWords",
-        element: <Page>
-            <ColorWords
-                data={mockDataColorWords}
-                tools={mockDataColorTools}
-                handleSuccess={() => alert('success')}
-                handleError={() => alert('error')}
-                title="Раскрась слова" />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <ColorWords
+                        data={mockDataColorWords}
+                        tools={mockDataColorTools}
+                        handleSuccess={() => alert('success')}
+                        handleError={() => alert('error')}
+                        title="Раскрась слова"
+                    />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/sentenceBuilder",
-        element: <Page>
-            <SentenceBuilder />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <SentenceBuilder />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/syllableBuilder",
-        element: <Page>
-            <SyllableBuilder />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <SyllableBuilder />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/nextSyllableChooser",
-        element: <Page>
-            <NextSyllableChooser />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <NextSyllableChooser />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/bubbleTrainer",
-        element: <Page>
-            <BubbleTrainer />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <BubbleTrainer />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/letterSoundCategorizer",
-        element: <Page>
-            <LetterSoundCategorizer title="выберите гласные буквы" />
-        </Page>
-    }, {
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <LetterSoundCategorizer title="выберите гласные буквы" />
+                </Page>
+            </SuspenseWrapper>
+        )
+    },
+    {
         path: "/reorderLetters",
-        element: <Page>
-            <ReorderLetters />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <ReorderLetters />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/alphabeticalSorter",
-        element: <Page>
-            <AlphabeticalSorter />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <AlphabeticalSorter />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/connectLetters",
-        element: <Page>
-            <ConnectLetters />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <ConnectLetters />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/solveRiddle",
-        element: <Page>
-            <SolveRiddle />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <SolveRiddle />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/wordCliker",
-        element: <Page>
-            <WordClickerWithWrapper data={mockDataWordClick} />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <WordClickerWithWrapper data={mockDataWordClick} />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/whatIsSpeech",
-        element: <Page>
-            <WhatIsSpeech />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <WhatIsSpeech />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/alphabet",
-        element: <Page>
-            <AlphabetCard />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <AlphabetCard />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/extraLetter",
-        element: <Page>
-            <DeleteExtraLetter content="ЧАЯЙ" extraLetters={["Я"]} />
-        </Page>
+        element: (
+            <SuspenseWrapper>
+                <Page>
+                    <DeleteExtraLetter content="ЧАЯЙ" extraLetters={["Я"]} />
+                </Page>
+            </SuspenseWrapper>
+        )
     },
     {
         path: "/findMistake",
-        element: <Page>
-            <FindMistake />
-        </Page>
+        element: <SuspenseWrapper>
+
+            <Page>
+                <FindMistake />
+            </Page>
+        </SuspenseWrapper>
     },
     {
         path: "/collectPhrases",
