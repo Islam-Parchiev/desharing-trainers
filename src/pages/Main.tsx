@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-
+import './styles.scss';
 export const Main = () => {
     return (
         <main className="Page Main">
