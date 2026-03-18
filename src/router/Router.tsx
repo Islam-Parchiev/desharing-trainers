@@ -64,6 +64,7 @@ const FindMistake = lazy(() => import("../trainers/moduleThree/FindMistake").the
 const WordClickerWithWrapper = lazy(() => import("../trainers/moduleThree/WordClick/wrapper").then(m => ({ default: m.WordClickerWithWrapper })));
 const DistributeWords = lazy(() => import("../trainers/moduleThree/DistributeWords").then(m => ({ default: m.DistributeWords })));
 const ConnectItems = lazy(() => import("../trainers/ConnectItems").then(m => ({ default: m.ConnectItems })));
+const AnagramPuzzle = lazy(() => import("../trainers/AnagramPuzzle").then(m => ({ default: m.AnagramPuzzle })));
 import { mockConclusionData, mockDataColorTools, mockDataColorWords, mockDataPoliteWords, mockDataWordClick } from "../mocks/data";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -646,6 +647,14 @@ export const router = createBrowserRouter([
         element: <SuspenseWrapper>
             <Page>
                 <PuzzleGame />
+            </Page>
+        </SuspenseWrapper>
+    },
+    {
+        path: '/anagramPuzzle',
+        element: <SuspenseWrapper>
+            <Page>
+                <AnagramPuzzle />
             </Page>
         </SuspenseWrapper>
     }

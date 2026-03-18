@@ -169,6 +169,9 @@ export const Main = () => {
                         <div className="ItemTrainerLink">
                             <Link to="/letterRecognitionTrainer">LetterRecognitionTrainer</Link>
                         </div>
+                        <div className="ItemTrainerLink">
+                            <Link to="/anagramPuzzle">AnagramPuzzle</Link>
+                        </div>
                     </div>
                 </div>
             </section>

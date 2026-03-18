@@ -1,0 +1,47 @@
+.AnagramPuzzle {
+	&__content {
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+	}
+}
+.AnagramPuzzleItem {
+	&__title {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		span {
+			font-size: 21px;
+		}
+	}
+}
+.AnagramPuzzleItemDroppableWord__slot {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 60px; 
+	height: 40px;
+	border: 2px dashed #ccc;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+	transition: all 0.2s ease;
+	vertical-align: middle;
+
+	&.is-over {
+		border-color: #4a90e2;
+		background-color: rgba(74, 144, 226, 0.1);
+		transform: scale(1.05);
+	}
+
+	&:not(:empty) {
+		border-style: solid;
+		border-color: transparent;
+		background-color: transparent;
+	}
+
+	.btn {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+}
