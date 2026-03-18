@@ -244,3 +244,7 @@ variants:[
 // IN DEVELOPING
 
 // politeWordsClicker - wordCliker
+
+
+
+// TrainerTypes - Выбрать один правильный вариант, выбрать несколько вариантов, нажать на букву в слове, 

@@ -1,72 +1,66 @@
-import { TrainerTitle } from '../../components/TrainerTitle';
-import { Button } from '../../shared/ui/Button';
-import './styles.scss';
-
 import { useState } from 'react';
-import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import { DraggableLetter, DroppableSlot } from './draggable';
+import { DndContext, closestCenter, type DragEndEvent, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { arrayMove, SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortable';
+import { DroppableSlot, SortableLetter } from './draggable';
 
 export const AnagramPuzzle = () => {
-    const [variants] = useState([
+    // Варианты в банке
+    const [variants, setVariants] = useState([
         { id: '1', label: 'шин' },
         { id: '2', label: 'щин' },
         { id: '3', label: 'шен' }
     ]);
+    // Элементы в слоте
+    const [placedItems, setPlacedItems] = useState<{ id: string; label: string }[]>([]);
 
-    const [placedItem, setPlacedItem] = useState<{ id: string; label: string } | null>(null);
+    const sensors = useSensors(useSensor(PointerSensor));
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
+        if (!over) return;
 
-        if (over && over.id === 'word-slot') {
-            const dragged = variants.find(v => v.id === active.id);
-            if (dragged) {
-                setPlacedItem(dragged);
-                // setVariants(prev => prev.filter(v => v.id !== active.id));
-            }
+        // 1. Если бросили в слот (перемещение из банка в слот)
+        if (over.id === 'word-slot' && variants.find(v => v.id === active.id)) {
+            const dragged = variants.find(v => v.id === active.id)!;
+            setPlacedItems([...placedItems, dragged]);
+            setVariants(variants.filter(v => v.id !== active.id));
+        }
+
+        // 2. Если перемещаем внутри слота (реордер)
+        if (active.id !== over.id && placedItems.find(p => p.id === over.id)) {
+            setPlacedItems((items) => {
+                const oldIndex = items.findIndex((i) => i.id === active.id);
+                const newIndex = items.findIndex((i) => i.id === over.id);
+                return arrayMove(items, oldIndex, newIndex);
+            });
         }
     };
 
     return (
-        <DndContext onDragEnd={handleDragEnd}>
+        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
             <div className='AnagramPuzzle'>
-                <div className="AnagramPuzzle__inner">
-                    <TrainerTitle>Подпиши картинку</TrainerTitle>
-                    <h3>Собери слово из букв</h3>
-
-                    <div className="AnagramPuzzle__content">
-
-                        <div className="AnagramPuzzleItem">
-                            <div className="AnagramPuzzleItem__image">
-                                <img src="/car2d.png" alt="car" />
-                            </div>
-                            <h4 className='AnagramPuzzleItem__title'>
-                                <span>Машина</span>
-                            </h4>
-                        </div>
-
-                        <div className="AnagramPuzzleItem">
-                            <div className="AnagramPuzzleItem__image">
-                                <img src="/car2d.png" alt="car" />
-                            </div>
-                            <div className="AnagramPuzzleItemDroppableWord">
-                                <div>
-                                    <span>Ма</span>
-                                    <DroppableSlot id="word-slot">
-                                        {placedItem && <Button variant="primary">{placedItem.label}</Button>}
-                                    </DroppableSlot>
-                                    <span>ка</span>
+                <div className="AnagramPuzzleItem">
+                    <div className="AnagramPuzzleItemDroppableWord">
+                        <span>Ма</span>
+                        <DroppableSlot id="word-slot">
+                            <SortableContext items={placedItems} strategy={horizontalListSortingStrategy}>
+                                <div style={{ display: 'flex', gap: '4px' }}>
+                                    {placedItems.map((item) => (
+                                        <SortableLetter key={item.id} id={item.id} label={item.label} />
+                                    ))}
                                 </div>
-                            </div>
-                        </div>
+                            </SortableContext>
+                        </DroppableSlot>
+                        <span>ка</span>
                     </div>
+                </div>
 
-                    {/* Банк вариантов */}
-                    <div className="AnagramPuzzle__variants">
+                <div className="AnagramPuzzle__variants">
+                    <SortableContext items={variants} strategy={horizontalListSortingStrategy}>
                         {variants.map((item) => (
-                            <DraggableLetter key={item.id} id={item.id} label={item.label} />
+                            <SortableLetter key={item.id} id={item.id} label={item.label} />
                         ))}
-                    </div>
+                    </SortableContext>
                 </div>
             </div>
         </DndContext>
